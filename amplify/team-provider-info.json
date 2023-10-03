@@ -1,0 +1,27 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplify75a4f6440f854-staging-112522-authRole",
+      "UnauthRoleArn": "arn:aws:iam::318396632821:role/amplify-amplify75a4f6440f854-staging-112522-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::318396632821:role/amplify-amplify75a4f6440f854-staging-112522-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-amplify75a4f6440f854-staging-112522-deployment",
+      "UnauthRoleName": "amplify-amplify75a4f6440f854-staging-112522-unauthRole",
+      "StackName": "amplify-amplify75a4f6440f854-staging-112522",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:318396632821:stack/amplify-amplify75a4f6440f854-staging-112522/8ac2fd60-61df-11ee-9c56-0265be4a4438",
+      "AmplifyAppId": "d2yzasj9jo80dp"
+    },
+    "categories": {
+      "function": {
+        "verdeosbsm60289157": {
+          "deploymentBucketName": "amplify-amplify75a4f6440f854-staging-112522-deployment",
+          "s3Key": "amplify-builds/verdeosbsm60289157-4f596f4a4659796a7059-build.zip"
+        },
+        "pyLambda": {}
+      },
+      "api": {
+        "apitest": {}
+      }
+    }
+  }
+}

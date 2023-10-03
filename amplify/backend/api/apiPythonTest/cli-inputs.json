@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/pyItem": {
+      "name": "/pyItem",
+      "lambdaFunction": "pyLambda",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
