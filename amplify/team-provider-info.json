@@ -17,10 +17,14 @@
           "deploymentBucketName": "amplify-amplify75a4f6440f854-staging-112522-deployment",
           "s3Key": "amplify-builds/verdeosbsm60289157-4f596f4a4659796a7059-build.zip"
         },
-        "pyLambda": {}
+        "pyLambda": {
+          "deploymentBucketName": "amplify-amplify75a4f6440f854-staging-112522-deployment",
+          "s3Key": "amplify-builds/pyLambda-59562b4c7279784f644e-build.zip"
+        }
       },
       "api": {
-        "apitest": {}
+        "apitest": {},
+        "apiPythonTest": {}
       }
     }
   }
