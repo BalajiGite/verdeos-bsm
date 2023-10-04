@@ -1,9 +1,9 @@
 {
   "version": 1,
   "paths": {
-    "/pyItem": {
-      "name": "/pyItem",
-      "lambdaFunction": "pyLambda",
+    "/items/{name}": {
+      "name": "/items/{name}",
+      "lambdaFunction": "lmbdaDemoTest",
       "permissions": {
         "setting": "open"
       }

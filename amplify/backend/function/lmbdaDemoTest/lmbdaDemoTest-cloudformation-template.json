@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "verdeosbsm60289157",
+            "lmbdaDemoTest",
             {
               "Fn::Join": [
                 "",
                 [
-                  "verdeosbsm60289157",
+                  "lmbdaDemoTest",
                   "-",
                   {
                     "Ref": "env"
@@ -78,7 +78,7 @@
             "Arn"
           ]
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "python3.8",
         "Layers": [],
         "Timeout": 25
       }
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "verdeosbsmLambdaRole257b3376",
+            "verdeosbsmLambdaRolefba50a73",
             {
               "Fn::Join": [
                 "",
                 [
-                  "verdeosbsmLambdaRole257b3376",
+                  "verdeosbsmLambdaRolefba50a73",
                   "-",
                   {
                     "Ref": "env"

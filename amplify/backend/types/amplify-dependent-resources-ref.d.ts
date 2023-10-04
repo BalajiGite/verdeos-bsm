@@ -1,12 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
     "function": {
-        "verdeosbsm60289157": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
-        "pyLambda": {
+        "lmbdaDemoTest": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -14,12 +8,7 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "api": {
-        "apitest": {
-            "RootUrl": "string",
-            "ApiName": "string",
-            "ApiId": "string"
-        },
-        "apiPythonTest": {
+        "apiDemoTest": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

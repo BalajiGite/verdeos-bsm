@@ -1,38 +1,20 @@
 {
   "function": {
-    "verdeosbsm60289157": {
+    "lmbdaDemoTest": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "pyLambda": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": []
     }
   },
   "api": {
-    "apitest": {
+    "apiDemoTest": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "verdeosbsm60289157",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "apiPythonTest": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "pyLambda",
+          "resourceName": "lmbdaDemoTest",
           "attributes": [
             "Name",
             "Arn"
