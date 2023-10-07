@@ -14,9 +14,8 @@ export default function Navbar(props) {
             <Link href="/">
               <a
                 className="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
-                href="#pablo"
-              >
-                VerdeOS
+                href="#pablo">
+                  VerdeOS
               </a>
             </Link>
             <button
