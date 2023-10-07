@@ -15,7 +15,7 @@
       "function": {
         "lmbdaDemoTest": {
           "deploymentBucketName": "amplify-amplify75a4f6440f854-staging-112522-deployment",
-          "s3Key": "amplify-builds/lmbdaDemoTest-6e4a74512f7233617344-build.zip"
+          "s3Key": "amplify-builds/lmbdaDemoTest-4e7844506477697a614b-build.zip"
         }
       },
       "api": {
