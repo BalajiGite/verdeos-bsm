@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import awsExports from '../src/aws-exports';
+import awsExports from '../api/aws-exports';
 import { Amplify, API, Auth, Storage, withSSRContext } from 'aws-amplify';
 
 // components
@@ -18,7 +18,12 @@ Amplify.configure({ ...awsExports, ssr: true });
 
 export async function getServerSideProps() {
   try {
-    const response = await API.get('apiDemoTest', '/items/1');
+    const hearder = {
+      headers: {
+        'x-api-key': awsExports.apiKey // Replace with your API key
+      }
+    };
+    const response = await API.get('verdeosSkysparkApiTest-API', '/verdeosSkysparkApiTest', hearder);
     const data = response;
 
     return {
@@ -37,16 +42,9 @@ export async function getServerSideProps() {
 }
 
 const Dashboard = ({ data }) => {
-  let parsedData = null;
-  if (data) {
-    try {
-      parsedData = JSON.parse(data);
-    } catch (error) {
-      console.error('Error parsing JSON:', error);
-    }
-  }
+  console.log("Test" + JSON.stringify(data))
 
-  const { totalSitePer, totalReadings, sites } = parsedData;
+  const { totalSitePer, totalReadings, sites } = data;
   
   return (
     <>
