@@ -1,20 +1,19 @@
 {
   "function": {
-    "lmbdaDemoTest": {
+    "jsonSchemaLambda": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": []
+      "service": "Lambda"
     }
   },
   "api": {
-    "apiDemoTest": {
+    "jsonschemaAPI": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "lmbdaDemoTest",
+          "resourceName": "jsonSchemaLambda",
           "attributes": [
             "Name",
             "Arn"
