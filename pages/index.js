@@ -7,6 +7,7 @@ import { Amplify, API, Auth, Storage, withSSRContext } from 'aws-amplify';
 import CardLineChart from "components/Cards/CardLineChart.js";
 import CardBarChart from "components/Cards/CardBarChart.js";
 import CardPageVisits from "components/Cards/CardPageVisits.js";
+import ConnectedBuilding from '../widgets/ConnectedBuilding';
 import CardSocialTraffic from "components/Cards/CardSocialTraffic.js";
 import Table from "components/buildingData/dataTbl.js"
 import SiteInfo from "components/buildingData/SiteInfo.js"
@@ -15,7 +16,7 @@ import SiteInfo from "components/buildingData/SiteInfo.js"
 import Admin from "layouts/Admin.js";
 
 Amplify.configure({ ...awsExports, ssr: true });
-
+/**
 export async function getServerSideProps() {
   try {
     const hearder = {
@@ -40,19 +41,12 @@ export async function getServerSideProps() {
     };
   }
 }
+**/
 
-const Dashboard = ({ data }) => {
-  console.log("Test" + JSON.stringify(data))
-
-  const { totalSitePer, totalReadings, sites } = data;
+const Dashboard = () => {
   
   return (
-    <>
-      {/**<img
-        src="/img/demo.png"
-        alt="..."
-  ></img>{" "}**/}
-    
+    <>    
       <div className="flex flex-wrap">
         <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
           <CardLineChart />
@@ -63,12 +57,7 @@ const Dashboard = ({ data }) => {
       </div>
       <div className="flex flex-wrap mt-4">
         <div className="w-full xl:w-4/12 px-4">
-          {/*<CardSocialTraffic />*/}
-          <div className="container mx-auto p-4">
-            <SiteInfo totalSitePer={totalSitePer} totalReadings={totalReadings} />
-            {/* Render the table component here using the 'sites' data */}
-          </div>
-          <Table sites={sites} />
+          <CardSocialTraffic /> 
         </div>
         <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
           <CardPageVisits />
