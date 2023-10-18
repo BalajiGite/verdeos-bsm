@@ -13,13 +13,7 @@
     },
     "categories": {
       "function": {
-        "lmbdaDemoTest": {
-          "deploymentBucketName": "amplify-amplify75a4f6440f854-staging-112522-deployment",
-          "s3Key": "amplify-builds/lmbdaDemoTest-5148647539623331484a-build.zip"
-        }
-      },
-      "api": {
-        "apiDemoTest": {}
+        "jsonSchemaLambda": {}
       }
     }
   }
