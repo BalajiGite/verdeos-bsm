@@ -16,7 +16,7 @@ const ConnectedBuilding = () => {
   }, []);
 
   return (
-    <div className="bg-orange p-4 rounded">
+    <div className="text-white p-4 rounded">
       <h2 className="text-white mb-4">Cart Widget</h2>
       {cartData && (
         <div>
@@ -28,7 +28,7 @@ const ConnectedBuilding = () => {
             <strong>Sites Connected:</strong>
             <ul>
               {cartData.sites.map((site) => (
-                <li key={site.id} className={`text-${site.color}`}>
+                <li key={site.id} className="text-blue-300">
                   {site.name}: {site.readings}
                 </li>
               ))}
@@ -37,7 +37,7 @@ const ConnectedBuilding = () => {
         </div>
       )}
     </div>
-  );
+  );  
 };
 
 export default ConnectedBuilding;
