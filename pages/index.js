@@ -7,10 +7,10 @@ import { Amplify, API, Auth, Storage, withSSRContext } from 'aws-amplify';
 import CardLineChart from "components/Cards/CardLineChart.js";
 import CardBarChart from "components/Cards/CardBarChart.js";
 import CardPageVisits from "components/Cards/CardPageVisits.js";
-import ConnectedBuilding from '../widgets/ConnectedBuilding';
 import CardSocialTraffic from "components/Cards/CardSocialTraffic.js";
 import Table from "components/buildingData/dataTbl.js"
 import SiteInfo from "components/buildingData/SiteInfo.js"
+import DashboardPage from "pages/admin/dashboard.js" 
 
 // layout for page
 import Admin from "layouts/Admin.js";
@@ -46,23 +46,8 @@ export async function getServerSideProps() {
 const Dashboard = () => {
   
   return (
-    <>    
-      <div className="flex flex-wrap">
-        <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-          <CardLineChart />
-        </div>
-        <div className="w-full xl:w-4/12 px-4">
-          <CardBarChart />
-        </div>
-      </div>
-      <div className="flex flex-wrap mt-4">
-        <div className="w-full xl:w-4/12 px-4">
-          <CardSocialTraffic /> 
-        </div>
-        <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-          <CardPageVisits />
-        </div>
-      </div>
+    <>
+      <DashboardPage/>    
     </>
   );
 }

@@ -7,34 +7,39 @@ export default function Navbar() {
     <>
       {/* Navbar */}
       <nav className="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
-        <div className="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
+        <div className="w-full mx-auto items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4 space-x-4">
           {/* Brand */}
-          <a
-            className="text-white text-sm uppercase hidden lg:inline-block font-semibold"
-            href="#pablo"
-            onClick={(e) => e.preventDefault()}
-          >
-            Dashboard
-          </a>
-          {/* Form */}
-          <form className="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3">
-            <div className="relative flex w-full flex-wrap items-stretch">
-              <span className="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
-                <i className="fas fa-search"></i>
+          <div className="text-white p-4 rounded border border-white w-full">
+            <h2 className="text-lg font-bold mb-2">Building Portfolio Manager</h2>
+            <p className="text-sm">Demo Edition v1.0</p>
+            {/* Add cart items or content here */}
+          </div>
+
+          <div className="text-white p-4 rounded border border-white w-full">
+            <h2 className="text-lg font-bold mb-2">Grosvenor Engineering Group</h2>
+            <p className="text-sm">IoT & Data Analytics</p>
+            {/* Add cart items or content here */}
+          </div>
+
+          <div className="text-white p-4 rounded border border-white w-full">
+            <div className="inline-block">
+              <span className="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full border border-white">
+                <img
+                  alt="..."
+                  className="w-full rounded-full align-middle shadow-lg"
+                  src="/img/team-1-800x800.jpg"
+                />
               </span>
-              <input
-                type="text"
-                placeholder="Search here..."
-                className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"
-              />
             </div>
-          </form>
-          {/* User */}
-          <ul className="flex-col md:flex-row list-none items-center hidden md:flex">
-            <UserDropdown />
-          </ul>
+            <div className="ml-2 inline-block">
+              <h2 className="text-lg font-bold mb-2">Grosvenor</h2>
+              <p className="text-sm text-white">Refining Building Outcomes</p>
+            </div>
+          </div>
+          
         </div>
       </nav>
+
       {/* End Navbar */}
     </>
   );
