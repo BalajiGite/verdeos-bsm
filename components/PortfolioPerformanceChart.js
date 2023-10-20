@@ -19,12 +19,7 @@ const PortfolioPerformanceChart = () => {
   }, []);
 
   return (
-    <div className="flex flex-wrap mt-4">
-      {performanceData.length > 0 && (
-        <div className="w-full xl:w-4/12 mb-12 xl:mb-0 px-4 py-6 border">
-          <PortfolioPerformance data={performanceData} />
-        </div>
-      )}
+    <div className="flex flex-wrap mt-4 border">
       {performanceData.length > 0 && (
         <div className="w-full xl:w-4/12 px-4 py-6 border">
           <PortfolioPerformance data={performanceData} />
@@ -36,7 +31,12 @@ const PortfolioPerformanceChart = () => {
         </div>
       )}
       {performanceData.length > 0 && (
-        <div className="w-full xl:w-4/12 mb-12 xl:mb-0 px-4 py-6 border">
+        <div className="w-full xl:w-4/12 px-4 py-6 border">
+          <PortfolioPerformance data={performanceData} />
+        </div>
+      )}
+      {performanceData.length > 0 && (
+        <div className="w-full xl:w-4/12 px-4 py-6 border">
           <PortfolioPerformance data={performanceData} />
         </div>
       )}
@@ -51,8 +51,6 @@ const PortfolioPerformanceChart = () => {
         </div>
       )}
     </div>
-
-  
   );
 };
 
