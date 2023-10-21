@@ -24,10 +24,10 @@ export default function Dashboard() {
       
       
       <div className="flex flex-wrap mt-4">
-        <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+        <div className="w-full xl:w-6/12 mb-12 xl:mb-0 px-4">
           <PortfolioCertification />
         </div>
-        <div className="w-full xl:w-4/12 px-4">
+        <div className="w-full xl:w-6/12 px-4">
           <CardSocialTraffic />
         </div>
       </div>
