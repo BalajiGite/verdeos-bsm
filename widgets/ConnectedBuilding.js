@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {
-  getConnectedBuilding
-} from "../api/dashboardDataService"; 
+import React, { useState, useEffect } from "react";
+import { getConnectedBuilding } from "../api/dashboardDataService";
 
 const ConnectedBuilding = () => {
   const [cartData, setCartData] = useState(null);
@@ -9,35 +7,54 @@ const ConnectedBuilding = () => {
   useEffect(() => {
     const fetchData = async () => {
       const resp = await getConnectedBuilding(1);
-      setCartData(resp); 
+      setCartData(resp);
     };
 
     fetchData();
   }, []);
 
   return (
-    <div className="text-white p-4 rounded">
-      <h2 className="text-white mb-4">Cart Widget</h2>
+    <>
       {cartData && (
         <div>
-          Total Site Percentage: {cartData.totalSitePer}
-          <br />
-          Total Readings: {cartData.totalReadings}
-          <br />
-          <div className="mt-4">
-            <strong>Sites Connected:</strong>
-            <ul>
-              {cartData.sites.map((site) => (
-                <li key={site.id} className="text-blue-300">
-                  {site.name}: {site.readings}
-                </li>
-              ))}
-            </ul>
+          <div className="flex mb-4">
+            <div className="w-80 text-color-card-header font-medium uppercase">
+              Sites Connected
+            </div>
+            <div className="w-20 ml-auto flex bg-black items-center justify-end">
+              <div className="w-3 h-3 bg-yellow-500 rounded-full flex items-center justify-center"></div>
+              <span className="ml-2 text-color-lable-value font-medium">
+                {cartData.totalSitePer}
+              </span>
+            </div>
           </div>
+          <div className="flex">
+            <div className="w-90 text-color-lable">Total Readings</div>
+            <div className="w-20 float-left bg-black flex items-center justify-start">
+              <div className="w-3 h-3 bg-yellow-500 rounded-full flex items-center justify-center"></div>
+              <span className="ml-2 text-color-lable-value">
+                {cartData.totalReadings}
+              </span>
+            </div>
+          </div>
+          {cartData.sites.map((site) => (
+            <div className="flex" key={site.id}>
+              <div className="w-90 text-color-lable">{site.name}</div>
+              <div className="w-20 float-right flex items-center justify-start bg-black">
+                <div
+                  style={{ background: site.color }}
+                  className="w-3 h-3 rounded-full flex items-center justify-center"
+                ></div>
+                <span className="ml-2 text-color-lable-value">
+                  {site.readings}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       )}
-    </div>
-  );  
+    </>
+  );
 };
 
 export default ConnectedBuilding;

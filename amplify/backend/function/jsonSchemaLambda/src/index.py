@@ -5,7 +5,7 @@ def handler(event, context):
   print(event)
   
   #navbar 
-  siteConnected = '{"totalSitePer":"67%", "totalReadings":"103/154", "color":"orange", "sites":[{"id": "xyz", "name":"electrical", "color":"red", "readings":"78/121"},{"id": "xyz", "name":"electrical", "color":"red", "readings":"78/121"}]}';
+  siteConnected = '{"totalSitePer":"67%", "totalReadings":"103/154", "color":"orange", "sites":[{"id": "xyz", "name":"Electrical", "color":"red", "readings":"78/121"},{"id": "xyz", "name":"Water", "color":"green", "readings":"121/121"},{"id": "abc", "name":"Indoor Air Quality", "color":"orange", "readings":"54/121"}]}';
   buildingType = '[{"id":"test123", "name":"Warehouse"},{"id":"test123", "name":"officespace"},{"id":"test123", "name":"Retail"}]';
   dataSources = '{"totalDataQualityPer":"86%", dataSource = [{"id":"test123", "name":"Manual Input", "percentage":"30"},{"id":"test123", "name":"DB Connector", "percentage":"50"},{"id":"test123", "name":"Retail", "percentage":"60"}]}';
   team = '[{"id":"uniqueId","name":"Keshav Agrawal", "profileImg":""},[{"id":"uniqueId","name":"Balaji Gite", "profileImg":""},[{"id":"uniqueId","name":"Pouya Ghadami", "profileImg":""}]'

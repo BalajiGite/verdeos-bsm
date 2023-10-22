@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-
-import {
-    getDataSourcesDemo
-  } from "../api/dashboardDataService"; 
+import { getDataSourcesDemo } from "../api/dashboardDataService";
 
 const DataSourceWidget = () => {
   const [dataSource, setDataSource] = useState([]);
@@ -12,54 +9,49 @@ const DataSourceWidget = () => {
   useEffect(() => {
     // Fetch data from API
     const fetchData = async () => {
-        const resp = await getDataSourcesDemo(3);
-        const { totalDataQualityPer, dataSource } = resp;
-        setTotalDataQualityPer(totalDataQualityPer);
-        setDataSource(dataSource);
-      };
-  
-      fetchData();
+      const resp = await getDataSourcesDemo(3);
+      const { totalDataQualityPer, dataSource } = resp;
+      setTotalDataQualityPer(totalDataQualityPer);
+      setDataSource(dataSource);
+    };
+
+    fetchData();
   }, []);
 
   return (
-    <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-    <div className="block w-full overflow-x-auto">
-      <table className="items-center w-full bg-transparent border-collapse">
-        <thead className="thead-light">
-          <tr>
-            <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-              Data Quality
-            </th>
-            <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-              {totalDataQualityPer} + helloooooo
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {dataSource.map((data, index) => (
-            <tr key={index}>
-              <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                {data.name}
-              </td>
-              <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                <div className="flex items-center">
-                  <span className="mr-2">{data.percentage}</span>
-                  <div className="relative w-full">
-                    <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                      <div
-                        style={{ width: data.percentage }}
-                        className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div>
+      <div className="flex mb-4">
+        <div className="w-80 font-medium uppercase text-color-card-header">
+          Data Sources
+        </div>
+      </div>
+      <div className="flex mb-4">
+        <div className="w-80 text-color-lable text-sm uppercase">
+          Data Quality
+        </div>
+        <div className="w-20 ml-auto flex items-center justify-end">
+          <span className="ml-1 text-color-lable-value ext-sm">
+            {totalDataQualityPer}
+          </span>
+        </div>
+      </div>
+      {dataSource.map((data, index) => (
+        <div className="flex mb-2" key={index}>
+          <div className="w-40 text-color-lable text-sm">{data.name}</div>
+          <div className="w-60 ml-auto flex items-center justify-end">
+            <div className="w-10 text-sm text-color-lable-value">
+              {data.percentage}
+            </div>
+            <div class="w-1/2 bg-gray-300 h-2 rounded-full">
+              <div
+                style={{ width: data.percentage }}
+                class="h-full bg-red-500 rounded-full"
+              ></div>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
-  </div>
   );
 };
 

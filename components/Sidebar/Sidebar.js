@@ -4,19 +4,19 @@ import { useRouter } from "next/router";
 
 import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 import UserDropdown from "components/Dropdowns/UserDropdown.js";
-import BuildingTypesWidget from '../../widgets/BuildingTypesWidget';
-import ConnectedBuilding from '../../widgets/ConnectedBuilding'; 
-import DataSourceWidget from '../../widgets/DataSourceWidget'; 
-import ImprovementRecommendation from '../../widgets/ImprovementRecommendation'; 
-import ComplianceReporting from '../../widgets/ComplianceReporting'; 
-import Team from '../../widgets/Team'; 
+import BuildingTypesWidget from "../../widgets/BuildingTypesWidget";
+import ConnectedBuilding from "../../widgets/ConnectedBuilding";
+import DataSourceWidget from "../../widgets/DataSourceWidget";
+import ImprovementRecommendation from "../../widgets/ImprovementRecommendation";
+import ComplianceReporting from "../../widgets/ComplianceReporting";
+import Team from "../../widgets/Team";
 
 export default function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   const router = useRouter();
   return (
     <>
-      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl custom-bg-color flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
+      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl custom-bg-color flex flex-wrap items-center justify-between relative md:w-72 z-10 py-4 px-6">
         <div className="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
           {/* Toggler */}
           <button
@@ -30,9 +30,13 @@ export default function Sidebar() {
           <Link href="/">
             <a
               href="#pablo"
-              className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
+              className="md:block text-left text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold px-0"
             >
-              <img alt="..." className="w-full rounded-full align-middle border-none" src="/img/logo.png"></img>
+              <img
+                alt="..."
+                className="w-full rounded-full align-middle border-none"
+                src="/img/logo.png"
+              ></img>
             </a>
           </Link>
           {/* User */}
@@ -44,7 +48,6 @@ export default function Sidebar() {
               <UserDropdown />
             </li>
           </ul>
-          {/* Collapse */}
           <div
             className={
               "md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded " +
@@ -86,60 +89,29 @@ export default function Sidebar() {
               </div>
             </form>
 
-            {/* Divider */}
             <hr className="my-4 md:min-w-full" />
-            {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Building Types
-            </h6>
-            {/* Navigation */}
-            
+
             <BuildingTypesWidget />
-            
-            {/* Divider */}
+
             <hr className="my-4 md:min-w-full" />
-            {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Sites Connected
-            </h6>
-            {/* Navigation */}
+
             <ConnectedBuilding />
-           
-            {/* Divider */}
+
             <hr className="my-4 md:min-w-full" />
-            {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Data Sources
-            </h6>
-            {/* Navigation */}
+
             <DataSourceWidget />
 
-            {/* Divider */}
             <hr className="my-4 md:min-w-full" />
-            {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Team
-            </h6>
-            {/* Navigation */}
+
             <Team />
 
-            {/* Divider */}
             <hr className="my-4 md:min-w-full" />
-            {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Improvement Recommendations
-            </h6>
-            {/* Navigation */}
-            <ImprovementRecommendation />
-            {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
-            {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Compliance Reporting
-            </h6>
-            {/* Navigation */}
-            <ComplianceReporting />
 
+            <ImprovementRecommendation />
+            <hr className="my-4 md:min-w-full" />
+
+            <ComplianceReporting />
+            <hr className="my-4 md:min-w-full" />
           </div>
         </div>
       </nav>

@@ -1,40 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import {
-    getTeamDemo
-  } from "../api/dashboardDataService"; 
+import React, { useState, useEffect } from "react";
+import { getTeamDemo } from "../api/dashboardDataService";
 
 const Team = () => {
   const [teamData, setTeamData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-        const resp = await getTeamDemo(4);
-        setTeamData(resp); 
-      };
-  
-      fetchData();
+      const resp = await getTeamDemo(4);
+      setTeamData(resp);
+    };
+
+    fetchData();
   }, []);
 
   return (
-    <div className="bg-blue-800 text-white p-4 rounded">
-      <h2 className="text-2xl font-bold mb-4">Team</h2>
-      <ul>
-        {teamData.map(member => (
-          <li key={member.id} className="mb-4 flex items-center">
-            <img
-              src={member.profileImg}
-              alt={member.name}
-              className="w-12 h-12 rounded-full mr-4"
-            />
-            <div>
-              <p className="text-xl font-bold">{member.name}</p>
-              <p className="text-md">{member.Title}</p>
+    <>
+      <div className="flex mb-4">
+        <div className="w-80 text-color-card-header font-medium uppercase">
+          Team
+        </div>
+      </div>
+      {teamData.map((member) => (
+        <div
+          key={member.id}
+          class=" flex max-w-xs rounded-lg overflow-hidden shadow-lg mb-2"
+        >
+          <img
+            src={member.profileImg}
+            alt={member.name}
+            class="w-10 h-10 object-cover rounded "
+          />
+          <div class="px-6">
+            <div class="font-bold text-md text-color-card-header mb-1">
+              {member.name}
             </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );  
+            <p class="text-color-lable text-sm pb-2">{member.Title}</p>
+          </div>
+        </div>
+      ))}
+    </>
+  );
 };
 
 export default Team;
