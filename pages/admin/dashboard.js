@@ -3,7 +3,6 @@ import React from "react";
 // components
 
 import CardLineChart from "components/Cards/CardLineChart.js";
-import CardBarChart from "components/Cards/CardBarChart.js";
 import PortfolioCertification from "widgets/PortfolioCertification.js";
 import NabersRatingWidget from "widgets/NabersRatingWidget";
 import GreenStarRatingWidget from "widgets/GreenStarRatingWidget";
