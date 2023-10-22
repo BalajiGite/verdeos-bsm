@@ -13,21 +13,25 @@ const PortfolioPerformance = ({ data }) => {
           labels: chartData.labels,
           datasets: [
             {
+              label: 'Dataset 1',
               data: chartData.data,
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              borderColor: 'rgba(75, 192, 192, 1)',
+              backgroundColor: 'rgba(54, 162, 235, 1)', // Set the background color to blue (54, 162, 235)
+              borderColor: 'rgba(54, 162, 235, 1)', // Set the border color to blue (54, 162, 235)
               borderWidth: 1,
             },
           ],
         },
         options: {
           scales: {
-            x: {
-              beginAtZero: true,
-            },
+            xAxes: [{
+              ticks: {
+                beginAtZero: true, // Ensure that the x-axis starts at zero
+              },
+            }],
           },
+          maintainAspectRatio: false,
         },
-      });
+      });      
     });
   }, [data]);
 
@@ -35,7 +39,7 @@ const PortfolioPerformance = ({ data }) => {
     <div className="w-full max-w-screen-lg mx-auto">
         {data.map((chartData, index) => (
             <div key={index} className="mb-4">
-            <canvas ref={chartRefs[index]}></canvas>
+              <canvas ref={chartRefs[index]} style={{ height: '250px' }}></canvas>
             </div>
         ))}
     </div>
