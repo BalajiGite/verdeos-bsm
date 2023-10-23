@@ -23,18 +23,18 @@ const Team = () => {
       {teamData.map((member) => (
         <div
           key={member.id}
-          class=" flex max-w-xs rounded-lg overflow-hidden shadow-lg mb-2"
+          className=" flex max-w-xs rounded-lg overflow-hidden shadow-lg mb-2"
         >
           <img
             src={member.profileImg}
             alt={member.name}
-            class="w-10 h-10 object-cover rounded "
+            className="w-10 h-10 object-cover rounded "
           />
-          <div class="px-6">
-            <div class="font-bold text-md text-color-card-header mb-1">
+          <div className="px-6">
+            <div className="font-bold text-md text-color-card-header mb-1">
               {member.name}
             </div>
-            <p class="text-color-lable text-sm pb-2">{member.Title}</p>
+            <p className="text-color-lable text-sm pb-2">{member.Title}</p>
           </div>
         </div>
       ))}

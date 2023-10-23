@@ -42,10 +42,10 @@ const DataSourceWidget = () => {
             <div className="w-10 text-sm text-color-lable-value">
               {data.percentage}
             </div>
-            <div class="w-1/2 bg-gray-300 h-2 rounded-full">
+            <div className="w-1/2 bg-gray-300 h-2 rounded-full">
               <div
                 style={{ width: data.percentage }}
-                class="h-full bg-red-500 rounded-full"
+                className="h-full bg-red-500 rounded-full"
               ></div>
             </div>
           </div>
