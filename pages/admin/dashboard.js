@@ -2,7 +2,7 @@ import React from "react";
 
 // components
 
-import CardLineChart from "components/Cards/CardLineChart.js";
+import EnergyUsageIntensity from "widgets/EnergyUsageIntensity.js";
 import PortfolioCertification from "widgets/PortfolioCertification.js";
 import NabersRatingWidget from "widgets/NabersRatingWidget";
 import GreenStarRatingWidget from "widgets/GreenStarRatingWidget";
@@ -20,7 +20,7 @@ export default function Dashboard() {
 
       <div className="flex flex-wrap mt-4">
         <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
-          <CardLineChart />
+          <EnergyUsageIntensity />
         </div>
       </div>
       
