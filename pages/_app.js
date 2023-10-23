@@ -5,7 +5,7 @@ import Head from "next/head";
 import Router from "next/router";
 
 import PageChange from "components/PageChange/PageChange.js";
-
+import "../styles/custom.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
 import '@aws-amplify/ui-react/styles.css';
@@ -71,7 +71,7 @@ export default class MyApp extends App {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <title>VerdeOS - BSM </title>
+          <title>VerdeOS - BPM </title>
           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWfMIGf1Q70ffpgIxOwdHsGg5fLPXcI4U"></script>
         </Head>
         <Layout>

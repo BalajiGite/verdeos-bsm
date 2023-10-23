@@ -4,12 +4,6 @@ import awsExports from '../api/aws-exports';
 import { Amplify, API, Auth, Storage, withSSRContext } from 'aws-amplify';
 
 // components
-import CardLineChart from "components/Cards/CardLineChart.js";
-import CardBarChart from "components/Cards/CardBarChart.js";
-import CardPageVisits from "components/Cards/CardPageVisits.js";
-import CardSocialTraffic from "components/Cards/CardSocialTraffic.js";
-import Table from "components/buildingData/dataTbl.js"
-import SiteInfo from "components/buildingData/SiteInfo.js"
 import DashboardPage from "pages/admin/dashboard.js" 
 
 // layout for page
