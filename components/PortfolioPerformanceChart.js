@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import PortfolioPerformance from '../widgets/PortfolioPerformance';
+import React, { useState, useEffect } from "react";
+import PortfolioPerformance from "../widgets/PortfolioPerformance";
 import {
   getEnergyUsageBySiteDemo,
   getWaterUsageBySiteDemo,
   getTotalAlarmsBySiteDemo,
   getTotalBreakdownBySiteDemo,
   getTotalovveridesBySiteDemo,
-  getCarbonEmmisionBySiteDemo
-} from "../api/dashboardDataService"; 
+  getCarbonEmmisionBySiteDemo,
+} from "../api/dashboardDataService";
 
 const PortfolioPerformanceChart = () => {
   const [energyUsageBySite, setEnergyUsageBySite] = useState([]);
@@ -21,62 +21,69 @@ const PortfolioPerformanceChart = () => {
     // Fetch data using axios.get
     const fetchData = async () => {
       const resp = await getEnergyUsageBySiteDemo(11);
-      setEnergyUsageBySite(resp); 
+      setEnergyUsageBySite(resp);
 
       const water = await getWaterUsageBySiteDemo(11);
-      setWaterUsgaeBySite(water); 
+      setWaterUsgaeBySite(water);
 
       const alarm = await getTotalAlarmsBySiteDemo(11);
-      setTotalAlarmsBySite(alarm); 
+      setTotalAlarmsBySite(alarm);
 
       const breakdown = await getTotalBreakdownBySiteDemo(11);
-      setTotalBreakdownBySite(breakdown); 
+      setTotalBreakdownBySite(breakdown);
 
       const ovverides = await getTotalovveridesBySiteDemo(11);
-      setTotalovveridesBySite(ovverides); 
+      setTotalovveridesBySite(ovverides);
 
       const carbonEmmision = await getCarbonEmmisionBySiteDemo(11);
-      setCarbonEmmisionBySite(carbonEmmision); 
-
+      setCarbonEmmisionBySite(carbonEmmision);
     };
 
     fetchData();
-
   }, []);
 
   return (
-    <div className="flex flex-wrap mt-4 border">
-      {energyUsageBySite.length > 0 && (
-        <div className="w-full xl:w-4/12 px-4 py-6 border">
-          <PortfolioPerformance data={energyUsageBySite} />
-        </div>
-      )}
-      {carbonEmmisionBySite.length > 0 && (
-        <div className="w-full xl:w-4/12 px-4 py-6 border">
-          <PortfolioPerformance data={carbonEmmisionBySite} />
-        </div>
-      )}
-      {waterUsgaeBySite.length > 0 && (
-        <div className="w-full xl:w-4/12 px-4 py-6 border">
-          <PortfolioPerformance data={waterUsgaeBySite} />
-        </div>
-      )}
-      {totalAlarmsBySite.length > 0 && (
-        <div className="w-full xl:w-4/12 px-4 py-6 border">
-          <PortfolioPerformance data={totalAlarmsBySite} />
-        </div>
-      )}
-      {totalBreakdownBySite.length > 0 && (
-        <div className="w-full xl:w-4/12 px-4 py-6 border">
-          <PortfolioPerformance data={totalBreakdownBySite} />
-        </div>
-      )}
-      {totalovveridesBySite.length > 0 && (
-        <div className="w-full xl:w-4/12 px-4 py-6 border">
-          <PortfolioPerformance data={totalovveridesBySite} />
-        </div>
-      )}
-    </div>
+    <>
+      <div
+        class="grid w-full"
+        style={{
+          display: "grid",
+          "grid-template-columns": "repeat(3, 1fr)",
+          gap: "1rem",
+        }}
+      >
+        {energyUsageBySite.length > 0 && (
+          <div class="p-1 w-80">
+            <PortfolioPerformance data={energyUsageBySite} />
+          </div>
+        )}
+        {carbonEmmisionBySite.length > 0 && (
+          <div class="p-1 w-80">
+            <PortfolioPerformance data={carbonEmmisionBySite} />
+          </div>
+        )}
+        {totalovveridesBySite.length > 0 && (
+          <div class="p-1 w-80">
+            <PortfolioPerformance data={totalovveridesBySite} />
+          </div>
+        )}
+        {totalBreakdownBySite.length > 0 && (
+          <div class="p-1 w-80">
+            <PortfolioPerformance data={totalBreakdownBySite} />
+          </div>
+        )}
+        {totalBreakdownBySite.length > 0 && (
+          <div class="p-1 w-80">
+            <PortfolioPerformance data={totalBreakdownBySite} />
+          </div>
+        )}
+        {totalBreakdownBySite.length > 0 && (
+          <div class="p-1 w-80">
+            <PortfolioPerformance data={totalBreakdownBySite} />
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

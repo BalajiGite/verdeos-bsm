@@ -18,11 +18,17 @@ export default function EnergyUsageIntensity() {
     if (chartData) {
       // Extract data from the fetched JSON
       const labels = chartData.ts;
-      const datasets = chartData.datasets.map(dataset => ({
+      const datasets = chartData.datasets.map((dataset) => ({
         label: dataset.label,
         data: dataset.data,
-        borderColor: dataset.label === "Target Lower" || dataset.label === "Target Upper" ? "rgba(255, 255, 255, 0.5)" : getRandomColor(),
-        borderDash: dataset.label === "Target Lower" || dataset.label === "Target Upper" ? [5, 5] : [],
+        borderColor:
+          dataset.label === "Target Lower" || dataset.label === "Target Upper"
+            ? "rgba(255, 255, 255, 0.5)"
+            : getRandomColor(),
+        borderDash:
+          dataset.label === "Target Lower" || dataset.label === "Target Upper"
+            ? [5, 5]
+            : [],
         fill: false,
       }));
 
@@ -131,14 +137,16 @@ export default function EnergyUsageIntensity() {
   return (
     <>
       {/* Your JSX for the chart */}
-      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blueGray-700">
+      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-xl rounded bg-portfolio-certification">
         <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full max-w-full flex-grow flex-1">
-              <h6 className="uppercase text-blueGray-100 mb-1 text-xs font-semibold">
+              <h6 className="uppercase text-white mb-1 text-xs font-semibold">
                 Portfolio Compliance
               </h6>
-              <h2 className="text-white text-xl font-semibold">Energy Usage Intensity</h2>
+              <h2 className="text-white text-xl font-semibold">
+                Energy Usage Intensity
+              </h2>
             </div>
           </div>
         </div>

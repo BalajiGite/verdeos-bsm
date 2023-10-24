@@ -37,6 +37,21 @@
     font-size: 0.55rem;
     line-height: 1rem;
   }
+  .border-4 {
+    border-width: 4px;
+  }	
+  .table-bg-color {
+    background-color: #363636;
+  }	
+  .bg-portfolio-certification {
+    background-color: #2A4456;
+  }	
+  .-m-30 {
+    margin: -8rem;
+}
+.text-amber-500	{
+  color: rgb(245 158 11)
+};
   }
 
                   
