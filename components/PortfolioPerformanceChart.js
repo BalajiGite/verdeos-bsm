@@ -45,7 +45,7 @@ const PortfolioPerformanceChart = () => {
   return (
     <>
       <div
-        class="grid w-full"
+        className="grid w-full"
         style={{
           display: "grid",
           "grid-template-columns": "repeat(3, 1fr)",
@@ -53,32 +53,32 @@ const PortfolioPerformanceChart = () => {
         }}
       >
         {energyUsageBySite.length > 0 && (
-          <div class="p-1 w-80">
+          <div className="p-1 w-80">
             <PortfolioPerformance data={energyUsageBySite} />
           </div>
         )}
         {carbonEmmisionBySite.length > 0 && (
-          <div class="p-1 w-80">
+          <div className="p-1 w-80">
             <PortfolioPerformance data={carbonEmmisionBySite} />
           </div>
         )}
         {totalovveridesBySite.length > 0 && (
-          <div class="p-1 w-80">
+          <div className="p-1 w-80">
             <PortfolioPerformance data={totalovveridesBySite} />
           </div>
         )}
         {totalBreakdownBySite.length > 0 && (
-          <div class="p-1 w-80">
+          <div className="p-1 w-80">
             <PortfolioPerformance data={totalBreakdownBySite} />
           </div>
         )}
         {totalBreakdownBySite.length > 0 && (
-          <div class="p-1 w-80">
+          <div className="p-1 w-80">
             <PortfolioPerformance data={totalBreakdownBySite} />
           </div>
         )}
         {totalBreakdownBySite.length > 0 && (
-          <div class="p-1 w-80">
+          <div className="p-1 w-80">
             <PortfolioPerformance data={totalBreakdownBySite} />
           </div>
         )}

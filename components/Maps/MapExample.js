@@ -35,22 +35,31 @@ function MapExample() {
     };
 
     map = new google.maps.Map(map, mapOptions);
-    var icon = {
-      url: "https://www.nabers.gov.au/themes/custom/nabers/rating-register/dist/static/cluster_large.png", // url
-      scaledSize: new google.maps.Size(60, 60), // size
+    
+
+    var iconCenter = {
+      url: "https://www.nabers.gov.au/themes/custom/nabers/rating-register/dist/static/icon_building.png", // url
+      scaledSize: new google.maps.Size(50, 50), // size
       origin: new google.maps.Point(0,0), // origin
-      anchor: new google.maps.Point(30, 20) // anchor 
+      anchor: new google.maps.Point(20, 50) // anchor 
     };
+
+    
     
     const centerMarker = new google.maps.Marker({
       position: myLatlng,
       map,
-      icon: icon,
+      icon: iconCenter,
     });
 
     stateMarkers.forEach((buildings) => {
 
-     
+      var icon = {
+        url: "https://www.nabers.gov.au/themes/custom/nabers/rating-register/dist/static/cluster_large.png", // url
+        scaledSize: new google.maps.Size(60, 60), // size
+        origin: new google.maps.Point(0,0), // origin
+        anchor: new google.maps.Point(30, 20) // anchor 
+      };
 
       const markerw = new google.maps.Marker({
         position: buildings.position,
