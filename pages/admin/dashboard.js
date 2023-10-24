@@ -8,8 +8,11 @@ import NabersRatingWidget from "widgets/NabersRatingWidget";
 import GreenStarRatingWidget from "widgets/GreenStarRatingWidget";
 import PortfolioPerformanceChart from "components/PortfolioPerformanceChart.js"
 import MapExample from "components/Maps/MapExample";
+import GoogleMap from 'components/Maps/GoogleMap.js';
 
 export default function Dashboard() {
+ 
+
   return (
     <>
       <div className="flex flex-wrap">
