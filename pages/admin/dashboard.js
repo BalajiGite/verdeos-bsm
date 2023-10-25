@@ -18,15 +18,17 @@ export default function Dashboard() {
           <MapExample />
         </div>
       </div>
+      <hr className="my-4 md:min-w-full" />
 
       <div className="flex flex-wrap mt-4">
         <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
           <EnergyUsageIntensity />
         </div>
       </div>
-
+      <hr className="my-4 md:min-w-full" />
+      
       <PortfolioPerformanceChart />
-
+      <hr className="my-4 md:min-w-full" />
       <div
         class="grid w-full"
         style={{
@@ -35,9 +37,14 @@ export default function Dashboard() {
           gap: "0.5rem",
         }}
       >
+
+     
+
         <div class="p-1 w-full h-80">
           <PortfolioCertification />
         </div>
+
+        
         <div class="p-1 w-full">
           <div className="m-2 bg-portfolio-certification">
             <NabersRatingWidget />

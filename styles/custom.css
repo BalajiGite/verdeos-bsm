@@ -3,6 +3,11 @@
     background-color: #07243E;
   }
 
+  .secondary-bg-color {
+    border-radius: 4px;
+    background-color: #A0ACB5;
+  }
+
   .price-tag {
     background-color: #4285F4;
     border-radius: 8px;

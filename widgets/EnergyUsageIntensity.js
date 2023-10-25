@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Chart from "chart.js";
 import { getPortfolioComplianceDataDemo } from "../api/dashboardDataService";
+import EnergyIntensityWidget from "./EnergyIntensityWidget";
 
 export default function EnergyUsageIntensity() {
   const [chartData, setChartData] = useState(null);
@@ -147,6 +148,7 @@ export default function EnergyUsageIntensity() {
               <h2 className="text-white text-xl font-semibold">
                 Energy Usage Intensity
               </h2>
+              <EnergyIntensityWidget/>
             </div>
           </div>
         </div>
