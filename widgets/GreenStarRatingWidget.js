@@ -15,15 +15,22 @@ const GreenStarRatingWidget = () => {
   }, []);
 
   return (
+    <div className="flex">
     <div className="text-color-card-header p-4 rounded shadow">
-      <h2 className="text-xl font-semibold mb-2">Green Star Ratings:</h2>
+        <img
+          src="/energy/greenstar.png"
+          alt="NABERS Ratings"
+          className="h-12"
+        />
+      </div>
+    <div className="text-color-card-header p-4 rounded shadow">
       <div className="space-y-4">
         <div className="flex justify-between text-color-lable">
           {greenStarRatings &&
             Object.entries(greenStarRatings).map(([rating, propertyCount]) => (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-8 h-8 text-amber-500"
+                className="w-8 h-8 text-amber-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -49,6 +56,7 @@ const GreenStarRatingWidget = () => {
             ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };

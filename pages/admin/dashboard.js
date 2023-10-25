@@ -30,22 +30,22 @@ export default function Dashboard() {
       <PortfolioPerformanceChart />
       <hr className="my-4 md:min-w-full" />
       <div
-        class="grid w-full"
+        className="grid w-full"
         style={{
           display: "grid",
-          "grid-template-columns": "repeat(2, 1fr)",
+          "gridTemplateColumns": "repeat(2, 1fr)",
           gap: "0.5rem",
         }}
       >
 
      
 
-        <div class="p-1 w-full h-80">
+        <div className="p-1 w-full h-80">
           <PortfolioCertification />
         </div>
 
         
-        <div class="p-1 w-full">
+        <div className="p-1 w-full">
           <div className="m-2 bg-portfolio-certification">
             <NabersRatingWidget />
           </div>

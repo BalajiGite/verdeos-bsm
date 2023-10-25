@@ -48,7 +48,7 @@ const PortfolioPerformanceChart = () => {
         className="grid w-full"
         style={{
           display: "grid",
-          "grid-template-columns": "repeat(3, 1fr)",
+          "gridTemplateColumns": "repeat(3, 1fr)",
           gap: "1rem",
         }}
       >
