@@ -9,6 +9,7 @@ import ConnectedBuilding from "../../widgets/ConnectedBuilding";
 import DataSourceWidget from "../../widgets/DataSourceWidget";
 import ImprovementRecommendation from "../../widgets/ImprovementRecommendation";
 import ComplianceReporting from "../../widgets/ComplianceReporting";
+import MyBpmWidget from "../../widgets/MyBpmWidget";
 import Team from "../../widgets/Team";
 
 export default function Sidebar() {
@@ -89,6 +90,8 @@ export default function Sidebar() {
               </div>
             </form>
 
+            <hr className="my-4 md:min-w-full" />
+            <MyBpmWidget />
             <hr className="my-4 md:min-w-full" />
 
             <BuildingTypesWidget />
