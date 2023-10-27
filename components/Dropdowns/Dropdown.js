@@ -44,11 +44,11 @@ const Dropdown = ({ selected, options, onSelect }) => {
             {options.map((option, index) => (
               <div
                 key={index}
-                onClick={() => handleOptionClick(option)}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+                onClick={() => handleOptionClick(option.name)} // Use the 'value' property
+                className="block px-4 py-2 text-sm text-gray-700 hover.bg-gray-100 hover.text-gray-900 cursor-pointer"
                 role="menuitem"
               >
-                {option}
+                {option.name} {/* Display the 'value' property */}
               </div>
             ))}
           </div>

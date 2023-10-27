@@ -4,8 +4,12 @@ import Dropdown from "../components/Dropdowns/Dropdown.js"; // Create Dropdown c
 import { getPortfolioCertificationDemo } from "../api/dashboardDataService";
 
 const PortfolioCertification = () => {
-  const [filter, setFilter] = useState("All"); // Set "All" as the initial filter
+  const [filter, setFilter] = useState("NABERS"); // Set "All" as the initial filter
   const [certificationData, setCertificationData] = useState([]); // State to store the fetched data
+  const options = [
+    {"name": "NABERS"},
+    {"name": "Green Star"}
+  ]; //
 
   // Function to filter data based on the selected filter
   const filteredData = certificationData.filter((item) =>
@@ -35,7 +39,7 @@ const PortfolioCertification = () => {
             <Dropdown
               className="table-bg-color"
               selected={filter}
-              options={["All", "NABERS", "Green Star"]}
+              options={options}
               onSelect={(selectedFilter) => setFilter(selectedFilter)}
             />
           </div>
