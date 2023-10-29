@@ -40,7 +40,7 @@ const PortfolioPerformance = ({ data }) => {
   return (
     <div className="w-full">
       {data.map((chartData, index) => (
-        <div key={index} className="rounded border border-4 border-blue-900">
+        <div key={index}>
           <canvas ref={chartRefs[index]} style={{ height: "250px" }}></canvas>
         </div>
       ))}
