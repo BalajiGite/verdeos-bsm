@@ -18,11 +18,7 @@ const NabersRatingWidget = () => {
   return (
     <div className="flex">
       <div className="text-color-card-header p-4 rounded shadow">
-        <img
-          src="/energy/nabers.png"
-          alt="NABERS Ratings"
-          className="h-12"
-        />
+        <img src="/energy/nabers.png" alt="NABERS Ratings" className="h-12" />
       </div>
       <div className="text-color-card-header p-4 rounded shadow">
         <div className="space-y-4">

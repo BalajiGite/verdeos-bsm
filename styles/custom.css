@@ -93,3 +93,12 @@
     text-align: left !important;
     color: #EEF1F499 !important;
   }
+  .energy-usage-intensity-button-bg {
+    background-color:#001F3B;
+  }
+  .energy-usage-intensity-button-bg-color {
+    background-color: #00365F !important;
+  }
+  .energy-usage-intensity-button-bg-color-content {
+    background-color: #2A4456 !important;
+  }
