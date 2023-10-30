@@ -52,9 +52,9 @@ const PortfolioPerformanceChart = () => {
           Performance
         </span>
       </div>
-      <div class="flex">
-        <div class="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
-          <div class="rounded-lg shadow-lg">
+      <div className="flex">
+        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
+          <div className="rounded-lg shadow-lg">
             {energyUsageBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
@@ -70,8 +70,8 @@ const PortfolioPerformanceChart = () => {
             )}
           </div>
         </div>
-        <div class="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
-          <div class="rounded-lg shadow-lg">
+        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
+          <div className="rounded-lg shadow-lg">
             {carbonEmmisionBySite.length > 0 && (
               <div className="p-1 p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
@@ -87,8 +87,8 @@ const PortfolioPerformanceChart = () => {
             )}
           </div>
         </div>
-        <div class="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
-          <div class="rounded-lg shadow-lg">
+        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
+          <div className="rounded-lg shadow-lg">
             {totalovveridesBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
@@ -110,9 +110,9 @@ const PortfolioPerformanceChart = () => {
           Maintenance
         </span>
       </div>
-      <div class="flex">
-        <div class="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
-          <div class="rounded-lg shadow-lg">
+      <div className="flex">
+        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
+          <div className="rounded-lg shadow-lg">
             {totalBreakdownBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
@@ -128,8 +128,8 @@ const PortfolioPerformanceChart = () => {
             )}
           </div>
         </div>
-        <div class="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
-          <div class="rounded-lg shadow-lg">
+        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
+          <div className="rounded-lg shadow-lg">
             {totalBreakdownBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
@@ -145,8 +145,8 @@ const PortfolioPerformanceChart = () => {
             )}
           </div>
         </div>
-        <div class="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
-          <div class="rounded-lg shadow-lg">
+        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
+          <div className="rounded-lg shadow-lg">
             {totalBreakdownBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
