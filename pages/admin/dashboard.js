@@ -38,7 +38,7 @@ export default function Dashboard() {
         }}
       >
 
-        <div className="p-1 w-full h-60">
+        <div className="p-1 w-full">
           <PortfolioCertification />
         </div>
 
