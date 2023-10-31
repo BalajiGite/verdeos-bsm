@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { getBuildingTypeDemo } from "../api/dashboardDataService";
+import { getApiDataFromAws } from "../api/dashboardDataService";
 
 const BuildingTypesWidget = () => {
   const [buildingTypes, setBuildingTypes] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const resp = await getBuildingTypeDemo(2);
+      const resp = await getApiDataFromAws("functionName=verdeosDemoBuildingType");
       setBuildingTypes(resp);
     };
 

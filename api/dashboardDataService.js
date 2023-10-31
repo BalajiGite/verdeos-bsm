@@ -4,6 +4,17 @@ import axios from 'axios';
 const API_URL = "https://3m40b277z5.execute-api.ap-southeast-2.amazonaws.com/default"
 const demoAPI = "https://day4cmh9h6.execute-api.ap-southeast-2.amazonaws.com/test"
 
+
+export const getApiDataFromAws = async (item) => {
+    try {
+        const response = await axios.get(API_URL+"/verdeosSkysparkApiTest/?" + item);
+        const data = response.data;
+        return data;
+    } catch (error) {
+        return console.error('Error fetching data:', error);
+    }
+  }
+
 export const getConnectedBuilding = async () => {
     try {
         const response = await axios.get(API_URL+"/verdeosSkysparkApiTest");
@@ -16,16 +27,6 @@ export const getConnectedBuilding = async () => {
 }
 
 export const getConnectedBuildingDemo = async (item) => {
-  try {
-      const response = await axios.get(demoAPI+"/jsonData/" + item);
-      const data = response.data;
-      return data;
-  } catch (error) {
-      return console.error('Error fetching data:', error);
-  }
-}
-
-export const getBuildingTypeDemo = async (item) => {
   try {
       const response = await axios.get(demoAPI+"/jsonData/" + item);
       const data = response.data;
