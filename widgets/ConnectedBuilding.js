@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { getConnectedBuilding } from "../api/dashboardDataService";
+import { getConnectedBuildingDemo } from "../api/dashboardDataService";
 
 const ConnectedBuilding = () => {
   const [cartData, setCartData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const resp = await getConnectedBuilding(1);
+      const resp = await getConnectedBuildingDemo(1);
       setCartData(resp);
     };
 

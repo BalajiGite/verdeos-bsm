@@ -15,48 +15,39 @@ const GreenStarRatingWidget = () => {
   }, []);
 
   return (
-    <div className="flex">
-    <div className="text-color-card-header p-4 rounded shadow">
-        <img
-          src="/energy/greenstar.png"
-          alt="NABERS Ratings"
-          className="h-12"
-        />
-      </div>
-    <div className="text-color-card-header p-4 rounded shadow">
-      <div className="space-y-4">
-        <div className="flex justify-between text-color-lable">
-          {greenStarRatings &&
-            Object.entries(greenStarRatings).map(([rating, propertyCount]) => (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-8 h-8 text-amber-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 2L9.77 8.54 4.52 9.29 7.5 14.11 6 17.5 12 15.5 18 17.5 16.5 14.11 19.48 9.29 14.23 8.54 12 2z"
-                ></path>
-              </svg>
-            ))}
+    <div className="flex" style={{ height: "200px" }}>
+      <div className="text-color-card-header p-4 mt-4 rounded shadow">
+          <img
+            src="/energy/greenstar.jpg"
+            alt="NABERS Ratings"
+            style={{height:"150px", width:"230px"}}
+          />
         </div>
-        <div className="flex justify-between">
-          {greenStarRatings &&
-            Object.entries(greenStarRatings).map(([rating, propertyCount]) => (
-              <div
-                key={propertyCount}
-                className="pl-4 pr-4 text-white bg-slate-600 border border-white"
-              >
-                <p>{propertyCount}</p>
-              </div>
-            ))}
+      <div className="text-color-card-header p-4 rounded shadow">
+        <div className="space-y-4">
+          <div className="flex justify-between text-color-lable">
+            {greenStarRatings &&
+              Object.entries(greenStarRatings).map(([rating, propertyCount], index) => (
+                <div key={rating} style={{ position: 'relative' }} className="mr-4 mt-4">
+                  <img src="/energy/greenstarRating1.png" alt="NABERS Ratings" className="h-20" />
+                  <span style={{ position: 'absolute', top: '45%', left: '50%', transform: 'translate(-50%, -50%)', color: 'black', fontSize: '0.5rem' }}>{index + 1}</span>
+                </div>
+              ))
+            }
+          </div>
+          <div className="flex justify-between">
+            {greenStarRatings &&
+              Object.entries(greenStarRatings).map(([rating, propertyCount]) => (
+                <div
+                  key={propertyCount}
+                  className="pl-4 pr-4 text-white bg-slate-600 border border-white"
+                >
+                  <p>{propertyCount}</p>
+                </div>
+              ))}
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

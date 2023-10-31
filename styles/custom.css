@@ -29,3 +29,80 @@
     border-right: 8px solid transparent;
     border-top: 8px solid #4285F4;
   }
+
+  .chart-border-color	{
+    border-color:#2A4456;
+    border-width: 10px !important;
+  }
+
+  .header-font {
+    font-family: Aldrich !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 14px !important;
+    letter-spacing: 0em !important;
+    text-align: left !important;
+    color: #E6E9F5 !important;
+  }
+
+  .subHeader-font-bold {
+    font-family: Montserrat Alternates !important; 
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    line-height: 12px !important;
+    letter-spacing: 0em !important;
+    color: #E6E9F5 !important;
+  }
+
+  .dataSource-font {
+    font-family: Aldrich !important;
+    font-size: 8px !important;
+    font-weight: 400 !important;
+    line-height: 8px !important;
+    letter-spacing: 0em !important;
+    text-align: left !important;
+    color: #E6E9F5 !important;
+    ;
+  }
+
+  .subHeader-font {
+    font-family: Montserrat Alternates !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    line-height: 12px !important;
+    letter-spacing: 0em !important;
+    text-align: left !important;
+    color: #E6E9F5 !important;
+  }
+
+  .menu-font {
+    font-family: Montserrat !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 18px !important;
+    letter-spacing: 0px !important;
+    text-align: left !important;
+    color: #EEF1F499 !important;
+  }
+  .menu-font-site-connected {
+    font-family: Montserrat !important;
+    font-size: 8px !important;
+    font-weight: 400 !important;
+    line-height: 10px !important;
+    letter-spacing: 0em !important;
+    text-align: left !important;
+    color: #EEF1F499 !important;
+  }
+  .energy-usage-intensity-button-bg {
+    background-color:#001F3B;
+  }
+  .energy-usage-intensity-button-bg-color {
+    background-color: #00365F !important;
+  }
+  .energy-usage-intensity-button-bg-color-content {
+    background-color: #2A4456 !important;
+  }
+
+  .energy-usage-intensity-bg-color-content {
+    background-color: #5a6872 !important;
+  }
