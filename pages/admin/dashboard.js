@@ -38,20 +38,18 @@ export default function Dashboard() {
         }}
       >
 
-     
-
-        <div className="p-1 w-full h-80">
+        <div className="p-1 w-full h-60">
           <PortfolioCertification />
         </div>
 
-        
         <div className="p-1 w-full">
-          <div className="m-2 bg-portfolio-certification">
+          <div className="m-2 mb-8 bg-portfolio-certification">
             <NabersRatingWidget />
           </div>
-          <div className="m-2">
+         {/**  <div className="m-2">
             <MapExample />
           </div>
+          */}
           <div className="m-2 bg-portfolio-certification">
             <GreenStarRatingWidget />
           </div>

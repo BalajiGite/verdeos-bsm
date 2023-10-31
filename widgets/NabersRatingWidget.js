@@ -16,29 +16,20 @@ const NabersRatingWidget = () => {
   }, []);
 
   return (
-    <div className="flex">
-      <div className="text-color-card-header p-4 rounded shadow">
-        <img src="/energy/nabers.png" alt="NABERS Ratings" className="h-12" />
+    <div className="flex" style={{ height: "200px" }}>
+      <div className="text-color-card-header p-4 mt-2 rounded shadow w-50">
+        <img src="/energy/nabers.png" alt="NABERS Ratings" 
+        style={{height:"150px", width:"200px"}}/>
       </div>
       <div className="text-color-card-header p-4 rounded shadow">
         <div className="space-y-4">
           <div className="flex justify-between text-color-lable">
             {nabersRatings &&
-              Object.entries(nabersRatings).map(([rating, propertyCount]) => (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-8 h-8 text-amber-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 2L9.77 8.54 4.52 9.29 7.5 14.11 6 17.5 12 15.5 18 17.5 16.5 14.11 19.48 9.29 14.23 8.54 12 2z"
-                  ></path>
-                </svg>
+              Object.entries(nabersRatings).map(([rating, propertyCount], index) => (
+                <div key={rating} style={{ position: 'relative' }} className="mr-4 mt-4">
+                  <img src="/energy/star.png" alt="NABERS Ratings" className="h-16" />
+                  <span style={{ position: 'absolute', top: '55%', left: '50%', transform: 'translate(-50%, -50%)', color: 'black', fontSize: '0.5rem' }}>{index + 1}</span>
+                </div>
               ))}
           </div>
           <div className="flex justify-between">
