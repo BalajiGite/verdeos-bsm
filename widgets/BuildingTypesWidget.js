@@ -15,12 +15,7 @@ const BuildingTypesWidget = () => {
   }, []);
 
   const getIconForBuildingType = (buildingType) => {
-    switch (buildingType.toLowerCase()) {
-      case "warehouse":
-        return "/buildingTypes/warehouse.svg";
-      default:
-        return "/buildingTypes/warehouse.svg"; // Change this to a default icon or provide an empty string for no icon
-    }
+    return "/buildingTypes/"+ buildingType + ".svg";
   };
 
   return (

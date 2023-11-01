@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   getPortfolioComplianceDemo,
-  getDataSetsDemo,
+  getApiDataFromAws,
 } from "../api/dashboardDataService";
 import Dropdown from "../components/Dropdowns/Dropdown.js"; // Create Dropdown component
 
@@ -26,11 +26,11 @@ const EnergyIntensityWidget = () => {
       const portfolioCompliance = await getPortfolioComplianceDemo(9);
       setPortfolioCompliance(portfolioCompliance);
 
-      const buildingType = await getDataSetsDemo(2);
+      const buildingType = await getApiDataFromAws("functionName=verdeosDemoBuildingType");
       setBuildingType(buildingType);
       setSelectedBuildingType(buildingType[0].name);
 
-      const dataSets = await getDataSetsDemo(7);
+      const dataSets = await getApiDataFromAws("functionName=verdeosDemoDataSets");
       setDateSet(dataSets);
       setSelectedDataSet(dataSets[0].name);
     };
