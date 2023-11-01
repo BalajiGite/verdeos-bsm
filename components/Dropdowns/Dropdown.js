@@ -18,7 +18,7 @@ const Dropdown = ({ selected, options, onSelect }) => {
         <button
           onClick={toggleDropdown}
           type="button"
-          className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500 energy-usage-intensity-button-bg-color text-white"
+          className="inline-flex justify-center w-full rounded-md shadow-sm px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500 energy-usage-intensity-button-bg-color text-white"
           id="options-menu"
           aria-haspopup="listbox"
         >

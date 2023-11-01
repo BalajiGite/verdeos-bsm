@@ -137,22 +137,32 @@ export default function EnergyUsageIntensity() {
 
   return (
     <>
+      <div className="text-color-card-header font-medium uppercase">
+        Portfolio Compliance
+      </div>
+      <div className="text-color-card-header text-xs uppercase">
+        Energy Usage Intensity
+      </div>
+      <div className="mt-3">
+        <div className="border-b border-slate-500 mb-1 flex">
+          <span className="text-color-card-header energy-usage-intensity-button-bg-color text-sm p-3 border bg-slate-600 border-slate-500">
+            Standards
+          </span>
+          <span className="text-color-card-header energy-usage-intensity-target-button-bg-color text-sm p-3 border bg-slate-600 border-slate-500">
+            Targets
+          </span>
+        </div>
+      </div>
       {/* Your JSX for the chart */}
-      <div className="relative flex flex-col min-w-0 break-words w-full bg-portfolio-certification">
-        <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
+      <div className="relative flex flex-col min-w-0 break-words w-full">
+        <div className="rounded-t mb-0 px-1 py-1 bg-transparent">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full ">
-              <h6 className="text-color-card-header font-medium uppercase">
-                Portfolio Compliance
-              </h6>
-              <h2 className="text-color-card-header text-sm mb-1">
-                Energy Usage Intensity
-              </h2>
               <EnergyIntensityWidget />
             </div>
           </div>
         </div>
-        <div className="p-4 flex-auto">
+        <div className="p-1 flex-auto">
           {/* Chart */}
           <div className="relative bg-white">
             <canvas id="line-chart" style={{ height: "350px" }}></canvas>
