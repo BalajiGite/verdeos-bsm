@@ -26,32 +26,36 @@ const GreenStarRatingWidget = () => {
       <div className="text-color-card-header p-4 rounded shadow md:w-8/12">
         <div className="flex justify-between text-color-lable">
           <table className="w-full">
-            <tr>
-              {greenStarRatings &&
-                Object.entries(greenStarRatings).map(
-                  ([rating, propertyCount], index) => (
-                    <td>
-                      <img
-                        src="/energy/greenstarRating1.png"
-                        alt="NABERS Ratings"
-                        className="h-10"
-                      />
-                    </td>
-                  )
-                )}
-            </tr>
-            <tr>
-              {greenStarRatings &&
-                Object.entries(greenStarRatings).map(
-                  ([rating, propertyCount], index) => (
-                    <td>
-                      <p className="pl-1 pr-1 mr-1 text-white bg-slate-600 border border-white">
-                        {propertyCount}
-                      </p>
-                    </td>
-                  )
-                )}
-            </tr>
+            <thead>
+              <tr>
+                {greenStarRatings &&
+                  Object.entries(greenStarRatings).map(
+                    ([rating, propertyCount], index) => (
+                      <th key={index}>
+                        <img
+                          src="/energy/greenstarRating1.png"
+                          alt="NABERS Ratings"
+                          className="h-10"
+                        />
+                      </th>
+                    )
+                  )}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {greenStarRatings &&
+                  Object.entries(greenStarRatings).map(
+                    ([rating, propertyCount], index) => (
+                      <td key={index}>
+                        <p className="pl-1 pr-1 mr-1 text-white bg-slate-600 border border-white">
+                          {propertyCount}
+                        </p>
+                      </td>
+                    )
+                  )}
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>

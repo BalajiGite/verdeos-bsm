@@ -22,32 +22,30 @@ const NabersRatingWidget = () => {
       </div>
       <div className="text-color-card-header p-4 rounded shadow">
         <div className="flex justify-between text-color-lable">
-          <table>
+        <table>
+          <thead>
             <tr>
               {nabersRatings &&
-                Object.entries(nabersRatings).map(
-                  ([rating, propertyCount], index) => (
-                    <td>
-                      <img
-                        src="/energy/star.png"
-                        alt="NABERS Ratings"
-                        className="h-10"
-                      />
-                    </td>
-                  )
-                )}
+                Object.entries(nabersRatings).map(([rating, propertyCount], index) => (
+                  <th key={index}>
+                    <img src="/energy/star.png" alt="NABERS Ratings" className="h-10" />
+                  </th>
+                ))}
             </tr>
+          </thead>
+          <tbody>
             <tr>
               {nabersRatings &&
-                Object.entries(nabersRatings).map(([rating, propertyCount]) => (
-                  <td>
+                Object.entries(nabersRatings).map(([rating, propertyCount], index) => (
+                  <td key={index}>
                     <p className="pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white">
                       {propertyCount}
                     </p>
                   </td>
                 ))}
             </tr>
-          </table>
+          </tbody>
+        </table>
         </div>
       </div>
     </div>
