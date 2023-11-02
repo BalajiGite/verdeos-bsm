@@ -38,6 +38,13 @@ const Team = () => {
           </div>
         </div>
       ))}
+      <div className="flex ml-1 mt-2">
+        <div className="ml-1 mt-2">
+          <div className="text-sm text-color-lable italic-font">
+            Your Real Estate Management Team’s welcome message for new users
+          </div>
+        </div>
+      </div>
     </>
   );
 };

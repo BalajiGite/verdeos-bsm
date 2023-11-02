@@ -17,7 +17,7 @@ export default function Sidebar() {
   const router = useRouter();
   return (
     <>
-      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl custom-bg-color flex flex-wrap items-center justify-between relative md:w-72 z-10 py-4 px-6">
+      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl custom-bg-color flex flex-wrap items-center justify-between relative md:w-75 z-10 py-4 px-6">
         <div className="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
           {/* Toggler */}
           <button
@@ -89,6 +89,21 @@ export default function Sidebar() {
                 />
               </div>
             </form>
+
+            <hr className="my-4 md:min-w-full" />
+            <div className="flex ml-2">
+              <div className="w-20">
+                <img className="w-8 h-8 mt-2" src="/img/Home.png" alt="home" />
+              </div>
+              <div className="w-80 ml-4">
+                <div className="font-medium text-color-card-header">
+                  Administrative
+                </div>
+                <div className="font-medium text-color-card-header">
+                  Team Homepage
+                </div>
+              </div>
+            </div>
 
             <hr className="my-4 md:min-w-full" />
             <MyBpmWidget />

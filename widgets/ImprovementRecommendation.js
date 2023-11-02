@@ -71,8 +71,8 @@ const ImprovementRecommendation = () => {
           </div>
           <img
             alt="user"
-            className="w-5 h-5 mt-2 pr-1 rounded"
-            src="https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png"
+            className="w-4 h-4 mt-2 mr-1 rounded"
+            src="/img/UserAdded.png"
           />
         </div>
         <div className="flex w=1/2 border mr-1 bg-slate-600 border-slate-500 rounded">
@@ -81,8 +81,8 @@ const ImprovementRecommendation = () => {
           </div>
           <img
             alt="user"
-            className="w-5 h-5 mt-2 pr-1 rounded"
-            src="https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png"
+            className="w-4 h-4 mt-2 mr-1 rounded"
+            src="/img/UserAdded.png"
           />
         </div>
       </div>

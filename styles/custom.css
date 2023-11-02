@@ -120,9 +120,19 @@
     top: -8px !important;
   }
 
+  .italic-font{
+    font-style: italic;
+  }
+
   @media (min-width: 1280px) {
 
     .xl\:w-1\/3 {
       width: 33.333333%;
     }
+  }
+
+  @media (min-width: 768px){
+      .md\:w-75 {
+          width: 19rem;
+      }
   }
