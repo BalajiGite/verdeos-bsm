@@ -140,9 +140,7 @@ export default function EnergyUsageIntensity() {
       <div className="text-color-card-header font-medium uppercase">
         Portfolio Compliance
       </div>
-      <div className="text-color-card-header text-xs uppercase">
-        Energy Usage Intensity
-      </div>
+      
       <div className="mt-3">
         <div className="border-b border-slate-500 mb-1 flex">
           <span className="text-color-card-header energy-usage-intensity-button-bg-color text-sm p-3 border bg-slate-600 border-slate-500">
