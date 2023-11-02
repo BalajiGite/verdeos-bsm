@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { getBuildingTypeDemo } from "../api/dashboardDataService";
+import { getApiDataFromAws } from "../api/dashboardDataService";
 
 const BuildingTypesWidget = () => {
   const [buildingTypes, setBuildingTypes] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const resp = await getBuildingTypeDemo(2);
+      const resp = await getApiDataFromAws("functionName=verdeosDemoBuildingType");
       setBuildingTypes(resp);
     };
 
@@ -15,12 +15,7 @@ const BuildingTypesWidget = () => {
   }, []);
 
   const getIconForBuildingType = (buildingType) => {
-    switch (buildingType.toLowerCase()) {
-      case "warehouse":
-        return "/buildingTypes/warehouse.svg";
-      default:
-        return "/buildingTypes/warehouse.svg"; // Change this to a default icon or provide an empty string for no icon
-    }
+    return "/buildingTypes/"+ buildingType + ".svg";
   };
 
   return (

@@ -47,13 +47,15 @@ const PortfolioPerformanceChart = () => {
       <div className="text-color-card-header font-medium uppercase">
         Portfolio Performance
       </div>
-      <div className="border-b border-slate-500 p-3 mt-4 mb-2">
-        <span className="text-color-card-header text-sm p-3 border bg-slate-600 border-slate-500">
-          Performance
-        </span>
+      <div className="mt-3">
+        <div className="border-b border-slate-500 mb-1 flex">
+          <span className="text-color-card-header text-sm p-3 border bg-slate-600 border-slate-500">
+            Performance
+          </span>
+        </div>
       </div>
       <div className="flex">
-        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
+        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
           <div className="rounded-lg shadow-lg">
             {energyUsageBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
@@ -68,9 +70,14 @@ const PortfolioPerformanceChart = () => {
                 <PortfolioPerformance data={energyUsageBySite} />
               </div>
             )}
+            <div className="float-right">
+              <span className="text-color-lable text-xs uppercase rounded chart-button-color p-4">
+                Share My Report
+              </span>
+            </div>
           </div>
         </div>
-        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
+        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
           <div className="rounded-lg shadow-lg">
             {carbonEmmisionBySite.length > 0 && (
               <div className="p-1 p-1 rounded border border-4 chart-border-color">
@@ -85,9 +92,14 @@ const PortfolioPerformanceChart = () => {
                 <PortfolioPerformance data={carbonEmmisionBySite} />
               </div>
             )}
+            <div className="float-right">
+              <span className="text-color-lable text-xs uppercase rounded chart-button-color p-4">
+                Share My Report
+              </span>
+            </div>
           </div>
         </div>
-        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
+        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
           <div className="rounded-lg shadow-lg">
             {totalovveridesBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
@@ -102,16 +114,23 @@ const PortfolioPerformanceChart = () => {
                 <PortfolioPerformance data={totalovveridesBySite} />
               </div>
             )}
+            <div className="float-right">
+              <span className="text-color-lable text-xs uppercase rounded chart-button-color p-4">
+                Share My Report
+              </span>
+            </div>
           </div>
         </div>
       </div>
-      <div className="border-b border-slate-500 p-3 mt-4 mb-2">
-        <span className="text-color-card-header text-sm p-3 border bg-slate-600 border-slate-500">
-          Maintenance
-        </span>
+      <div className="mt-3">
+        <div className="border-b border-slate-500 mb-1 flex">
+          <span className="text-color-card-header text-sm p-3 border bg-slate-600 border-slate-500">
+            Maintenance
+          </span>
+        </div>
       </div>
       <div className="flex">
-        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
+        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
           <div className="rounded-lg shadow-lg">
             {totalBreakdownBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
@@ -126,9 +145,14 @@ const PortfolioPerformanceChart = () => {
                 <PortfolioPerformance data={totalBreakdownBySite} />
               </div>
             )}
+            <div className="float-right">
+              <span className="text-color-lable text-xs uppercase rounded chart-button-color p-4">
+                Share My Report
+              </span>
+            </div>
           </div>
         </div>
-        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
+        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
           <div className="rounded-lg shadow-lg">
             {totalBreakdownBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
@@ -143,9 +167,14 @@ const PortfolioPerformanceChart = () => {
                 <PortfolioPerformance data={totalBreakdownBySite} />
               </div>
             )}
+            <div className="float-right">
+              <span className="text-color-lable text-xs uppercase rounded chart-button-color p-4">
+                Share My Report
+              </span>
+            </div>
           </div>
         </div>
-        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/4 p-1">
+        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
           <div className="rounded-lg shadow-lg">
             {totalBreakdownBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
@@ -160,6 +189,11 @@ const PortfolioPerformanceChart = () => {
                 <PortfolioPerformance data={totalBreakdownBySite} />
               </div>
             )}
+            <div className="float-right">
+              <span className="text-color-lable text-xs uppercase rounded chart-button-color p-4">
+                Share My Report
+              </span>
+            </div>
           </div>
         </div>
       </div>

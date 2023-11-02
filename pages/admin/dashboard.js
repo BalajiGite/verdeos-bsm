@@ -7,12 +7,13 @@ import PortfolioCertification from "widgets/PortfolioCertification.js";
 import NabersRatingWidget from "widgets/NabersRatingWidget";
 import GreenStarRatingWidget from "widgets/GreenStarRatingWidget";
 import PortfolioPerformanceChart from "components/PortfolioPerformanceChart.js";
-import MapExample from "components/Maps/MapExample";
+import MapExample from "components/Maps/PortfolioMap";
 import GoogleMap from "components/Maps/GoogleMap.js";
 
 export default function Dashboard() {
   return (
     <>
+      
       <div className="flex flex-wrap">
         <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-2">
           <MapExample />

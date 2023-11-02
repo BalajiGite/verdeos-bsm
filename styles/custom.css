@@ -35,6 +35,10 @@
     border-width: 10px !important;
   }
 
+  .chart-button-color	{
+    background-color:#2A4456;
+  }
+
   .header-font {
     font-family: Aldrich !important;
     font-size: 14px !important;
@@ -99,10 +103,26 @@
   .energy-usage-intensity-button-bg-color {
     background-color: #00365F !important;
   }
+  .energy-usage-intensity-target-button-bg-color {
+    background-color: #00182F !important;
+  }
   .energy-usage-intensity-button-bg-color-content {
     background-color: #2A4456 !important;
   }
 
   .energy-usage-intensity-bg-color-content {
     background-color: #5a6872 !important;
+  }
+
+  .energy-usage-intensity-tab{
+    position: relative !important;
+    left: -14px !important;
+    top: -8px !important;
+  }
+
+  @media (min-width: 1280px) {
+
+    .xl\:w-1\/3 {
+      width: 33.333333%;
+    }
   }

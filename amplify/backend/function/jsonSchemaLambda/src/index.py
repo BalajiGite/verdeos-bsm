@@ -27,7 +27,8 @@ def handler(event, context):
   totalPropertiesByNABERSRating = '{"one":"10", "two": "20", "three":"25", "four":"35", "five":"30", "six":"10"}'
   totalPropertiesByGreenStarRating = '{"one":"10", "two": "20", "three":"25", "four":"35", "five":"30", "six":"10"}'
   totalPropertiesByStateRating = '["nsw":{"lat":"12.235", "long":"123.545", "propertiesCount":"30.26"}, "wa":{"lat":"12.235", "long":"123.545", "propertiesCount":"30.26"}, "act":{"lat":"12.235", "long":"123.545", "propertiesCount":"30.26"}]'
-
+  
+  
   return {
       'statusCode': 200,
       'headers': {

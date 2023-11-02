@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   getPortfolioComplianceDemo,
-  getDataSetsDemo,
+  getApiDataFromAws,
 } from "../api/dashboardDataService";
 import Dropdown from "../components/Dropdowns/Dropdown.js"; // Create Dropdown component
 
@@ -26,11 +26,15 @@ const EnergyIntensityWidget = () => {
       const portfolioCompliance = await getPortfolioComplianceDemo(9);
       setPortfolioCompliance(portfolioCompliance);
 
-      const buildingType = await getDataSetsDemo(2);
+      const buildingType = await getApiDataFromAws(
+        "functionName=verdeosDemoBuildingType"
+      );
       setBuildingType(buildingType);
       setSelectedBuildingType(buildingType[0].name);
 
-      const dataSets = await getDataSetsDemo(7);
+      const dataSets = await getApiDataFromAws(
+        "functionName=verdeosDemoDataSets"
+      );
       setDateSet(dataSets);
       setSelectedDataSet(dataSets[0].name);
     };
@@ -39,75 +43,110 @@ const EnergyIntensityWidget = () => {
   }, []);
 
   return (
-    <div className="p-2 rounded shadow text-white energy-usage-intensity-bg-color-content">
-      
-      <div className="flex mb-2 justify-end pt-4">
-        <div className="mr-4">
-          <Dropdown
-            className="energy-usage-intensity-button-bg-color"
-            selected={selectedBuildingType}
-            options={buildingType}
-            onSelect={handleBuildingType}
-          />
+    <div className="p-2 rounded shadow text-white energy-usage-intensity-button-bg-color-content">
+      <div className="flex w-full">
+        <div className="flex justify-start w-full">
+          <div>
+            <div className="flex">
+              <span className="text-color-card-header border-b border-slate-500 text-sm p-1 energy-usage-intensity-button-bg-color border border-slate-500 energy-usage-intensity-tab">
+                Energy Usage Intensity
+              </span>
+              <span className="text-color-card-header text-sm p-1 energy-usage-intensity-tab">
+                Warehouse(48 - 236)
+              </span>
+            </div>
+          </div>
         </div>
-        <div className="mr-4">
-          <Dropdown
-            selected={selectedDataSet}
-            options={dateSet}
-            onSelect={handleOptionSelect}
-          />
-        </div>
-        <div className="mr-4 pr-4">
-          <Dropdown
-            selected={selectedDataSet}
-            options={dateSet}
-            onSelect={handleOptionSelect}
-          />
+        <div className="flex mb-2 justify-end w-full">
+          <div className="mr-4">
+            <Dropdown
+              className="energy-usage-intensity-button-bg-color"
+              selected={selectedBuildingType}
+              options={buildingType}
+              onSelect={handleBuildingType}
+            />
+          </div>
+          <div className="mr-4">
+            <Dropdown
+              className="energy-usage-intensity-button-bg-color"
+              selected={selectedDataSet}
+              options={dateSet}
+              onSelect={handleOptionSelect}
+            />
+          </div>
+          <div className="mr-4">
+            <Dropdown
+              className="energy-usage-intensity-button-bg-color"
+              selected={selectedDataSet}
+              options={dateSet}
+              onSelect={handleOptionSelect}
+            />
+          </div>
         </div>
       </div>
-      <div className="flex justify-start pb-4">
-          {portfolioCompliance && (
-            <>
-              <div className="w-1/6">
-                <p className="text-center mr-4 ml-4 font-medium">Sites Connected</p>
-                <p className="text-center mr-4 ml-4 text-orange energy-usage-intensity-button-bg p-3 rounded">
-                  {portfolioCompliance.sitesConnected}
-                </p>
-              </div>
-              <div className="w-1/6">
-                <p className="text-center mr-4 ml-4 font-medium">Site EUI</p>
-                <p className="text-center mr-4 ml-4 text-orange energy-usage-intensity-button-bg p-3 rounded">
-                <div className="flex items-center">
-                  <div style={{ background: portfolioCompliance.siteEuiColor }} className="w-3 h-3 rounded-full flex items-center justify-center"></div>
-                  <span className="ml-2">{portfolioCompliance.siteEUI}</span>
-                </div>                 
-                </p>
-              </div>
-              <div className="w-1/6">
-                <p className="text-center mr-4 ml-4 font-medium">Source EUI</p>
-                <p className="text-center mr-4 ml-4 text-orange energy-usage-intensity-button-bg p-3 rounded">
-                  <div className="flex items-center">
-                    <div style={{ background: portfolioCompliance.sourceEuiColor }} className="w-3 h-3 rounded-full flex items-center justify-center"></div>
-                    <span className="ml-2">{portfolioCompliance.sourceEui}</span>
-                  </div>    
-                </p>
-              </div>
-              <div className="w-1/6">
-                <p className="text-center mr-4 ml-4 font-medium">Trend</p>
-                <p className="text-center mr-4 ml-4 text-orange energy-usage-intensity-button-bg p-3 rounded">
-                  {portfolioCompliance.trend}
-                </p>
-              </div>
-              <div className="w-1/6">
-                <p className="text-center font-medium">trendType</p>
-                <p className="text-center mr-4 ml-4 text-orange energy-usage-intensity-button-bg p-3 rounded">
-                  {portfolioCompliance.trendType}
-                </p>
-              </div>
-            </>
-          )}
-        </div>
 
+      <div className="flex justify-start">
+        {portfolioCompliance && (
+          <>
+            <table>
+              <tbody>
+                <tr>
+                  <td className="text-center font-medium">Sites Connected</td>
+                  <td className="text-center font-medium">Site EUI</td>
+                  <td className="text-center font-medium">Trend</td>
+                  <td className="text-center font-medium">Trend Type</td>
+                </tr>
+                <tr>
+                  <td>
+                    <p className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded flex">
+                      <span
+                        style={{ background: portfolioCompliance.siteEuiColor }}
+                        className="w-3 h-3 rounded-full mt-1 flex items-center justify-center"
+                      ></span>
+                      <span className="flex items-center justify-center ml-2">
+                        {portfolioCompliance.sitesConnected}
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded flex">
+                      <span
+                        style={{ background: portfolioCompliance.siteEuiColor }}
+                        className="w-3 h-3 rounded-full mt-1 flex items-center justify-center"
+                      ></span>
+                      <span className="flex items-center justify-center ml-2">
+                        {portfolioCompliance.sitesConnected}
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded flex">
+                      <span
+                        style={{ background: portfolioCompliance.siteEuiColor }}
+                        className="w-3 h-3 rounded-full mt-1 flex items-center justify-center"
+                      ></span>
+                      <span className="flex items-center justify-center ml-2">
+                        {portfolioCompliance.trend}
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded flex">
+                      <span
+                        style={{ background: portfolioCompliance.siteEuiColor }}
+                        className="w-3 h-3 rounded-full mt-1 flex items-center justify-center"
+                      ></span>
+                      <span className="flex items-center justify-center ml-2">
+                        {portfolioCompliance.trendType}
+                      </span>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </>
+        )}
+      </div>
     </div>
   );
 };
