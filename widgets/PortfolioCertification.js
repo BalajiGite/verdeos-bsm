@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "../components/Dropdowns/Dropdown.js"; // Create Dropdown component
 
-import { getPortfolioCertificationDemo } from "../api/dashboardDataService";
+import { getApiDataFromAws } from "../api/dashboardDataService";
 
 const PortfolioCertification = () => {
   const [filter, setFilter] = useState("NABERS"); // Set "All" as the initial filter
@@ -19,7 +19,7 @@ const PortfolioCertification = () => {
   // Use useEffect to fetch data when the component mounts
   useEffect(() => {
     const fetchData = async () => {
-      const resp = await getPortfolioCertificationDemo(17);
+      const resp = await getApiDataFromAws("functionName=verdeosDemoGetAllNabersRatings");
       setCertificationData(resp);
     };
 
@@ -56,10 +56,13 @@ const PortfolioCertification = () => {
                 Certification
               </th>
               <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                Certification Score
+                Star Score
               </th>
               <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                Year
+                Rating Type
+              </th>
+              <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                Valid Date
               </th>
             </tr>
           </thead>
@@ -73,10 +76,13 @@ const PortfolioCertification = () => {
                   {item.certification}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {item.certificationScore}
+                  {item.starValue}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {item.year}
+                  {item.ratingType}
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                  {item.certificateValidTo}
                 </td>
               </tr>
             ))}
