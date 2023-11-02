@@ -149,6 +149,20 @@ const EnergyIntensityWidget = () => {
                       </span>
                     </p>
                   </td>
+                  <td>
+                    <div className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded">
+                      <img
+                        alt="Polygon2"
+                        className="w-3 h-3"
+                        src="/img/Polygon3.png"
+                      />
+                      <img
+                        alt="Polygon3"
+                        className="w-3 h-3"
+                        src="/img/Polygon2.png"
+                      />
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>
