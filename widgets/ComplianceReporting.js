@@ -40,7 +40,7 @@ const ComplianceReporting = () => {
           Compliance Reporting
         </div>
       </div>
-      <div className="text-white pl-4 rounded shadow-lg">
+      <div className="text-white rounded shadow-lg">
         {data.map((item, recTypeIndex) => (
           <div key={recTypeIndex} className="mb-4">
             <div className="text-md font-bold text-color-lable mb-2">
