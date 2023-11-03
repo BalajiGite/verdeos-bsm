@@ -17,7 +17,7 @@ const Team = () => {
     <>
       <div className="flex mb-4">
         <div className="w-80 text-color-card-header font-medium uppercase">
-          Team
+          Meet the Team
         </div>
       </div>
       {teamData.map((member) => (
@@ -38,6 +38,13 @@ const Team = () => {
           </div>
         </div>
       ))}
+      <div className="flex ml-1 mt-2">
+        <div className="ml-1 mt-2">
+          <div className="text-sm text-color-lable italic-font">
+            Your Real Estate Management Team’s welcome message for new users
+          </div>
+        </div>
+      </div>
     </>
   );
 };

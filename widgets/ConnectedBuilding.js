@@ -17,7 +17,7 @@ const ConnectedBuilding = () => {
     <>
       {cartData && (
         <div>
-          <div className="flex mb-4">
+          <div className="flex">
             <div className="w-80 text-color-card-header font-medium uppercase">
               Sites Connected
             </div>
@@ -28,8 +28,8 @@ const ConnectedBuilding = () => {
               </span>
             </div>
           </div>
-          <div className="flex">
-            <div className="w-90 text-color-lable">Total Readings</div>
+          <div className="flex mb-4">
+            <div className="w-80 text-color-lable"></div>
             <div className="w-20 float-left bg-black flex items-center justify-start">
               <div className="w-3 h-3 bg-yellow-500 rounded-full flex items-center justify-center"></div>
               <span className="ml-2 text-color-lable-value">
@@ -39,7 +39,7 @@ const ConnectedBuilding = () => {
           </div>
           {cartData.sites.map((site) => (
             <div className="flex" key={site.id}>
-              <div className="w-90 text-color-lable">{site.name}</div>
+              <div className="w-80 text-color-lable">{site.name}</div>
               <div className="w-20 float-right flex items-center justify-start bg-black">
                 <div
                   style={{ background: site.color }}

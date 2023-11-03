@@ -51,8 +51,16 @@ const EnergyIntensityWidget = () => {
               <span className="text-color-card-header border-b border-slate-500 text-sm p-1 energy-usage-intensity-button-bg-color border border-slate-500 energy-usage-intensity-tab">
                 Energy Usage Intensity
               </span>
-              <span className="text-color-card-header text-sm p-1 energy-usage-intensity-tab">
-                Warehouse(48 - 236)
+              <span className="flex">
+                <img
+                  alt="user"
+                  className="w-8 h-8"
+                  style={{ marginTop: "-11px" }}
+                  src="/img/warehouse.png"
+                />
+                <span className="text-color-card-header ml-4 text-sm p-1 energy-usage-intensity-tab">
+                  Warehouse(48 - 236)
+                </span>
               </span>
             </div>
           </div>
@@ -140,6 +148,20 @@ const EnergyIntensityWidget = () => {
                         {portfolioCompliance.trendType}
                       </span>
                     </p>
+                  </td>
+                  <td>
+                    <div className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded">
+                      <img
+                        alt="Polygon2"
+                        className="w-3 h-3"
+                        src="/img/Polygon3.png"
+                      />
+                      <img
+                        alt="Polygon3"
+                        className="w-3 h-3"
+                        src="/img/Polygon2.png"
+                      />
+                    </div>
                   </td>
                 </tr>
               </tbody>

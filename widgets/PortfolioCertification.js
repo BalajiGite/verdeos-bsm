@@ -6,10 +6,7 @@ import { getApiDataFromAws } from "../api/dashboardDataService";
 const PortfolioCertification = () => {
   const [filter, setFilter] = useState("NABERS"); // Set "All" as the initial filter
   const [certificationData, setCertificationData] = useState([]); // State to store the fetched data
-  const options = [
-    {"name": "NABERS"},
-    {"name": "Green Star"}
-  ]; //
+  const options = [{ name: "NABERS" }, { name: "Green Star" }]; //
 
   // Function to filter data based on the selected filter
   const filteredData = certificationData.filter((item) =>
@@ -19,7 +16,9 @@ const PortfolioCertification = () => {
   // Use useEffect to fetch data when the component mounts
   useEffect(() => {
     const fetchData = async () => {
-      const resp = await getApiDataFromAws("functionName=verdeosDemoGetAllNabersRatings");
+      const resp = await getApiDataFromAws(
+        "functionName=verdeosDemoGetAllNabersRatings"
+      );
       setCertificationData(resp);
     };
 
@@ -45,47 +44,65 @@ const PortfolioCertification = () => {
           </div>
         </div>
       </div>
-      <div className="block w-full overflow-x-auto">
+      <div className="w-full overflow-x-auto">
         <table className="items-center w-full bg-transparent border-collapse">
           <thead>
             <tr>
-              <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                Building Name
-              </th>
-              <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+              <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
                 Certification
               </th>
-              <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+              <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
+                Name
+              </th>
+              <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
                 Star Score
               </th>
-              <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+              <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
                 Rating Type
               </th>
-              <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+              <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
                 Valid Date
               </th>
             </tr>
           </thead>
+        </table>
+        <table className="items-center w-full bg-transparent border-collapse">
           <tbody>
-            {filteredData.map((item, index) => (
-              <tr key={index}>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {item.building}
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {item.certification}
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {item.starValue}
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {item.ratingType}
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {item.certificateValidTo}
-                </td>
-              </tr>
-            ))}
+            <tr className="w-full overflow-auto">
+              <td className="w-full overflow-auto">
+                <div
+                  className="w-full overflow-auto"
+                  style={{ maxHeight: "500px" }}
+                >
+                  <table className="items-center w-full bg-transparent border-collapse">
+                    <tbody className="items-center w-full bg-transparent border-collapse">
+                      {filteredData.map((item, index) => (
+                        <tr
+                          key={index}
+                          className="items-center w-full bg-transparent border-collapse"
+                        >
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                            {item.building}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                            {item.certification}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                            {item.starValue}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                            {item.ratingType}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                            {item.certificateValidTo}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

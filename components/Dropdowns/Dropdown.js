@@ -41,7 +41,7 @@ const Dropdown = ({ selected, options, onSelect }) => {
       {isOpen && (
         <div
           className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
-          style={{ "z-index": "999" }}
+          style={{ "zIndex": "999" }}
         >
           <div
             className="py-1"

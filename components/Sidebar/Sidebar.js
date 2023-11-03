@@ -91,6 +91,21 @@ export default function Sidebar() {
             </form>
 
             <hr className="my-4 md:min-w-full" />
+            <div className="flex ml-2">
+              <div className="w-20">
+                <img className="w-8 h-8 mt-2" src="/img/Home.png" alt="home" />
+              </div>
+              <div className="w-80 ml-4">
+                <div className="font-medium text-color-card-header">
+                  Administrative
+                </div>
+                <div className="font-medium text-color-card-header">
+                  Team Homepage
+                </div>
+              </div>
+            </div>
+
+            <hr className="my-4 md:min-w-full" />
             <MyBpmWidget />
             <hr className="my-4 md:min-w-full" />
 
