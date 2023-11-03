@@ -21,11 +21,19 @@ const MyBpmWidget = () => {
           <p className="text-color-lable text-sm pb-2">Head of Real Estate</p>
         </div>
       </div>
-      <div className="flex">
-        <span className="text-xxs w-full text-color-lable flex items-center justify-end">
+      <div className="flex ml-4">
+        <span className="text-xxs w-full text-color-lable flex items-center">
           <img
             alt="user"
-            className="w-5 h-5 rounded-full mr-4"
+            className="w-5 h-5 rounded-full mr-2"
+            src="/img/Settings.png"
+          />
+          <p className="text-center">Account Settings</p>
+        </span>
+        <span className="text-xxs w-full ml-4 text-color-lable flex items-center">
+          <img
+            alt="user"
+            className="w-5 h-5 rounded-full mr-2"
             src="/img/Logout.png"
           />
           <p className="text-center">Sign Out</p>

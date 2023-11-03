@@ -45,6 +45,24 @@ const Team = () => {
           </div>
         </div>
       </div>
+      <div className="flex mt-2">
+        <span className="text-xxs w-full text-color-lable flex items-center">
+          <img
+            alt="user"
+            className="w-4 h-4 rounded-full mr-2"
+            src="/img/UserAdded.png"
+          />
+          <p className="text-center">Contact Us</p>
+        </span>
+        <span className="text-xxs w-full ml-4 text-color-lable flex items-center justify-end energy-usage-intensity-target-button-bg-color rounded">
+          <p className="text-center">Send to Signage</p>
+          <img
+            alt="user"
+            className="w-4 h-4 rounded-full mr-2 ml-2"
+            src="/img/Display.png"
+          />
+        </span>
+      </div>
     </>
   );
 };
