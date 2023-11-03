@@ -31,12 +31,13 @@ const GreenStarRatingWidget = () => {
                 {greenStarRatings &&
                   Object.entries(greenStarRatings).map(
                     ([rating, propertyCount], index) => (
-                      <th key={index}>
+                      <th key={index} style={{ position: "relative" }}>
                         <img
                           src="/energy/greenstarRating1.png"
                           alt="NABERS Ratings"
                           className="h-10"
                         />
+                        <span className="imageCount">{index + 1}</span>
                       </th>
                     )
                   )}

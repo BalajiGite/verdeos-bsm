@@ -9,7 +9,7 @@ const PortfolioCertification = () => {
   const options = [{ name: "NABERS" }, { name: "Green Star" }]; //
 
   // Function to filter data based on the selected filter
-  const filteredData = certificationData.filter((item) =>
+  const filteredData = certificationData?.filter((item) =>
     filter === "All" ? true : item.certification === filter
   );
 
@@ -17,7 +17,7 @@ const PortfolioCertification = () => {
   useEffect(() => {
     const fetchData = async () => {
       const resp = await getApiDataFromAws(
-        "functionName=verdeosDemoGetAllNabersRatings"
+        "buildingType=Hotel&functionName=verdeosDemoGetAllNabersRatings&ratingType=Water&certification=NABERS"
       );
       setCertificationData(resp);
     };
@@ -76,28 +76,29 @@ const PortfolioCertification = () => {
                 >
                   <table className="items-center w-full bg-transparent border-collapse">
                     <tbody className="items-center w-full bg-transparent border-collapse">
-                      {filteredData.map((item, index) => (
-                        <tr
-                          key={index}
-                          className="items-center w-full bg-transparent border-collapse"
-                        >
-                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
-                            {item.building}
-                          </td>
-                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
-                            {item.certification}
-                          </td>
-                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
-                            {item.starValue}
-                          </td>
-                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
-                            {item.ratingType}
-                          </td>
-                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
-                            {item.certificateValidTo}
-                          </td>
-                        </tr>
-                      ))}
+                      {filteredData &&
+                        filteredData.map((item, index) => (
+                          <tr
+                            key={index}
+                            className="items-center w-full bg-transparent border-collapse"
+                          >
+                            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                              {item.building}
+                            </td>
+                            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                              {item.certification}
+                            </td>
+                            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                              {item.starValue}
+                            </td>
+                            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                              {item.ratingType}
+                            </td>
+                            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                              {item.certificateValidTo}
+                            </td>
+                          </tr>
+                        ))}
                     </tbody>
                   </table>
                 </div>
