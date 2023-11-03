@@ -17,7 +17,7 @@ const PortfolioCertification = () => {
   useEffect(() => {
     const fetchData = async () => {
       const resp = await getApiDataFromAws(
-        "functionName=verdeosDemoGetAllNabersRatings"
+        "buildingType=Hotel&functionName=verdeosDemoGetAllNabersRatings&ratingType=Water&certification=NABERS"
       );
       setCertificationData(resp);
     };
