@@ -24,7 +24,7 @@ const BuildingTypesWidget = () => {
     <>
       <div className="flex mb-2">
         <div className="w-80 text-color-card-header font-medium uppercase">
-          Buildings
+          Building Types
         </div>
       </div>
       <ul className="md:flex-col md:min-w-full flex flex-col list-none font-montserrat text-white">

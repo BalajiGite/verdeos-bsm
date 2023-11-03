@@ -17,7 +17,7 @@ const Team = () => {
     <>
       <div className="flex mb-4">
         <div className="w-80 text-color-card-header font-medium uppercase">
-          Team
+          Meet the Team
         </div>
       </div>
       {teamData.map((member) => (
