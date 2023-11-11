@@ -4,9 +4,13 @@ import Dropdown from "../components/Dropdowns/Dropdown.js"; // Create Dropdown c
 import { getApiDataFromAws } from "../api/dashboardDataService";
 
 const PortfolioCertification = () => {
-  const [filter, setFilter] = useState("NABERS"); // Set "All" as the initial filter
+  const [certification, setCertification] = useState(null);
+  const [filter, setFilter] = useState(null); // Set "All" as the initial filter
+
+  const [rating, setRating] = useState(null);
+  const [ratingFilter, setRatingFilter] = useState(null); // Set "All" as the initial filter
+  
   const [certificationData, setCertificationData] = useState([]); // State to store the fetched data
-  const options = [{ name: "NABERS" }, { name: "Green Star" }]; //
 
   // Function to filter data based on the selected filter
   const filteredData = certificationData?.filter((item) =>
@@ -16,10 +20,20 @@ const PortfolioCertification = () => {
   // Use useEffect to fetch data when the component mounts
   useEffect(() => {
     const fetchData = async () => {
+
+      const certFilter = await getApiDataFromAws("functionName=verdeosDemoCertification");
+      setCertification(certFilter);
+      setFilter(certFilter[0].name)
+
+      const rateFilter = await getApiDataFromAws("functionName=verdeosDemoRatingType");
+      setRating(rateFilter);
+      setRatingFilter(rateFilter[0].name)
+
       const resp = await getApiDataFromAws(
-        "buildingType=Hotel&functionName=verdeosDemoGetAllNabersRatings&ratingType=Water&certification=NABERS"
+        "buildingType=Hotel&functionName=verdeosDemoGetAllNabersRatings&ratingType="+rateFilter[0].name+"&certification="+certFilter[0].name
       );
       setCertificationData(resp);
+
     };
 
     fetchData();
@@ -35,13 +49,26 @@ const PortfolioCertification = () => {
             </h3>
           </div>
           <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-            <Dropdown
-              className="table-bg-color"
-              selected={filter}
-              options={options}
-              onSelect={(selectedFilter) => setFilter(selectedFilter)}
-            />
+            <div className="flex mb-2 justify-end w-full">
+              <div className="mr-4">
+                <Dropdown
+                  className="table-bg-color"
+                  selected={ratingFilter}
+                  options={rating}
+                  onSelect={(selectedFilter) => setRatingFilter(selectedFilter)}
+                />
+              </div>
+              <div className="mr-4">
+                <Dropdown
+                  className="table-bg-color"
+                  selected={filter}
+                  options={certification}
+                  onSelect={(selectedFilter) => setFilter(selectedFilter)}
+                />
+              </div>
+            </div>
           </div>
+          
         </div>
       </div>
       <div className="w-full overflow-x-auto">

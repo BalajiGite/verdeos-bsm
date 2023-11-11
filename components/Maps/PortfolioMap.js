@@ -27,7 +27,7 @@ function PortfolioMap() {
   };
 
   const fetchData = async (buildingType, dateSpan, dataSet) => {
-    const prepareData = `startDateString=2023-01-01&endDateString=2023-01-01&buildingType=${buildingType}&dataSet=${dataSet}&functionName=verdeosDemoGlobalPortfolio`;
+    const prepareData = `startDateString=2023-01-01&endDateString=2023-08-01&buildingType=${buildingType}&dataSet=${dataSet}&functionName=verdeosDemoGlobalPortfolio`;
     const resp = await getApiDataFromAws(prepareData);
     setStateMarkers(resp);
     setLoading(false);

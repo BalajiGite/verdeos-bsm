@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import { getTotalPropertiesByNABERSRatingDemo } from "../api/dashboardDataService";
+import { getApiDataFromAws } from "../api/dashboardDataService";
 
 const NabersRatingWidget = () => {
   const [nabersRatings, setNabersRatings] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const resp = await getTotalPropertiesByNABERSRatingDemo(18);
-      setNabersRatings(resp);
+      const resp = await getApiDataFromAws("buildingType=Hotel&functionName=verdeosDemoTotalPropertiesByNABERSRating&ratingType=Energy&certification=NABERS");;
+      setNabersRatings(resp[0]);
     };
 
     fetchData();
   }, []);
 
+
+  let count = -0.5;
   return (
+  
     <div className="flex">
-      <div className="text-color-card-header p-4 mt-2 rounded shadow w-50">
+      <div className="text-color-card-header p-4 mt-2 rounded shadow w-60">
         <img src="/energy/nabers.png" alt="NABERS Ratings" className="h-20" />
       </div>
       <div className="text-color-card-header p-4 rounded shadow">
@@ -44,7 +47,7 @@ const NabersRatingWidget = () => {
                             fontSize: "0.5rem",
                           }}
                         >
-                          {index + 1}
+                          {count = count+0.5}
                         </span>
                       </th>
                     )
