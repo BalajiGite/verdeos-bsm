@@ -3,22 +3,22 @@ import axios from "axios";
 
 import { getApiDataFromAws } from "../api/dashboardDataService";
 
-const NabersRatingWidget = () => {
+const NabersRatingWidget = (props) => {
   const [nabersRatings, setNabersRatings] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const resp = await getApiDataFromAws("buildingType=Hotel&functionName=verdeosDemoTotalPropertiesByNABERSRating&ratingType=Energy&certification=NABERS");;
+    const fetchData = async (buildingType, dateSpan, dataSet) => {
+      const resp = await getApiDataFromAws(
+        "buildingType=Hotel&functionName=verdeosDemoTotalPropertiesByNABERSRating&ratingType=Energy&certification=NABERS"
+      );
       setNabersRatings(resp[0]);
     };
 
-    fetchData();
+    fetchData(props.buildingType, props.dateSpan, props.dataSet);
   }, []);
-
 
   let count = -0.5;
   return (
-  
     <div className="flex">
       <div className="text-color-card-header p-4 mt-2 rounded shadow w-60">
         <img src="/energy/nabers.png" alt="NABERS Ratings" className="h-20" />
@@ -47,7 +47,7 @@ const NabersRatingWidget = () => {
                             fontSize: "0.5rem",
                           }}
                         >
-                          {count = count+0.5}
+                          {(count = count + 0.5)}
                         </span>
                       </th>
                     )

@@ -9,7 +9,7 @@ import {
   getCarbonEmmisionBySiteDemo,
 } from "../api/dashboardDataService";
 
-const PortfolioPerformanceChart = () => {
+const PortfolioPerformanceChart = (props) => {
   const [energyUsageBySite, setEnergyUsageBySite] = useState([]);
   const [waterUsgaeBySite, setWaterUsgaeBySite] = useState([]);
   const [totalAlarmsBySite, setTotalAlarmsBySite] = useState([]);
@@ -19,7 +19,7 @@ const PortfolioPerformanceChart = () => {
 
   useEffect(() => {
     // Fetch data using axios.get
-    const fetchData = async () => {
+    const fetchData = async (buildingType, dateSpan, dataSet) => {
       const resp = await getEnergyUsageBySiteDemo(11);
       setEnergyUsageBySite(resp);
 
@@ -39,7 +39,7 @@ const PortfolioPerformanceChart = () => {
       setCarbonEmmisionBySite(carbonEmmision);
     };
 
-    fetchData();
+    fetchData(props.buildingType, props.dateSpan, props.dataSet);
   }, []);
 
   return (

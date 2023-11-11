@@ -3,16 +3,16 @@ import Chart from "chart.js";
 import { getPortfolioComplianceDataDemo } from "../api/dashboardDataService";
 import EnergyIntensityWidget from "./EnergyIntensityWidget";
 
-export default function EnergyUsageIntensity() {
+export default function EnergyUsageIntensity(props) {
   const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (buildingType, dateSpan, dataSet) => {
       const resp = await getPortfolioComplianceDataDemo(10);
       setChartData(resp);
     };
 
-    fetchData();
+    fetchData(props.buildingType, props.dateSpan, props.dataSet);
   }, []);
 
   useEffect(() => {
@@ -140,7 +140,7 @@ export default function EnergyUsageIntensity() {
       <div className="text-color-card-header font-medium uppercase">
         Portfolio Compliance
       </div>
-      
+
       <div className="mt-3">
         <div className="border-b border-slate-500 mb-1 flex">
           <span className="text-color-card-header energy-usage-intensity-button-bg-color text-sm p-3 border bg-slate-600 border-slate-500">

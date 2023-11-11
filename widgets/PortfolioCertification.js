@@ -3,13 +3,13 @@ import Dropdown from "../components/Dropdowns/Dropdown.js"; // Create Dropdown c
 
 import { getApiDataFromAws } from "../api/dashboardDataService";
 
-const PortfolioCertification = () => {
+const PortfolioCertification = (props) => {
   const [certification, setCertification] = useState(null);
   const [filter, setFilter] = useState(null); // Set "All" as the initial filter
 
   const [rating, setRating] = useState(null);
   const [ratingFilter, setRatingFilter] = useState(null); // Set "All" as the initial filter
-  
+
   const [certificationData, setCertificationData] = useState([]); // State to store the fetched data
 
   // Function to filter data based on the selected filter
@@ -19,24 +19,29 @@ const PortfolioCertification = () => {
 
   // Use useEffect to fetch data when the component mounts
   useEffect(() => {
-    const fetchData = async () => {
-
-      const certFilter = await getApiDataFromAws("functionName=verdeosDemoCertification");
+    const fetchData = async (buildingType, dateSpan, dataSet) => {
+      const certFilter = await getApiDataFromAws(
+        "functionName=verdeosDemoCertification"
+      );
       setCertification(certFilter);
-      setFilter(certFilter[0].name)
+      setFilter(certFilter[0].name);
 
-      const rateFilter = await getApiDataFromAws("functionName=verdeosDemoRatingType");
+      const rateFilter = await getApiDataFromAws(
+        "functionName=verdeosDemoRatingType"
+      );
       setRating(rateFilter);
-      setRatingFilter(rateFilter[0].name)
+      setRatingFilter(rateFilter[0].name);
 
       const resp = await getApiDataFromAws(
-        "buildingType=Hotel&functionName=verdeosDemoGetAllNabersRatings&ratingType="+rateFilter[0].name+"&certification="+certFilter[0].name
+        "buildingType=Hotel&functionName=verdeosDemoGetAllNabersRatings&ratingType=" +
+          rateFilter[0].name +
+          "&certification=" +
+          certFilter[0].name
       );
       setCertificationData(resp);
-
     };
 
-    fetchData();
+    fetchData(props.buildingType, props.dateSpan, props.dataSet);
   }, []); // Empty dependency array means this effect will run once when the component mounts
 
   return (
@@ -68,7 +73,6 @@ const PortfolioCertification = () => {
               </div>
             </div>
           </div>
-          
         </div>
       </div>
       <div className="w-full overflow-x-auto">
