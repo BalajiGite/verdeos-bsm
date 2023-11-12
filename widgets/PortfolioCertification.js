@@ -41,7 +41,13 @@ const PortfolioCertification = (props) => {
       setCertificationData(resp);
     };
 
-    fetchData(props.buildingType, props.dateSpan, props.dataSet);
+    fetchData(
+      props.buildingType,
+      props.dateSpan,
+      props.dataSet,
+      filter,
+      ratingFilter
+    );
   }, []); // Empty dependency array means this effect will run once when the component mounts
 
   return (

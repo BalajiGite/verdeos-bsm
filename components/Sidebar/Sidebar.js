@@ -12,7 +12,7 @@ import ComplianceReporting from "../../widgets/ComplianceReporting";
 import MyBpmWidget from "../../widgets/MyBpmWidget";
 import Team from "../../widgets/Team";
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   const router = useRouter();
   return (
@@ -109,7 +109,7 @@ export default function Sidebar() {
             <MyBpmWidget />
             <hr className="my-4 md:min-w-full" />
 
-            <BuildingTypesWidget />
+            <BuildingTypesWidget {...props} />
 
             <hr className="my-4 md:min-w-full" />
 

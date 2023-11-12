@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 // components
 
@@ -10,40 +10,45 @@ import PortfolioPerformanceChart from "components/PortfolioPerformanceChart.js";
 import MapExample from "components/Maps/PortfolioMap";
 import GoogleMap from "components/Maps/GoogleMap.js";
 import Dropdown from "../../components/Dropdowns/Dropdown";
+import { MenuSelectionContext } from "../MenuSelectionContext";
 import {
   getApiDataFromAws,
   getApiDataFromAwsDemo,
 } from "../../api/dashboardDataService";
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const [dateSet, setDateSet] = useState(null);
   const [dateSpan, setDateSpan] = useState(null);
   const [buildingType, setBuildingType] = useState(null);
   const [selectedDataSet, setSelectedDataSet] = useState(null);
   const [selectedDateSpan, setSelectedDateSpan] = useState(null);
   const [selectedBuildingType, setSelectedBuildingType] = useState(null);
+  const menuSelection = useContext(MenuSelectionContext);
+
+  const fetchDataInitial = async () => {
+    const buildingTypeJson = await getApiDataFromAws(
+      "functionName=verdeosDemoBuildingType"
+    );
+    setBuildingType(buildingTypeJson);
+    setSelectedBuildingType(buildingTypeJson[0].name);
+
+    const dateSpan = await getApiDataFromAwsDemo("21");
+    setDateSpan(dateSpan);
+    setSelectedDateSpan(dateSpan[0].name);
+
+    const dataSets = await getApiDataFromAws(
+      "functionName=verdeosDemoDataSets"
+    );
+    setDateSet(dataSets);
+    setSelectedDataSet(dataSets[0].name);
+  };
 
   useEffect(() => {
-    const fetchDataInitial = async () => {
-      const buildingTypeJson = await getApiDataFromAws(
-        "functionName=verdeosDemoBuildingType"
-      );
-      setBuildingType(buildingTypeJson);
-      setSelectedBuildingType(buildingTypeJson[0].name);
-
-      const dateSpan = await getApiDataFromAwsDemo("21");
-      setDateSpan(dateSpan);
-      setSelectedDateSpan(dateSpan[0].name);
-
-      const dataSets = await getApiDataFromAws(
-        "functionName=verdeosDemoDataSets"
-      );
-      setDateSet(dataSets);
-      setSelectedDataSet(dataSets[0].name);
-    };
-
     fetchDataInitial();
   }, []);
+  useEffect(() => {
+    setSelectedBuildingType(props.menuSelection);
+  }, [props.menuSelection]);
 
   const handleOptionSelect = (option) => {
     setSelectedDataSet(option);
