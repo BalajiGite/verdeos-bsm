@@ -5,14 +5,15 @@ import { getTotalPropertiesByGreenStarRatingDemo } from "../api/dashboardDataSer
 const GreenStarRatingWidget = (props) => {
   const [greenStarRatings, setGreenStarRatings] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async (buildingType, dateSpan, dataSet) => {
-      const resp = await getTotalPropertiesByGreenStarRatingDemo(19);
-      setGreenStarRatings(resp);
-    };
+  const fetchData = async (buildingType, dateSpan, dataSet) => {
+    //alert("called from Green Star:" + buildingType + " " + dateSpan + " " + dataSet);
+    const resp = await getTotalPropertiesByGreenStarRatingDemo(19);
+    setGreenStarRatings(resp);
+  };
 
+  useEffect(() => {
     fetchData(props.buildingType, props.dateSpan, props.dataSet);
-  }, []);
+  }, [props.buildingType, props.dateSpan, props.dataSet]);
 
   return (
     <div className="flex">

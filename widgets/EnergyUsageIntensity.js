@@ -6,14 +6,15 @@ import EnergyIntensityWidget from "./EnergyIntensityWidget";
 export default function EnergyUsageIntensity(props) {
   const [chartData, setChartData] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async (buildingType, dateSpan, dataSet) => {
-      const resp = await getPortfolioComplianceDataDemo(10);
-      setChartData(resp);
-    };
+  const fetchData = async (buildingType, dateSpan, dataSet) => {
+    //alert("called from Energy Usage:" + buildingType + " " + dateSpan + " " + dataSet);
+    const resp = await getPortfolioComplianceDataDemo(10);
+    setChartData(resp);
+  };
 
+  useEffect(() => {
     fetchData(props.buildingType, props.dateSpan, props.dataSet);
-  }, []);
+  }, [props.buildingType, props.dateSpan, props.dataSet]);
 
   useEffect(() => {
     if (chartData) {

@@ -6,7 +6,7 @@ import EnergyUsageIntensity from "widgets/EnergyUsageIntensity.js";
 import PortfolioCertification from "widgets/PortfolioCertification.js";
 import NabersRatingWidget from "widgets/NabersRatingWidget";
 import GreenStarRatingWidget from "widgets/GreenStarRatingWidget";
-import PortfolioPerformanceChart from "components/PortfolioPerformanceChart.js";
+import PortfolioPerformanceChart from "widgets/PortfolioPerformanceChart.js";
 import MapExample from "components/Maps/PortfolioMap";
 import GoogleMap from "components/Maps/GoogleMap.js";
 import Dropdown from "../../components/Dropdowns/Dropdown";
@@ -66,7 +66,7 @@ export default function Dashboard(props) {
       <div className="flex flex-wrap mt-4">
         <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
           <div className="flex mb-2 justify-end pt-4">
-            <div className="mr-4">
+            <div className="mr-4 hidden">
               <Dropdown
                 className="energy-usage-intensity-button-bg-color"
                 selected={selectedBuildingType}

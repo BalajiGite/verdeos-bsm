@@ -2,20 +2,22 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import { getApiDataFromAws } from "../api/dashboardDataService";
+import { auto } from "@popperjs/core";
 
 const NabersRatingWidget = (props) => {
   const [nabersRatings, setNabersRatings] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async (buildingType, dateSpan, dataSet) => {
-      const resp = await getApiDataFromAws(
-        "buildingType=Hotel&functionName=verdeosDemoTotalPropertiesByNABERSRating&ratingType=Energy&certification=NABERS"
-      );
-      setNabersRatings(resp[0]);
-    };
+  const fetchData = async (buildingType, dateSpan, dataSet) => {
+    //alert("called from NABERS:" + buildingType + " " + dateSpan + " " + dataSet);
+    const resp = await getApiDataFromAws(
+      "buildingType=Hotel&functionName=verdeosDemoTotalPropertiesByNABERSRating&ratingType=Energy&certification=NABERS"
+    );
+    setNabersRatings(resp[0]);
+  };
 
+  useEffect(() => {
     fetchData(props.buildingType, props.dateSpan, props.dataSet);
-  }, []);
+  }, [props.buildingType, props.dateSpan, props.dataSet]);
 
   let count = -0.5;
   return (
@@ -23,7 +25,7 @@ const NabersRatingWidget = (props) => {
       <div className="text-color-card-header p-4 mt-2 rounded shadow w-60">
         <img src="/energy/nabers.png" alt="NABERS Ratings" className="h-20" />
       </div>
-      <div className="text-color-card-header p-4 rounded shadow">
+      <div className="text-color-card-header p-4 rounded shadow" style={{overflowX:"auto"}}>
         <div className="flex justify-between text-color-lable">
           <table>
             <thead>

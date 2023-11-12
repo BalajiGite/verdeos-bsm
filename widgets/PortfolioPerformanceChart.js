@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PortfolioPerformance from "../widgets/PortfolioPerformance";
+import PortfolioPerformance from "./PortfolioPerformance";
 import {
   getEnergyUsageBySiteDemo,
   getWaterUsageBySiteDemo,
@@ -17,30 +17,30 @@ const PortfolioPerformanceChart = (props) => {
   const [totalovveridesBySite, setTotalovveridesBySite] = useState([]);
   const [carbonEmmisionBySite, setCarbonEmmisionBySite] = useState([]);
 
+  const fetchData = async (buildingType, dateSpan, dataSet) => {
+    //alert("called from Portfolio Performance:" + buildingType + " " + dateSpan + " " + dataSet);
+    const resp = await getEnergyUsageBySiteDemo(11);
+    setEnergyUsageBySite(resp);
+
+    const water = await getWaterUsageBySiteDemo(11);
+    setWaterUsgaeBySite(water);
+
+    const alarm = await getTotalAlarmsBySiteDemo(11);
+    setTotalAlarmsBySite(alarm);
+
+    const breakdown = await getTotalBreakdownBySiteDemo(11);
+    setTotalBreakdownBySite(breakdown);
+
+    const ovverides = await getTotalovveridesBySiteDemo(11);
+    setTotalovveridesBySite(ovverides);
+
+    const carbonEmmision = await getCarbonEmmisionBySiteDemo(11);
+    setCarbonEmmisionBySite(carbonEmmision);
+  };
+
   useEffect(() => {
-    // Fetch data using axios.get
-    const fetchData = async (buildingType, dateSpan, dataSet) => {
-      const resp = await getEnergyUsageBySiteDemo(11);
-      setEnergyUsageBySite(resp);
-
-      const water = await getWaterUsageBySiteDemo(11);
-      setWaterUsgaeBySite(water);
-
-      const alarm = await getTotalAlarmsBySiteDemo(11);
-      setTotalAlarmsBySite(alarm);
-
-      const breakdown = await getTotalBreakdownBySiteDemo(11);
-      setTotalBreakdownBySite(breakdown);
-
-      const ovverides = await getTotalovveridesBySiteDemo(11);
-      setTotalovveridesBySite(ovverides);
-
-      const carbonEmmision = await getCarbonEmmisionBySiteDemo(11);
-      setCarbonEmmisionBySite(carbonEmmision);
-    };
-
     fetchData(props.buildingType, props.dateSpan, props.dataSet);
-  }, []);
+  }, [props.buildingType, props.dateSpan, props.dataSet]);
 
   return (
     <>
