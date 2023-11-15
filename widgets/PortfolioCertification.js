@@ -3,26 +3,59 @@ import Dropdown from "../components/Dropdowns/Dropdown.js"; // Create Dropdown c
 
 import { getApiDataFromAws } from "../api/dashboardDataService";
 
-const PortfolioCertification = () => {
-  const [filter, setFilter] = useState("NABERS"); // Set "All" as the initial filter
+const PortfolioCertification = (props) => {
+  const [certification, setCertification] = useState(null);
+  const [filter, setFilter] = useState(null); // Set "All" as the initial filter
+
+  const [rating, setRating] = useState(null);
+  const [ratingFilter, setRatingFilter] = useState(null); // Set "All" as the initial filter
+
   const [certificationData, setCertificationData] = useState([]); // State to store the fetched data
-  const options = [{ name: "NABERS" }, { name: "Green Star" }]; //
 
   // Function to filter data based on the selected filter
   const filteredData = certificationData?.filter((item) =>
     filter === "All" ? true : item.certification === filter
   );
 
-  // Use useEffect to fetch data when the component mounts
-  useEffect(() => {
-    const fetchData = async () => {
-      const resp = await getApiDataFromAws(
-        "buildingType=Hotel&functionName=verdeosDemoGetAllNabersRatings&ratingType=Water&certification=NABERS"
-      );
-      setCertificationData(resp);
-    };
+  const fetchData = async (buildingType, dateSpan, dataSet, isPageLoad) => {
+    console.log("called from Portfolio Certification:" + buildingType + " " + dateSpan + " " + dataSet + " " + isPageLoad);
+    const certFilter = await getApiDataFromAws(
+      "functionName=verdeosDemoCertification"
+    );
+    setCertification(certFilter);
+    isPageLoad && setFilter(certFilter[0].name);
 
-    fetchData();
+    const rateFilter = await getApiDataFromAws(
+      "functionName=verdeosDemoRatingType"
+    );
+    setRating(rateFilter);
+    isPageLoad && setRatingFilter(rateFilter[0].name);
+
+    const resp = await getApiDataFromAws(
+      "buildingType=Hotel&functionName=verdeosDemoGetAllNabersRatings&ratingType=" +
+        rateFilter[0].name +
+        "&certification=" +
+        certFilter[0].name
+    );
+    setCertificationData(resp);
+  };
+
+  useEffect(() => {
+    fetchData(
+      props.buildingType,
+      props.dateSpan,
+      props.dataSet,
+      false
+    );
+  }, [props.buildingType, props.dateSpan, props.dataSet,filter, ratingFilter]); // Empty dependency array means this effect will run once when the component mounts
+
+  useEffect(() => {
+    fetchData(
+      props.buildingType,
+      props.dateSpan,
+      props.dataSet,
+      true
+    );
   }, []); // Empty dependency array means this effect will run once when the component mounts
 
   return (
@@ -35,12 +68,24 @@ const PortfolioCertification = () => {
             </h3>
           </div>
           <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-            <Dropdown
-              className="table-bg-color"
-              selected={filter}
-              options={options}
-              onSelect={(selectedFilter) => setFilter(selectedFilter)}
-            />
+            <div className="flex mb-2 justify-end w-full">
+              <div className="mr-4">
+                <Dropdown
+                  className="table-bg-color"
+                  selected={ratingFilter}
+                  options={rating}
+                  onSelect={(selectedFilter) => setRatingFilter(selectedFilter)}
+                />
+              </div>
+              <div className="mr-4">
+                <Dropdown
+                  className="table-bg-color"
+                  selected={filter}
+                  options={certification}
+                  onSelect={(selectedFilter) => setFilter(selectedFilter)}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

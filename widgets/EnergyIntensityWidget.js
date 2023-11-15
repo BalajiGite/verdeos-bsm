@@ -65,32 +65,6 @@ const EnergyIntensityWidget = () => {
             </div>
           </div>
         </div>
-        <div className="flex mb-2 justify-end w-full">
-          <div className="mr-4">
-            <Dropdown
-              className="energy-usage-intensity-button-bg-color"
-              selected={selectedBuildingType}
-              options={buildingType}
-              onSelect={handleBuildingType}
-            />
-          </div>
-          <div className="mr-4">
-            <Dropdown
-              className="energy-usage-intensity-button-bg-color"
-              selected={selectedDataSet}
-              options={dateSet}
-              onSelect={handleOptionSelect}
-            />
-          </div>
-          <div className="mr-4">
-            <Dropdown
-              className="energy-usage-intensity-button-bg-color"
-              selected={selectedDataSet}
-              options={dateSet}
-              onSelect={handleOptionSelect}
-            />
-          </div>
-        </div>
       </div>
 
       <div className="flex justify-start">
@@ -102,7 +76,7 @@ const EnergyIntensityWidget = () => {
                   <td className="text-center font-medium">Sites Connected</td>
                   <td className="text-center font-medium">Site EUI</td>
                   <td className="text-center font-medium">Trend</td>
-                  <td className="text-center font-medium">Trend Type</td>
+                 
                 </tr>
                 <tr>
                   <td>
@@ -138,17 +112,7 @@ const EnergyIntensityWidget = () => {
                       </span>
                     </p>
                   </td>
-                  <td>
-                    <p className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded flex">
-                      <span
-                        style={{ background: portfolioCompliance.siteEuiColor }}
-                        className="w-3 h-3 rounded-full mt-1 flex items-center justify-center"
-                      ></span>
-                      <span className="flex items-center justify-center ml-2">
-                        {portfolioCompliance.trendType}
-                      </span>
-                    </p>
-                  </td>
+                 
                   <td>
                     <div className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded">
                       <img

@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 
 import { getTotalPropertiesByGreenStarRatingDemo } from "../api/dashboardDataService";
 
-const GreenStarRatingWidget = () => {
+const GreenStarRatingWidget = (props) => {
   const [greenStarRatings, setGreenStarRatings] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const resp = await getTotalPropertiesByGreenStarRatingDemo(19);
-      setGreenStarRatings(resp);
-    };
+  const fetchData = async (buildingType, dateSpan, dataSet) => {
+    //alert("called from Green Star:" + buildingType + " " + dateSpan + " " + dataSet);
+    const resp = await getTotalPropertiesByGreenStarRatingDemo(19);
+    setGreenStarRatings(resp);
+  };
 
-    fetchData();
-  }, []);
+  useEffect(() => {
+    fetchData(props.buildingType, props.dateSpan, props.dataSet);
+  }, [props.buildingType, props.dateSpan, props.dataSet]);
 
   return (
     <div className="flex">

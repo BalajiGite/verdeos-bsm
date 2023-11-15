@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { getApiDataFromAws } from "../api/dashboardDataService";
 
-const BuildingTypesWidget = () => {
+const BuildingTypesWidget = (props) => {
   const [buildingTypes, setBuildingTypes] = useState([]);
 
   useEffect(() => {
@@ -20,6 +20,10 @@ const BuildingTypesWidget = () => {
     return "/buildingTypes/" + buildingType + ".svg";
   };
 
+  const getMenuSelectionClass = (name) => {
+    return props.menuSelection === name && "menu-Active";
+  };
+
   return (
     <>
       <div className="flex mb-2">
@@ -29,7 +33,13 @@ const BuildingTypesWidget = () => {
       </div>
       <ul className="md:flex-col md:min-w-full flex flex-col list-none font-montserrat text-white">
         {buildingTypes.map((type) => (
-          <li key={type.id} className="flex items-center my-1">
+          <li
+            key={type.id}
+            className={`flex items-center my-1 ${getMenuSelectionClass(
+              type.name
+            )}`}
+            onClick={(e) => props.updateMenuSelection(type.name)}
+          >
             <a
               href="#pablo"
               className="font-bold py-1 flex items-center hover:text-orange-500 "

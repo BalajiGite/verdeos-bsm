@@ -1,33 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { getApiDataFromAws, getApiDataFromAwsDemo } from "../../api/dashboardDataService";
-import Dropdown from "../Dropdowns/Dropdown.js";
+import {
+  getApiDataFromAws,
+  getApiDataFromAwsDemo,
+} from "../../api/dashboardDataService";
 
-function PortfolioMap() {
+function PortfolioMap(props) {
   const [stateMarkers, setStateMarkers] = useState([]);
-  const [dateSet, setDateSet] = useState(null);
-  const [dateSpan, setDateSpan] = useState(null);
-  const [buildingType, setBuildingType] = useState(null);
-
-  const [selectedDataSet, setSelectedDataSet] = useState(null);
-  const [selectedDateSpan, setSelectedDateSpan] = useState(null);
-  const [selectedBuildingType, setSelectedBuildingType] = useState(null);
 
   const [loading, setLoading] = useState(true);
 
-  const handleOptionSelect = (option) => {
-    setSelectedDataSet(option);
-  };
-
-  const handleBuildingType = (option) => {
-    setSelectedBuildingType(option);
-  };
-
-  const handleDateSpan = (option) => {
-    setSelectedDateSpan(option);
-  };
-
   const fetchData = async (buildingType, dateSpan, dataSet) => {
-    const prepareData = `startDateString=2023-01-01&endDateString=2023-01-01&buildingType=${buildingType}&dataSet=${dataSet}&functionName=verdeosDemoGlobalPortfolio`;
+    //alert("called from Map:" + buildingType + " " + dateSpan + " " + dataSet);
+    const prepareData = `startDateString=2023-01-01&endDateString=2023-08-01&buildingType=${buildingType}&dataSet=${dataSet}&functionName=verdeosDemoGlobalPortfolio`;
     const resp = await getApiDataFromAws(prepareData);
     setStateMarkers(resp);
     setLoading(false);
@@ -35,33 +19,21 @@ function PortfolioMap() {
 
   useEffect(() => {
     const fetchDataInitial = async () => {
-      const buildingTypeJson = await getApiDataFromAws("functionName=verdeosDemoBuildingType");
-      setBuildingType(buildingTypeJson);
-      setSelectedBuildingType(buildingTypeJson[0].name);
-
-      const dateSpan = await getApiDataFromAwsDemo("21");
-      setDateSpan(dateSpan);
-      setSelectedDateSpan(dateSpan[0].name);
-
-      const dataSets = await getApiDataFromAws("functionName=verdeosDemoDataSets");
-      setDateSet(dataSets);
-      setSelectedDataSet(dataSets[0].name);
-
-      fetchData(buildingTypeJson[0].name, dateSpan[0].name, dataSets[0].name);
+      fetchData(props.buildingType, props.dateSpan, props.dataSet);
     };
 
     fetchDataInitial();
   }, []);
 
   useEffect(() => {
-    if (selectedBuildingType && selectedDateSpan && selectedDataSet) {
-      fetchData(selectedBuildingType, selectedDateSpan, selectedDataSet);
+    if (props.buildingType && props.dateSpan && props.dataSet) {
+      fetchData(props.buildingType, props.dateSpan, props.dataSet);
     }
-  }, [selectedBuildingType, selectedDateSpan, selectedDataSet]);
+  }, [props.buildingType, props.dateSpan, props.dataSet]);
 
   const mapRef = React.useRef(null);
   useEffect(() => {
-    if (!loading && selectedBuildingType && selectedDateSpan && selectedDataSet) {
+    if (!loading && props.buildingType && props.dateSpan && props.dataSet) {
       let google = window.google;
       let map = mapRef.current;
       let lat = "-25.2744";
@@ -107,7 +79,7 @@ function PortfolioMap() {
           title: buildings.title,
           icon: icon,
           label: {
-            text: buildings.value == "null"?"0":buildings.value,
+            text: buildings.value == "null" ? "0" : buildings.value,
             fontFamily: "Material Icons",
             color: "#ffffff",
             fontSize: "14px",
@@ -127,36 +99,16 @@ function PortfolioMap() {
         content: contentString,
       });
     }
-  }, [loading, selectedBuildingType, selectedDateSpan, selectedDataSet]);
+  }, [loading, props.buildingType, props.dateSpan, props.dataSet]);
 
   return (
     <>
-      <div className="flex mb-2 justify-end pt-4">
-        <div className="mr-4">
-          <Dropdown
-            className="energy-usage-intensity-button-bg-color"
-            selected={selectedBuildingType}
-            options={buildingType}
-            onSelect={handleBuildingType}
-          />
-        </div>
-        <div className="mr-4">
-          <Dropdown
-            selected={selectedDateSpan}
-            options={dateSpan}
-            onSelect={handleDateSpan}
-          />
-        </div>
-        <div className="mr-4 pr-4">
-          <Dropdown
-            selected={selectedDataSet}
-            options={dateSet}
-            onSelect={handleOptionSelect}
-          />
-        </div>
-      </div>
       <div className="relative w-full rounded h-300-px">
-        <div className="rounded h-300-px" ref={mapRef} style={{ height: "450px" }} />
+        <div
+          className="rounded h-300-px"
+          ref={mapRef}
+          style={{ height: "450px" }}
+        />
       </div>
     </>
   );

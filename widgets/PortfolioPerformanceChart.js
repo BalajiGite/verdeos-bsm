@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PortfolioPerformance from "../widgets/PortfolioPerformance";
+import PortfolioPerformance from "./PortfolioPerformance";
 import {
   getEnergyUsageBySiteDemo,
   getWaterUsageBySiteDemo,
@@ -9,7 +9,7 @@ import {
   getCarbonEmmisionBySiteDemo,
 } from "../api/dashboardDataService";
 
-const PortfolioPerformanceChart = () => {
+const PortfolioPerformanceChart = (props) => {
   const [energyUsageBySite, setEnergyUsageBySite] = useState([]);
   const [waterUsgaeBySite, setWaterUsgaeBySite] = useState([]);
   const [totalAlarmsBySite, setTotalAlarmsBySite] = useState([]);
@@ -17,30 +17,30 @@ const PortfolioPerformanceChart = () => {
   const [totalovveridesBySite, setTotalovveridesBySite] = useState([]);
   const [carbonEmmisionBySite, setCarbonEmmisionBySite] = useState([]);
 
+  const fetchData = async (buildingType, dateSpan, dataSet) => {
+    //alert("called from Portfolio Performance:" + buildingType + " " + dateSpan + " " + dataSet);
+    const resp = await getEnergyUsageBySiteDemo(11);
+    setEnergyUsageBySite(resp);
+
+    const water = await getWaterUsageBySiteDemo(11);
+    setWaterUsgaeBySite(water);
+
+    const alarm = await getTotalAlarmsBySiteDemo(11);
+    setTotalAlarmsBySite(alarm);
+
+    const breakdown = await getTotalBreakdownBySiteDemo(11);
+    setTotalBreakdownBySite(breakdown);
+
+    const ovverides = await getTotalovveridesBySiteDemo(11);
+    setTotalovveridesBySite(ovverides);
+
+    const carbonEmmision = await getCarbonEmmisionBySiteDemo(11);
+    setCarbonEmmisionBySite(carbonEmmision);
+  };
+
   useEffect(() => {
-    // Fetch data using axios.get
-    const fetchData = async () => {
-      const resp = await getEnergyUsageBySiteDemo(11);
-      setEnergyUsageBySite(resp);
-
-      const water = await getWaterUsageBySiteDemo(11);
-      setWaterUsgaeBySite(water);
-
-      const alarm = await getTotalAlarmsBySiteDemo(11);
-      setTotalAlarmsBySite(alarm);
-
-      const breakdown = await getTotalBreakdownBySiteDemo(11);
-      setTotalBreakdownBySite(breakdown);
-
-      const ovverides = await getTotalovveridesBySiteDemo(11);
-      setTotalovveridesBySite(ovverides);
-
-      const carbonEmmision = await getCarbonEmmisionBySiteDemo(11);
-      setCarbonEmmisionBySite(carbonEmmision);
-    };
-
-    fetchData();
-  }, []);
+    fetchData(props.buildingType, props.dateSpan, props.dataSet);
+  }, [props.buildingType, props.dateSpan, props.dataSet]);
 
   return (
     <>
