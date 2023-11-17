@@ -1,6 +1,16 @@
 import React from "react";
 
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
+
 const MyBpmWidget = () => {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    Cookies.remove("auth");
+    router.push("/");
+  };
+
   return (
     <>
       <div className="flex mb-4">
@@ -30,7 +40,10 @@ const MyBpmWidget = () => {
           />
           <p className="text-center">Account Settings</p>
         </span>
-        <span className="text-xxs w-full ml-4 text-color-lable flex items-center">
+        <span
+          className="text-xxs w-full ml-4 text-color-lable flex items-center clickable"
+          onClick={handleLogout}
+        >
           <img
             alt="user"
             className="w-5 h-5 rounded-full mr-2"

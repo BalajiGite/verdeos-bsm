@@ -128,6 +128,10 @@
     background-color: #3b3e57 !important;
   }
 
+  .clickable {
+    cursor: pointer;
+  }
+
   .imageCount {
     position: absolute;
     top: 45%;
