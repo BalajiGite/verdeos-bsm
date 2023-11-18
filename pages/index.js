@@ -1,14 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 import Auth from "layouts/Auth.js";
 
 export default function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    const isAuthenticated = !!Cookies.get("auth");
+    if (!isAuthenticated) {
+      router.push("/");
+    }
+  }, []);
+
   const router = useRouter();
-  const handleLogin = () => {
-    if (userName === "demo" && password === "demo") {
+  const authenticateUser = (username, password) => {
+    if (username === "demo" && password === "demo") {
+      const userData = {
+        username,
+        password,
+      };
+      const expirationTime = new Date(new Date().getTime() + 60000);
+      Cookies.set("auth", JSON.stringify(userData), {
+        expires: expirationTime,
+      });
+      return true;
+    }
+    return false;
+  };
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const isAuthenticated = authenticateUser(userName, password);
+    if (isAuthenticated) {
       router.push("/dashboard");
     } else {
       alert("Incorrect username and password");

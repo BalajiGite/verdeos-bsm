@@ -15,8 +15,11 @@ import {
   getApiDataFromAws,
   getApiDataFromAwsDemo,
 } from "../../api/dashboardDataService";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 export default function Dashboard(props) {
+  const router = useRouter();
   const [dateSet, setDateSet] = useState(null);
   const [dateSpan, setDateSpan] = useState(null);
   const [buildingType, setBuildingType] = useState(null);
@@ -44,8 +47,14 @@ export default function Dashboard(props) {
   };
 
   useEffect(() => {
-    fetchDataInitial();
+    const isAuthenticated = !!Cookies.get("auth");
+    if (!isAuthenticated) {
+      router.push("/");
+    } else {
+      fetchDataInitial();
+    }
   }, []);
+
   useEffect(() => {
     setSelectedBuildingType(props.menuSelection);
   }, [props.menuSelection]);
