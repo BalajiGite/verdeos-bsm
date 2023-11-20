@@ -63,34 +63,34 @@ function PortfolioMap(props) {
         map,
         icon: iconCenter,
       });
+      if (stateMarkers) {
+        stateMarkers.forEach((buildings) => {
+          var icon = {
+            url: "https://www.nabers.gov.au/themes/custom/nabers/rating-register/dist/static/cluster_large.png",
+            scaledSize: new google.maps.Size(60, 60),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(30, 20),
+          };
 
-      stateMarkers.forEach((buildings) => {
-        var icon = {
-          url: "https://www.nabers.gov.au/themes/custom/nabers/rating-register/dist/static/cluster_large.png",
-          scaledSize: new google.maps.Size(60, 60),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(30, 20),
-        };
+          const markerw = new google.maps.Marker({
+            position: buildings.position,
+            map: map,
+            animation: google.maps.Animation.DROP,
+            title: buildings.title,
+            icon: icon,
+            label: {
+              text: buildings.value == "null" ? "0" : buildings.value,
+              fontFamily: "Material Icons",
+              color: "#ffffff",
+              fontSize: "14px",
+            },
+          });
 
-        const markerw = new google.maps.Marker({
-          position: buildings.position,
-          map: map,
-          animation: google.maps.Animation.DROP,
-          title: buildings.title,
-          icon: icon,
-          label: {
-            text: buildings.value == "null" ? "0" : buildings.value,
-            fontFamily: "Material Icons",
-            color: "#ffffff",
-            fontSize: "14px",
-          },
+          google.maps.event.addListener(markerw, "click", function () {
+            infowindow.open(map, markerw);
+          });
         });
-
-        google.maps.event.addListener(markerw, "click", function () {
-          infowindow.open(map, markerw);
-        });
-      });
-
+      }
       const contentString =
         '<div class="info-window-content"><h2>VerdeOS</h2>' +
         "<p>We are using Google map to Show States from verdeos on Click Event</p></div>";
