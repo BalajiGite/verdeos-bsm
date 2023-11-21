@@ -10,50 +10,77 @@ const PortfolioPerformanceChart = (props) => {
   const [totalAlarmsBySite, setTotalAlarmsBySite] = useState([]);
   const [totalBreakdownBySite, setTotalBreakdownBySite] = useState([]);
   const [totalovveridesBySite, setTotalovveridesBySite] = useState([]);
-  
-  const fetchData = async (buildingType, dateSpan, dataSet) => {
 
-    if(buildingType !=null && dateSpan !=null)
-    {
+  const fetchData = async (buildingType, dateSpan, dataSet) => {
+    if (buildingType != null && dateSpan != null) {
       //alert("called from Portfolio Performance:" + buildingType + " " + dateSpan + " " + dataSet);
-      const dates = getDates(dateSpan)
+      const dates = getDates(dateSpan);
       const resp = await getApiDataFromAws(
-        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
-          + "&dataSet=Electrical&functionName=verdeosDemoPortfolioPerformance"
-        );
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Electrical&functionName=verdeosDemoPortfolioPerformance"
+      );
       setEnergyUsageBySite(resp);
 
       const carbonEmmision = await getApiDataFromAws(
-        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
-          + "&dataSet=Emissions&functionName=verdeosDemoPortfolioPerformance"
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Emissions&functionName=verdeosDemoPortfolioPerformance"
       );
       setCarbonEmmisionBySite(carbonEmmision);
 
       const water = await getApiDataFromAws(
-        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
-          + "&dataSet=Water&functionName=verdeosDemoPortfolioPerformance"
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Water&functionName=verdeosDemoPortfolioPerformance"
       );
       setWaterUsgaeBySite(water);
 
       const alarm = await getApiDataFromAws(
-        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
-        + "&dataSet=Indoor Air Quality&functionName=verdeosDemoPortfolioPerformance"
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Indoor Air Quality&functionName=verdeosDemoPortfolioPerformance"
       );
       setTotalAlarmsBySite(water);
 
       const breakdown = await getApiDataFromAws(
-        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
-        + "&dataSet=Faults&functionName=verdeosDemoPortfolioPerformance"
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Faults&functionName=verdeosDemoPortfolioPerformance"
       );
       setTotalBreakdownBySite(breakdown);
 
       const ovverides = await getApiDataFromAws(
-        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
-        + "&dataSet=Overrides&functionName=verdeosDemoPortfolioPerformance"
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Overrides&functionName=verdeosDemoPortfolioPerformance"
       );
       setTotalovveridesBySite(ovverides);
     }
-
   };
 
   useEffect(() => {
@@ -172,7 +199,7 @@ const PortfolioPerformanceChart = (props) => {
         </div>
         <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
           <div className="rounded-lg shadow-lg">
-            {totalBreakdownBySite.length > 0 && (
+            {totalBreakdownBySite && totalBreakdownBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
                   <div className="text-color-card-header font-medium">

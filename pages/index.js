@@ -24,7 +24,7 @@ export default function Login() {
         username,
         password,
       };
-      const expirationTime = new Date(new Date().getTime() + 300000);
+      const expirationTime = new Date(new Date().getTime() + 30000);
       Cookies.set("auth", JSON.stringify(userData), {
         expires: expirationTime,
       });
