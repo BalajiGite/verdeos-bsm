@@ -25,18 +25,6 @@ const EnergyIntensityWidget = () => {
     const fetchData = async () => {
       const portfolioCompliance = await getPortfolioComplianceDemo(9);
       setPortfolioCompliance(portfolioCompliance);
-
-      const buildingType = await getApiDataFromAws(
-        "functionName=verdeosDemoBuildingType"
-      );
-      setBuildingType(buildingType);
-      setSelectedBuildingType(buildingType[0].name);
-
-      const dataSets = await getApiDataFromAws(
-        "functionName=verdeosDemoDataSets"
-      );
-      setDateSet(dataSets);
-      setSelectedDataSet(dataSets[0].name);
     };
 
     fetchData();

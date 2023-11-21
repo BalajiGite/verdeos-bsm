@@ -12,43 +12,47 @@ const PortfolioPerformanceChart = (props) => {
   const [totalovveridesBySite, setTotalovveridesBySite] = useState([]);
   
   const fetchData = async (buildingType, dateSpan, dataSet) => {
-    //alert("called from Portfolio Performance:" + buildingType + " " + dateSpan + " " + dataSet);
-    const dates = getDates(dateSpan)
-    const resp = await getApiDataFromAws(
-      "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
-        + "&dataSet=Electrical&functionName=verdeosDemoPortfolioPerformance"
+
+    if(buildingType !=null && dateSpan !=null)
+    {
+      //alert("called from Portfolio Performance:" + buildingType + " " + dateSpan + " " + dataSet);
+      const dates = getDates(dateSpan)
+      const resp = await getApiDataFromAws(
+        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
+          + "&dataSet=Electrical&functionName=verdeosDemoPortfolioPerformance"
+        );
+      setEnergyUsageBySite(resp);
+
+      const carbonEmmision = await getApiDataFromAws(
+        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
+          + "&dataSet=Emissions&functionName=verdeosDemoPortfolioPerformance"
       );
-    setEnergyUsageBySite(resp);
+      setCarbonEmmisionBySite(carbonEmmision);
 
-    const carbonEmmision = await getApiDataFromAws(
-      "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
-        + "&dataSet=Emissions&functionName=verdeosDemoPortfolioPerformance"
-    );
-    setCarbonEmmisionBySite(carbonEmmision);
+      const water = await getApiDataFromAws(
+        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
+          + "&dataSet=Water&functionName=verdeosDemoPortfolioPerformance"
+      );
+      setWaterUsgaeBySite(water);
 
-    const water = await getApiDataFromAws(
-      "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
-        + "&dataSet=Water&functionName=verdeosDemoPortfolioPerformance"
-    );
-    setWaterUsgaeBySite(water);
+      const alarm = await getApiDataFromAws(
+        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
+        + "&dataSet=Indoor Air Quality&functionName=verdeosDemoPortfolioPerformance"
+      );
+      setTotalAlarmsBySite(water);
 
-    const alarm = await getApiDataFromAws(
-      "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
-      + "&dataSet=Indoor Air Quality&functionName=verdeosDemoPortfolioPerformance"
-    );
-    setTotalAlarmsBySite(alarm);
+      const breakdown = await getApiDataFromAws(
+        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
+        + "&dataSet=Faults&functionName=verdeosDemoPortfolioPerformance"
+      );
+      setTotalBreakdownBySite(breakdown);
 
-    const breakdown = await getApiDataFromAws(
-      "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
-      + "&dataSet=Faults&functionName=verdeosDemoPortfolioPerformance"
-    );
-    setTotalBreakdownBySite(breakdown);
-
-    const ovverides = await getApiDataFromAws(
-      "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
-      + "&dataSet=Overrides&functionName=verdeosDemoPortfolioPerformance"
-    );
-    setTotalovveridesBySite(ovverides);
+      const ovverides = await getApiDataFromAws(
+        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType=" + buildingType
+        + "&dataSet=Overrides&functionName=verdeosDemoPortfolioPerformance"
+      );
+      setTotalovveridesBySite(ovverides);
+    }
 
   };
 
