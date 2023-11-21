@@ -10,7 +10,7 @@ import PortfolioPerformanceChart from "widgets/PortfolioPerformanceChart.js";
 import MapExample from "components/Maps/PortfolioMap";
 import GoogleMap from "components/Maps/GoogleMap.js";
 import Dropdown from "../../components/Dropdowns/Dropdown";
-import { MenuSelectionContext } from "../MenuSelectionContext";
+import { MenuSelectionContext } from "../../components/PageChange/MenuSelectionContext";
 import {
   getApiDataFromAws,
   getApiDataFromAwsDemo,

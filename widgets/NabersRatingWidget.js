@@ -12,7 +12,7 @@ const NabersRatingWidget = (props) => {
     const resp = await getApiDataFromAws(
       "buildingType=Hotel&functionName=verdeosDemoTotalPropertiesByNABERSRating&ratingType=Energy&certification=NABERS"
     );
-    setNabersRatings(resp[0]);
+    setNabersRatings(resp && resp[0]);
   };
 
   useEffect(() => {
@@ -25,7 +25,10 @@ const NabersRatingWidget = (props) => {
       <div className="text-color-card-header p-4 mt-2 rounded shadow w-60">
         <img src="/energy/nabers.png" alt="NABERS Ratings" className="h-20" />
       </div>
-      <div className="text-color-card-header p-4 rounded shadow" style={{overflowX:"auto"}}>
+      <div
+        className="text-color-card-header p-4 rounded shadow"
+        style={{ overflowX: "auto" }}
+      >
         <div className="flex justify-between text-color-lable">
           <table>
             <thead>
