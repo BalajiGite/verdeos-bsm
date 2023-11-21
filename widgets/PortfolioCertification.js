@@ -18,24 +18,11 @@ const PortfolioCertification = (props) => {
   );
 
   const fetchData = async (buildingType, dateSpan, dataSet, isPageLoad) => {
-    console.log("called from Portfolio Certification:" + buildingType + " " + dateSpan + " " + dataSet + " " + isPageLoad);
-    const certFilter = await getApiDataFromAws(
-      "functionName=verdeosDemoCertification"
-    );
-    setCertification(certFilter);
-    isPageLoad && setFilter(certFilter[0].name);
-
-    const rateFilter = await getApiDataFromAws(
-      "functionName=verdeosDemoRatingType"
-    );
-    setRating(rateFilter);
-    isPageLoad && setRatingFilter(rateFilter[0].name);
-
+    //console.log("called from Portfolio Certification:" + buildingType + " " + dateSpan + " " + dataSet + " " + isPageLoad);
+    
     const resp = await getApiDataFromAws(
-      "buildingType=Hotel&functionName=verdeosDemoGetAllNabersRatings&ratingType=" +
-        rateFilter[0].name +
-        "&certification=" +
-        certFilter[0].name
+      "buildingType="+buildingType+"&functionName=verdeosDemoGetAllNabersRatings&ratingType=" +
+      ratingFilter + "&certification=" + filter
     );
     setCertificationData(resp);
   };
@@ -49,7 +36,22 @@ const PortfolioCertification = (props) => {
     );
   }, [props.buildingType, props.dateSpan, props.dataSet,filter, ratingFilter]); // Empty dependency array means this effect will run once when the component mounts
 
+  const setInitialData = async (b) => {
+      const certFilter = await getApiDataFromAws(
+        "functionName=verdeosDemoCertification"
+      );
+      setCertification(certFilter);
+      setFilter(certFilter[0].name);
+
+      const rateFilter = await getApiDataFromAws(
+        "functionName=verdeosDemoRatingType"
+      );
+      setRating(rateFilter);
+      setRatingFilter(rateFilter[0].name);
+  }
   useEffect(() => {
+
+    setInitialData()
     fetchData(
       props.buildingType,
       props.dateSpan,
