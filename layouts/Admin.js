@@ -10,7 +10,7 @@ import { MenuSelectionContext } from "../components/PageChange/MenuSelectionCont
 import DashboardPage from "../pages/admin/dashboard";
 
 export default function Admin({ children }) {
-  const [menuSelection, setMenuSelection] = useState("");
+  const [menuSelection, setMenuSelection] = useState("All");
   const updateMenuSelection = (menu) => {
     setMenuSelection(menu);
   };

@@ -37,7 +37,7 @@ export default function Dashboard(props) {
 
     const dateSpan = await getApiDataFromAwsDemo("21");
     setDateSpan(dateSpan);
-    setSelectedDateSpan(dateSpan[0].name);
+    setSelectedDateSpan(dateSpan[4].name);
 
     const dataSets = await getApiDataFromAws(
       "functionName=verdeosDemoDataSets"

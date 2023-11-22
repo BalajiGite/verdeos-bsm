@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Chart from "chart.js";
-import { getPortfolioComplianceDataDemo } from "../api/dashboardDataService";
+
+import { getApiDataFromAws, getDates } from "../api/dashboardDataService";
 import EnergyIntensityWidget from "./EnergyIntensityWidget";
 
 export default function EnergyUsageIntensity(props) {
@@ -8,8 +9,16 @@ export default function EnergyUsageIntensity(props) {
 
   const fetchData = async (buildingType, dateSpan, dataSet) => {
     //alert("called from Energy Usage:" + buildingType + " " + dateSpan + " " + dataSet);
-    const resp = await getPortfolioComplianceDataDemo(10);
-    setChartData(resp);
+
+    if(buildingType !=null && dateSpan !=null && dataSet !=null)
+    {
+      const dates = getDates(dateSpan)
+      const resp = await getApiDataFromAws(
+        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType="+buildingType+
+        "&dataSet="+dataSet+"&functionName=verdeosDemoTimeseriesDataGen&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null"
+      );
+      setChartData(resp[0]);
+    }
   };
 
   useEffect(() => {

@@ -12,6 +12,12 @@ const Dropdown = ({ selected, options, onSelect }) => {
     setIsOpen(false);
   };
 
+  const handleMouseLeave = () => {
+    setIsOpen(false);
+  };
+
+// ... (previous code)
+
   return (
     <div className="relative inline-block text-left">
       <div>
@@ -41,7 +47,8 @@ const Dropdown = ({ selected, options, onSelect }) => {
       {isOpen && (
         <div
           className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
-          style={{ "zIndex": "999" }}
+          style={{ zIndex: "999" }}
+          onMouseLeave={handleMouseLeave} // Move the onMouseLeave event here
         >
           <div
             className="py-1"
@@ -52,11 +59,11 @@ const Dropdown = ({ selected, options, onSelect }) => {
             {options.map((option, index) => (
               <div
                 key={index}
-                onClick={() => handleOptionClick(option.name)} // Use the 'value' property
+                onClick={() => handleOptionClick(option.name)}
                 className="block px-4 py-2 text-sm bg-black text-white cursor-pointer"
                 role="menuitem"
               >
-                {option.name} {/* Display the 'value' property */}
+                {option.name}
               </div>
             ))}
           </div>
@@ -64,6 +71,7 @@ const Dropdown = ({ selected, options, onSelect }) => {
       )}
     </div>
   );
+
 };
 
 export default Dropdown;

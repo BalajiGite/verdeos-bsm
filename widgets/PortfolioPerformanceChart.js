@@ -1,41 +1,87 @@
 import React, { useState, useEffect } from "react";
 import PortfolioPerformance from "./PortfolioPerformance";
-import {
-  getEnergyUsageBySiteDemo,
-  getWaterUsageBySiteDemo,
-  getTotalAlarmsBySiteDemo,
-  getTotalBreakdownBySiteDemo,
-  getTotalovveridesBySiteDemo,
-  getCarbonEmmisionBySiteDemo,
-} from "../api/dashboardDataService";
+
+import { getApiDataFromAws, getDates } from "../api/dashboardDataService";
 
 const PortfolioPerformanceChart = (props) => {
   const [energyUsageBySite, setEnergyUsageBySite] = useState([]);
+  const [carbonEmmisionBySite, setCarbonEmmisionBySite] = useState([]);
   const [waterUsgaeBySite, setWaterUsgaeBySite] = useState([]);
   const [totalAlarmsBySite, setTotalAlarmsBySite] = useState([]);
   const [totalBreakdownBySite, setTotalBreakdownBySite] = useState([]);
   const [totalovveridesBySite, setTotalovveridesBySite] = useState([]);
-  const [carbonEmmisionBySite, setCarbonEmmisionBySite] = useState([]);
 
   const fetchData = async (buildingType, dateSpan, dataSet) => {
-    //alert("called from Portfolio Performance:" + buildingType + " " + dateSpan + " " + dataSet);
-    const resp = await getEnergyUsageBySiteDemo(11);
-    setEnergyUsageBySite(resp);
+    if (buildingType != null && dateSpan != null) {
+      //alert("called from Portfolio Performance:" + buildingType + " " + dateSpan + " " + dataSet);
+      const dates = getDates(dateSpan);
+      const resp = await getApiDataFromAws(
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Electrical&functionName=verdeosDemoPortfolioPerformance"
+      );
+      setEnergyUsageBySite(resp);
 
-    const water = await getWaterUsageBySiteDemo(11);
-    setWaterUsgaeBySite(water);
+      const carbonEmmision = await getApiDataFromAws(
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Emissions&functionName=verdeosDemoPortfolioPerformance"
+      );
+      setCarbonEmmisionBySite(carbonEmmision);
 
-    const alarm = await getTotalAlarmsBySiteDemo(11);
-    setTotalAlarmsBySite(alarm);
+      const water = await getApiDataFromAws(
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Water&functionName=verdeosDemoPortfolioPerformance"
+      );
+      setWaterUsgaeBySite(water);
 
-    const breakdown = await getTotalBreakdownBySiteDemo(11);
-    setTotalBreakdownBySite(breakdown);
+      const alarm = await getApiDataFromAws(
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Indoor Air Quality&functionName=verdeosDemoPortfolioPerformance"
+      );
+      setTotalAlarmsBySite(alarm);
 
-    const ovverides = await getTotalovveridesBySiteDemo(11);
-    setTotalovveridesBySite(ovverides);
+      const ovverides = await getApiDataFromAws(
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Overrides&functionName=verdeosDemoPortfolioPerformance"
+      );
+      setTotalovveridesBySite(ovverides);
+      
+      const breakdown = await getApiDataFromAws(
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Faults&functionName=verdeosDemoPortfolioPerformance"
+      );
+      setTotalBreakdownBySite(breakdown);
 
-    const carbonEmmision = await getCarbonEmmisionBySiteDemo(11);
-    setCarbonEmmisionBySite(carbonEmmision);
+    }
   };
 
   useEffect(() => {
@@ -101,7 +147,7 @@ const PortfolioPerformanceChart = (props) => {
         </div>
         <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
           <div className="rounded-lg shadow-lg">
-            {totalovveridesBySite.length > 0 && (
+            {waterUsgaeBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
                   <div className="text-color-card-header font-medium">
@@ -111,7 +157,7 @@ const PortfolioPerformanceChart = (props) => {
                     Top 9 Total Building Water Usage by Site
                   </div>
                 </div>
-                <PortfolioPerformance data={totalovveridesBySite} />
+                <PortfolioPerformance data={waterUsgaeBySite} />
               </div>
             )}
             <div className="float-right">
@@ -132,17 +178,17 @@ const PortfolioPerformanceChart = (props) => {
       <div className="flex">
         <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
           <div className="rounded-lg shadow-lg">
-            {totalBreakdownBySite.length > 0 && (
+            {totalAlarmsBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
                   <div className="text-color-card-header font-medium">
-                    Total Overrides
+                    Total Alarms
                   </div>
                   <div className="text-color-card-header text-sm">
                     Top 9 Building Alarms by Site
                   </div>
                 </div>
-                <PortfolioPerformance data={totalBreakdownBySite} />
+                <PortfolioPerformance data={totalAlarmsBySite} />
               </div>
             )}
             <div className="float-right">
@@ -154,14 +200,14 @@ const PortfolioPerformanceChart = (props) => {
         </div>
         <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
           <div className="rounded-lg shadow-lg">
-            {totalBreakdownBySite.length > 0 && (
+            {totalBreakdownBySite && totalBreakdownBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
                   <div className="text-color-card-header font-medium">
                     Total Breakdowns
                   </div>
                   <div className="text-color-card-header text-sm">
-                    Top 9 Building Alarms by Site
+                    Top 9 Building Breakdowns by Site
                   </div>
                 </div>
                 <PortfolioPerformance data={totalBreakdownBySite} />
@@ -176,17 +222,17 @@ const PortfolioPerformanceChart = (props) => {
         </div>
         <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
           <div className="rounded-lg shadow-lg">
-            {totalBreakdownBySite.length > 0 && (
+            {totalovveridesBySite.length > 0 && (
               <div className="p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
                   <div className="text-color-card-header font-medium">
                     Total Overrides
                   </div>
                   <div className="text-color-card-header text-sm">
-                    Top 9 Building Alarms by Site
+                    Top 9 Building Overrides by Site
                   </div>
                 </div>
-                <PortfolioPerformance data={totalBreakdownBySite} />
+                <PortfolioPerformance data={totalovveridesBySite} />
               </div>
             )}
             <div className="float-right">

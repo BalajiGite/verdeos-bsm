@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { getConnectedBuildingDemo } from "../api/dashboardDataService";
+import { getApiDataFromAws } from "../api/dashboardDataService";
 
-const ConnectedBuilding = () => {
+const ConnectedBuilding = (props) => {
   const [cartData, setCartData] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const resp = await getConnectedBuildingDemo(1);
-      setCartData(resp);
+    const fetchData = async (buildingType) => {
+      const resp = await getApiDataFromAws(
+        "buildingType="+buildingType+"&functionName=verdeosDemoSiteConnected"
+      );
+      setCartData(resp[0]);
     };
 
-    fetchData();
-  }, []);
+    fetchData(props.menuSelection);
+  }, [props.menuSelection]);
 
   return (
     <>
@@ -24,7 +26,7 @@ const ConnectedBuilding = () => {
             <div className="w-20 ml-auto flex bg-black items-center justify-end">
               <div className="w-3 h-3 bg-yellow-500 rounded-full flex items-center justify-center"></div>
               <span className="ml-2 text-color-lable-value font-medium">
-                {cartData.totalSitePer}
+                {cartData.totalSite}
               </span>
             </div>
           </div>

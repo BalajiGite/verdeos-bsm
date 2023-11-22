@@ -24,7 +24,7 @@ export default function Login() {
         username,
         password,
       };
-      const expirationTime = new Date(new Date().getTime() + 60000);
+      const expirationTime = new Date(new Date().getTime() + 90000);
       Cookies.set("auth", JSON.stringify(userData), {
         expires: expirationTime,
       });
@@ -84,7 +84,7 @@ export default function Login() {
                   </div>
                   <div className="text-center mt-6">
                     <button
-                      className="bg-blueGray-800 active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150 text-white"
+                      className="energy-usage-intensity-button-bg-color active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150 text-white"
                       type="button"
                       onClick={handleLogin}
                     >

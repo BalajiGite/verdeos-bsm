@@ -13,7 +13,7 @@ const PortfolioPerformance = ({ data }) => {
           labels: chartData.labels,
           datasets: [
             {
-              label: "Dataset 1",
+              label: "",
               data: chartData.data,
               backgroundColor: "rgba(54, 162, 235, 1)", // Set the background color to blue (54, 162, 235)
               borderColor: "rgba(54, 162, 235, 1)", // Set the border color to blue (54, 162, 235)
@@ -22,6 +22,9 @@ const PortfolioPerformance = ({ data }) => {
           ],
         },
         options: {
+          legend: {
+            display: false
+          },
           scales: {
             xAxes: [
               {
