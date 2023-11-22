@@ -5,9 +5,18 @@ const PortfolioPerformance = ({ data }) => {
   const chartRefs = data.map(() => useRef());
 
   useEffect(() => {
+    // Destroy previous charts before rendering new ones
+    chartRefs.forEach((chartRef) => {
+      const chartInstance = chartRef.current.chart;
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+    });
+
+    // Create new charts
     data.forEach((chartData, index) => {
       const ctx = chartRefs[index].current.getContext("2d");
-      new Chart(ctx, {
+      const newChartInstance = new Chart(ctx, {
         type: "horizontalBar",
         data: {
           labels: chartData.labels,
@@ -15,8 +24,8 @@ const PortfolioPerformance = ({ data }) => {
             {
               label: "",
               data: chartData.data,
-              backgroundColor: "rgba(54, 162, 235, 1)", // Set the background color to blue (54, 162, 235)
-              borderColor: "rgba(54, 162, 235, 1)", // Set the border color to blue (54, 162, 235)
+              backgroundColor: "rgba(54, 162, 235, 1)",
+              borderColor: "rgba(54, 162, 235, 1)",
               borderWidth: 1,
             },
           ],
@@ -29,7 +38,7 @@ const PortfolioPerformance = ({ data }) => {
             xAxes: [
               {
                 ticks: {
-                  beginAtZero: true, // Ensure that the x-axis starts at zero
+                  beginAtZero: true,
                 },
               },
             ],
@@ -37,6 +46,9 @@ const PortfolioPerformance = ({ data }) => {
           maintainAspectRatio: false,
         },
       });
+
+      // Attach the chart instance to the chartRef
+      chartRefs[index].current.chart = newChartInstance;
     });
   }, [data]);
 

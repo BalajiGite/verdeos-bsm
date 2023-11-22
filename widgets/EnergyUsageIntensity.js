@@ -33,15 +33,20 @@ export default function EnergyUsageIntensity(props) {
         label: dataset.label,
         data: dataset.data,
         borderColor:
-          dataset.label === "Target Lower" || dataset.label === "Target Upper"
-            ? "rgba(255, 255, 255, 0.5)"
+          dataset.label === "Industry Standards" || dataset.label === "Internal Standards"
+            ? "#696565"
             : getRandomColor(),
         borderDash:
-          dataset.label === "Target Lower" || dataset.label === "Target Upper"
+          dataset.label === "Industry Standards" || dataset.label === "Internal Standards"
             ? [5, 5]
             : [],
         fill: false,
       }));
+
+       // Destroy existing chart if it exists
+      if (window.myLine) {
+        window.myLine.destroy();
+      }
 
       // Create the chart
       const config = {
@@ -55,12 +60,12 @@ export default function EnergyUsageIntensity(props) {
           responsive: true,
           title: {
             display: false,
-            text: "Sales Charts",
-            fontColor: "black",
+            text: "Portfolio Comliance",
+            fontColor: "white", // Set font color to white
           },
           legend: {
             labels: {
-              fontColor: "black",
+              fontColor: "white", // Set font color to white
             },
             align: "end",
             position: "bottom",
@@ -77,7 +82,7 @@ export default function EnergyUsageIntensity(props) {
             xAxes: [
               {
                 ticks: {
-                  fontColor: "black",
+                  fontColor: "white", // Set font color to white
                   maxRotation: 0,
                   autoSkip: true,
                   maxTicksLimit: 7,
@@ -86,14 +91,14 @@ export default function EnergyUsageIntensity(props) {
                 scaleLabel: {
                   display: false,
                   labelString: "Date",
-                  fontColor: "black",
+                  fontColor: "white",
                 },
                 gridLines: {
                   display: false,
                   borderDash: [2],
                   borderDashOffset: [2],
-                  color: "black",
-                  zeroLineColor: "black",
+                  color: "white", // Set grid line color to white
+                  zeroLineColor: "white", // Set zero line color to white
                   zeroLineBorderDash: [2],
                   zeroLineBorderDashOffset: [2],
                 },
@@ -102,14 +107,11 @@ export default function EnergyUsageIntensity(props) {
             yAxes: [
               {
                 ticks: {
-                  fontColor: "black",
+                  fontColor: "white", // Set font color to white
                   maxTicksLimit: 5,
-                  //stepSize: 40,
-                  suggestedMin: 70,
-                  //suggestedMax: 100,
-                  //beginAtZero: true,
+                  suggestedMin: 120000,
                 },
-                display: true,
+                display: false,
                 scaleLabel: {
                   display: false,
                   labelString: "Value",
@@ -119,7 +121,7 @@ export default function EnergyUsageIntensity(props) {
                   borderDash: [3],
                   borderDashOffset: [3],
                   drawBorder: false,
-                  color: "black",
+                  color: "white", // Set grid line color to white
                   zeroLineColor: "rgba(33, 37, 41, 0)",
                   zeroLineBorderDash: [2],
                   zeroLineBorderDashOffset: [2],
@@ -172,7 +174,7 @@ export default function EnergyUsageIntensity(props) {
         </div>
         <div className="p-1 flex-auto">
           {/* Chart */}
-          <div className="relative bg-white">
+          <div className="relative energy-usage-intensity-button-bg-color-content">
             <canvas id="line-chart" style={{ height: "350px" }}></canvas>
           </div>
         </div>

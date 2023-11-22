@@ -61,7 +61,7 @@ const PortfolioCertification = (props) => {
   }, []); // Empty dependency array means this effect will run once when the component mounts
 
   return (
-    <div className="relative flex flex-col min-w-0 break-words text-white table-bg-color w-full mb-6 shadow-lg rounded">
+    <div className="relative flex flex-col min-w-0 break-words text-white energy-usage-intensity-button-bg-color-content w-full mb-6 shadow-lg rounded">
       <div className="rounded-t mb-0 px-4 py-3 border-0">
         <div className="flex flex-wrap items-center">
           <div className="relative w-full px-4 max-w-full flex-grow flex-1">
