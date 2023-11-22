@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   getApiDataFromAws,
-  getApiDataFromAwsDemo,
+  getDates,
 } from "../../api/dashboardDataService";
 
 function PortfolioMap(props) {
@@ -11,10 +11,14 @@ function PortfolioMap(props) {
 
   const fetchData = async (buildingType, dateSpan, dataSet) => {
     //alert("called from Map:" + buildingType + " " + dateSpan + " " + dataSet);
-    const prepareData = `startDateString=2023-01-01&endDateString=2023-08-01&buildingType=${buildingType}&dataSet=${dataSet}&functionName=verdeosDemoGlobalPortfolio`;
-    const resp = await getApiDataFromAws(prepareData);
-    setStateMarkers(resp);
-    setLoading(false);
+    
+    if(buildingType != null && dateSpan !=null && dataSet !=null){
+      const dates = getDates(dateSpan);
+      const prepareData = `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=${dataSet}&functionName=verdeosDemoGlobalPortfolio`;
+      const resp = await getApiDataFromAws(prepareData);
+      setStateMarkers(resp);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -52,10 +56,10 @@ function PortfolioMap(props) {
       map = new google.maps.Map(map, mapOptions);
 
       var iconCenter = {
-        url: "https://www.nabers.gov.au/themes/custom/nabers/rating-register/dist/static/icon_building.png",
-        scaledSize: new google.maps.Size(50, 50),
+        url: "/map/buildings.png",
+        scaledSize: new google.maps.Size(60, 60),
         origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(20, 50),
+        anchor: new google.maps.Point(30, 70),
       };
 
       const centerMarker = new google.maps.Marker({
@@ -66,10 +70,10 @@ function PortfolioMap(props) {
       if (stateMarkers) {
         stateMarkers.forEach((buildings) => {
           var icon = {
-            url: "https://www.nabers.gov.au/themes/custom/nabers/rating-register/dist/static/cluster_large.png",
-            scaledSize: new google.maps.Size(60, 60),
+            url: "/map/mainicon.png",
+            scaledSize: new google.maps.Size(75, 75),
             origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(30, 20),
+            anchor: new google.maps.Point(45, 30),
           };
 
           const markerw = new google.maps.Marker({

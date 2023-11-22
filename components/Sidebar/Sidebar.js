@@ -112,7 +112,7 @@ export default function Sidebar(props) {
 
             <hr className="my-4 md:min-w-full" />
 
-            <ConnectedBuilding />
+            <ConnectedBuilding {...props}/>
 
             <hr className="my-4 md:min-w-full" />
 

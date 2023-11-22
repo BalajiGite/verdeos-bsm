@@ -57,18 +57,7 @@ const PortfolioPerformanceChart = (props) => {
           buildingType +
           "&dataSet=Indoor Air Quality&functionName=verdeosDemoPortfolioPerformance"
       );
-      setTotalAlarmsBySite(water);
-
-      const breakdown = await getApiDataFromAws(
-        "startDateString=" +
-          dates.start +
-          "&endDateString=" +
-          dates.end +
-          "&buildingType=" +
-          buildingType +
-          "&dataSet=Faults&functionName=verdeosDemoPortfolioPerformance"
-      );
-      setTotalBreakdownBySite(breakdown);
+      setTotalAlarmsBySite(alarm);
 
       const ovverides = await getApiDataFromAws(
         "startDateString=" +
@@ -80,6 +69,18 @@ const PortfolioPerformanceChart = (props) => {
           "&dataSet=Overrides&functionName=verdeosDemoPortfolioPerformance"
       );
       setTotalovveridesBySite(ovverides);
+      
+      const breakdown = await getApiDataFromAws(
+        "startDateString=" +
+          dates.start +
+          "&endDateString=" +
+          dates.end +
+          "&buildingType=" +
+          buildingType +
+          "&dataSet=Faults&functionName=verdeosDemoPortfolioPerformance"
+      );
+      setTotalBreakdownBySite(breakdown);
+
     }
   };
 
