@@ -77,7 +77,7 @@ const PortfolioPerformanceChart = (props) => {
           dates.end +
           "&buildingType=" +
           buildingType +
-          "&dataSet=Breakdowns&functionName=verdeosDemoPortfolioPerformance"
+          "&dataSet=Insights&functionName=verdeosDemoPortfolioPerformance"
       );
       setTotalBreakdownBySite(breakdown);
 

@@ -70,7 +70,7 @@ function PortfolioMap(props) {
       if (stateMarkers) {
         stateMarkers.forEach((buildings) => {
           var icon = {
-            url: "/map/mainicon.png",
+            url: "/map/mainIcon.png",
             scaledSize: new google.maps.Size(75, 75),
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(45, 30),
