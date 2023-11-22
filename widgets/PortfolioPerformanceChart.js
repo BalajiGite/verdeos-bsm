@@ -204,10 +204,10 @@ const PortfolioPerformanceChart = (props) => {
               <div className="p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
                   <div className="text-color-card-header font-medium">
-                    Total Breakdowns
+                    Total Insights
                   </div>
                   <div className="text-color-card-header text-sm">
-                    Top 9 Building Breakdowns by Site
+                    Top 9 Building Insights by Site
                   </div>
                 </div>
                 <PortfolioPerformance data={totalBreakdownBySite} />
