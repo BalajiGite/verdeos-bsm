@@ -69,7 +69,7 @@ const PortfolioPerformanceChart = (props) => {
           "&dataSet=Overrides&functionName=verdeosDemoPortfolioPerformance"
       );
       setTotalovveridesBySite(ovverides);
-      
+
       const breakdown = await getApiDataFromAws(
         "startDateString=" +
           dates.start +
@@ -77,7 +77,7 @@ const PortfolioPerformanceChart = (props) => {
           dates.end +
           "&buildingType=" +
           buildingType +
-          "&dataSet=Faults&functionName=verdeosDemoPortfolioPerformance"
+          "&dataSet=Breakdowns&functionName=verdeosDemoPortfolioPerformance"
       );
       setTotalBreakdownBySite(breakdown);
 
