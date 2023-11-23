@@ -26,16 +26,19 @@ export default function EnergyUsageIntensity(props) {
   }, [props.buildingType, props.dateSpan, props.dataSet]);
 
   useEffect(() => {
+    
     if (chartData) {
       // Extract data from the fetched JSON
       const labels = chartData.ts;
       const datasets = chartData.datasets.map((dataset) => ({
         label: dataset.label,
         data: dataset.data,
+        //backgroundColor: '#2196f3',
+        //fill:dataset.label === "Target Upper" || dataset.label === "Target Lower" ? '-1': false,
         borderColor:
           dataset.label === "Industry Standards" || dataset.label === "Internal Standards"
             ? "#696565"
-            : getRandomColor(),
+            : dataset.label === "Target Upper"?"#1BC388":dataset.label === "Target Lower"?"#4397F6":"rgb(127, 181, 57)",
         borderDash:
           dataset.label === "Industry Standards" || dataset.label === "Internal Standards"
             ? [5, 5]
