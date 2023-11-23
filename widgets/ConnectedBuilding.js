@@ -31,14 +31,11 @@ const ConnectedBuilding = (props) => {
             </div>
           </div>
           <div className="flex mb-4">
-            <div className="w-80 text-color-lable"></div>
-            <div className="float-left bg-black flex items-center justify-start" style={{width:"11rem"}}>
-              <div className="w-3 h-3 bg-yellow-500 rounded-full flex items-center justify-center"></div>
-              <span className="ml-2 text-color-lable-value">
-                {cartData.totalReadings}
-              </span>
+            <div className="w-80 text-color-card-header font-medium uppercase" style={{fontSize:"14px"}}>
+               Data Sources Connected
             </div>
-          </div>
+          </div>  
+
           {cartData.sites.map((site) => (
             <div className="flex" key={site.id}>
               <div className="w-80 text-color-lable">{site.name}</div>
@@ -53,6 +50,15 @@ const ConnectedBuilding = (props) => {
               </div>
             </div>
           ))}
+          <div className="flex mb-4">
+            <div className="w-80 text-color-lable">Total</div>
+            <div className="float-left bg-black flex items-center justify-start" style={{width:"11rem"}}>
+              <div className="w-3 h-3 bg-yellow-500 rounded-full flex items-center justify-center"></div>
+              <span className="ml-2 text-color-lable-value">
+                {cartData.totalReadings}
+              </span>
+            </div>
+          </div>
         </div>
       )}
     </>

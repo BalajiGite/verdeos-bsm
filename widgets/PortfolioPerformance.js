@@ -42,6 +42,13 @@ const PortfolioPerformance = ({ data }) => {
                 },
               },
             ],
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: "Unit",
+                fontColor: "white",
+              },  
+            }]
           },
           maintainAspectRatio: false,
         },

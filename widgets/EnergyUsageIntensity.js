@@ -97,13 +97,13 @@ export default function EnergyUsageIntensity(props) {
                   fontColor: "white",
                 },
                 gridLines: {
-                  display: false,
+                  display: true,
                   borderDash: [2],
                   borderDashOffset: [2],
-                  color: "white", // Set grid line color to white
+                  color: "#2A4456", // Set grid line color to white
                   zeroLineColor: "white", // Set zero line color to white
-                  zeroLineBorderDash: [2],
-                  zeroLineBorderDashOffset: [2],
+                  zeroLineBorderDash: [0],
+                  zeroLineBorderDashOffset: [0],
                 },
               },
             ],
@@ -111,22 +111,22 @@ export default function EnergyUsageIntensity(props) {
               {
                 ticks: {
                   fontColor: "white", // Set font color to white
-                  maxTicksLimit: 5,
+                  maxTicksLimit: 10,
                   suggestedMin: 120000,
                 },
-                display: false,
+                display: true,
                 scaleLabel: {
-                  display: false,
-                  labelString: "Value",
+                  display: true,
+                  labelString: chartData.unit,
                   fontColor: "white",
                 },
                 gridLines: {
                   borderDash: [3],
                   borderDashOffset: [3],
                   drawBorder: false,
-                  color: "white", // Set grid line color to white
-                  zeroLineColor: "rgba(33, 37, 41, 0)",
-                  zeroLineBorderDash: [2],
+                  color: "#2A4456", // Set grid line color to white
+                  zeroLineColor: "white",
+                  zeroLineBorderDash: [0],
                   zeroLineBorderDashOffset: [2],
                 },
               },
@@ -177,7 +177,7 @@ export default function EnergyUsageIntensity(props) {
         </div>
         <div className="p-1 flex-auto">
           {/* Chart */}
-          <div className="relative energy-usage-intensity-button-bg-color-content">
+          <div className="p-5 relative energy-usage-intensity-button-bg-color-content">
             <canvas id="line-chart" style={{ height: "350px" }}></canvas>
           </div>
         </div>
