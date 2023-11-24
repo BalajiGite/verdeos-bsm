@@ -35,7 +35,7 @@ const NabersRatingWidget = (props) => {
                         <img
                           src="/energy/star.png"
                           alt="NABERS Ratings"
-                          className="h-14"
+                          
                         />
                         <span
                           style={{

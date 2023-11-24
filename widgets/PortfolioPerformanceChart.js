@@ -55,7 +55,7 @@ const PortfolioPerformanceChart = (props) => {
           dates.end +
           "&buildingType=" +
           buildingType +
-          "&dataSet=Indoor Air Quality&functionName=verdeosDemoPortfolioPerformance"
+          "&dataSet=Faults&functionName=verdeosDemoPortfolioPerformance"
       );
       setTotalAlarmsBySite(alarm);
 
@@ -182,10 +182,10 @@ const PortfolioPerformanceChart = (props) => {
               <div className="p-1 rounded border border-4 chart-border-color">
                 <div className="p-1">
                   <div className="text-color-card-header font-medium">
-                    Total Alarms
+                    Total Faults
                   </div>
                   <div className="text-color-card-header text-sm">
-                    Top 10 Building Alarms by Site
+                    Top 10 Building Faults by Site
                   </div>
                 </div>
                 <PortfolioPerformance data={totalAlarmsBySite} />
