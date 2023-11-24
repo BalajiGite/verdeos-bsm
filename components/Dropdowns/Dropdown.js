@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 const Dropdown = ({ selected, options, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,18 +31,7 @@ const Dropdown = ({ selected, options, onSelect }) => {
           aria-haspopup="listbox"
         >
           {selected}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 ml-2 -mr-2"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M12.293 5.293a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 7.414 5.707 11.707a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <FontAwesomeIcon icon={faAngleDown} style={{ fontSize: '20px', margin:"1px", paddingLeft:"3px" }}/>
         </button>
       </div>
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Chart from "chart.js";
+import Chart from "chart.js/auto"; // Import from "chart.js/auto"
 
 import { getApiDataFromAws, getDates } from "../api/dashboardDataService";
 import EnergyIntensityWidget from "./EnergyIntensityWidget";
@@ -8,14 +8,10 @@ export default function EnergyUsageIntensity(props) {
   const [chartData, setChartData] = useState(null);
 
   const fetchData = async (buildingType, dateSpan, dataSet) => {
-    //alert("called from Energy Usage:" + buildingType + " " + dateSpan + " " + dataSet);
-
-    if(buildingType !=null && dateSpan !=null && dataSet !=null)
-    {
-      const dates = getDates(dateSpan)
+    if (buildingType != null && dateSpan != null && dataSet != null) {
+      const dates = getDates(dateSpan);
       const resp = await getApiDataFromAws(
-        "startDateString="+dates.start+"&endDateString="+dates.end+"&buildingType="+buildingType+
-        "&dataSet="+dataSet+"&functionName=verdeosDemoTimeseriesDataGen&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null"
+        `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=${dataSet}&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
       );
       setChartData(resp[0]);
     }
@@ -26,129 +22,130 @@ export default function EnergyUsageIntensity(props) {
   }, [props.buildingType, props.dateSpan, props.dataSet]);
 
   useEffect(() => {
-    
     if (chartData) {
-      // Extract data from the fetched JSON
-      const labels = chartData.ts;
-      const datasets = chartData.datasets.map((dataset) => ({
-        label: dataset.label,
-        data: dataset.data,
-        //backgroundColor: '#2196f3',
-        //fill:dataset.label === "Target Upper" || dataset.label === "Target Lower" ? '-1': false,
-        borderColor:
+      if (chartData.isError) {
+        // Destroy existing chart if it exists
+        if (window.myLine) {
+          window.myLine.destroy();
+        }
+      } else {
+        // Extract data from the fetched JSON
+        const labels = chartData.ts;
+        const datasets = chartData.datasets.map((dataset) => ({
+          label: dataset.label,
+          data: dataset.data,
+          backgroundColor: 
           dataset.label === "Industry Standards" || dataset.label === "Internal Standards"
-            ? "#696565"
-            : dataset.label === "Target Upper"?"#1BC388":dataset.label === "Target Lower"?"#4397F6":"rgb(127, 181, 57)",
-        borderDash:
-          dataset.label === "Industry Standards" || dataset.label === "Internal Standards"
-            ? [5, 5]
-            : [],
-        fill: false,
-      }));
+              ? "#696565"
+              : dataset.label === "Target Upper"
+              ? "#1BC388"
+              : dataset.label === "Target Lower"
+              ? "#4397F6"
+              : "rgb(127, 181, 57)",
+          borderColor:
+            dataset.label === "Industry Standards" || dataset.label === "Internal Standards"
+              ? "#696565"
+              : dataset.label === "Target Upper"
+              ? "#1BC388"
+              : dataset.label === "Target Lower"
+              ? "#4397F6"
+              : "rgb(127, 181, 57)",
+          borderDash:
+            dataset.label === "Industry Standards" || dataset.label === "Internal Standards"
+              ? [5, 5]
+              : [],
+          fill: false,
+        }));
 
-       // Destroy existing chart if it exists
-      if (window.myLine) {
-        window.myLine.destroy();
-      }
+        // Destroy existing chart if it exists
+        if (window.myLine) {
+          window.myLine.destroy();
+        }
 
-      // Create the chart
-      const config = {
-        type: "line",
-        data: {
-          labels: labels,
-          datasets: datasets,
-        },
-        options: {
-          maintainAspectRatio: false,
-          responsive: true,
-          title: {
-            display: false,
-            text: "Portfolio Comliance",
-            fontColor: "white", // Set font color to white
+        // Create the chart
+        const config = {
+          type: "line",
+          data: {
+            labels: labels,
+            datasets: datasets,
           },
-          legend: {
-            labels: {
-              fontColor: "white", // Set font color to white
+          options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+              title: {
+                display: false,
+                text: "Portfolio Compliance",
+                color: "white",
+              },
+              legend: {
+                display: true,
+                labels: {
+                  color: "white",
+                },
+                align: "end",
+                position: "bottom",
+              },
+              tooltip: {
+                mode: "index",
+                intersect: false,
+              },
             },
-            align: "end",
-            position: "bottom",
-          },
-          tooltips: {
-            mode: "index",
-            intersect: false,
-          },
-          hover: {
-            mode: "nearest",
-            intersect: true,
-          },
-          scales: {
-            xAxes: [
-              {
-                ticks: {
-                  fontColor: "white", // Set font color to white
-                  maxRotation: 0,
-                  autoSkip: true,
-                  maxTicksLimit: 7,
-                },
-                display: true,
-                scaleLabel: {
-                  display: false,
-                  labelString: "Date",
-                  fontColor: "white",
-                },
-                gridLines: {
+            scales: {
+              xAxes: 
+                {
+                  ticks: {
+                    color: "white",
+                    maxRotation: 0,
+                    autoSkip: true,
+                    maxTicksLimit: 7,
+                  },
                   display: true,
-                  borderDash: [2],
-                  borderDashOffset: [2],
-                  color: "#2A4456", // Set grid line color to white
-                  zeroLineColor: "white", // Set zero line color to white
-                  zeroLineBorderDash: [0],
-                  zeroLineBorderDashOffset: [0],
-                },
+                  title: {
+                    display: false,
+                    text: "Date",
+                    color: "white",
+                  },
+                  grid: {
+                    display: true,
+                    color: "#2A4456",
+                    borderDash: [2],
+                    borderDashOffset: [2],
+                  },
               },
-            ],
-            yAxes: [
-              {
-                ticks: {
-                  fontColor: "white", // Set font color to white
-                  maxTicksLimit: 10,
-                  suggestedMin: 120000,
-                },
-                display: true,
-                scaleLabel: {
+              yAxes: 
+                {
+                  ticks: {
+                    color: "white",
+                    maxTicksLimit: 10,
+                    suggestedMin: 0,
+                  },
                   display: true,
-                  labelString: chartData.unit,
-                  fontColor: "white",
+                  title: {
+                    display: true,
+                    text: chartData.unit,
+                    color:"white"
+                  },
+                  grid: {
+                    color: "#2A4456",
+                    borderDash: [3],
+                    borderDashOffset: [3],
+                    drawBorder: true,
+                    zeroLineColor: "white",
+                    zeroLineBorderDash: [0],
+                    zeroLineBorderDashOffset: [2],
+                  },
                 },
-                gridLines: {
-                  borderDash: [3],
-                  borderDashOffset: [3],
-                  drawBorder: false,
-                  color: "#2A4456", // Set grid line color to white
-                  zeroLineColor: "white",
-                  zeroLineBorderDash: [0],
-                  zeroLineBorderDashOffset: [2],
-                },
-              },
-            ],
+              //],
+            },
           },
-        },
-      };
+        };
 
-      const ctx = document.getElementById("line-chart").getContext("2d");
-      window.myLine = new Chart(ctx, config);
+        const ctx = document.getElementById("line-chart").getContext("2d");
+        window.myLine = new Chart(ctx, config);
+      }
     }
   }, [chartData]);
-
-  // Helper function to generate random colors for dataset borders
-  function getRandomColor() {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
 
   return (
     <>

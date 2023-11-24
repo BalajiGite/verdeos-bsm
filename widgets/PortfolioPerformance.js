@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Chart from "chart.js";
+import Chart from "chart.js/auto"; // Import from "chart.js/auto" instead of "chart.js"
 
 const PortfolioPerformance = ({ data }) => {
   const chartRefs = data.map(() => useRef());
@@ -17,7 +17,7 @@ const PortfolioPerformance = ({ data }) => {
     data.forEach((chartData, index) => {
       const ctx = chartRefs[index].current.getContext("2d");
       const newChartInstance = new Chart(ctx, {
-        type: "horizontalBar",
+        type: "bar", // "horizontalBar" is changed to "bar"
         data: {
           labels: chartData.labels,
           datasets: [
@@ -31,26 +31,73 @@ const PortfolioPerformance = ({ data }) => {
           ],
         },
         options: {
-          legend: {
-            display: false
+          indexAxis: 'y',
+          maintainAspectRatio: false,
+          responsive: true,
+          plugins: {
+            title: {
+              display: false,
+              text: "Portfolio Compliance",
+              color: "white",
+            },
+            legend: {
+              display: false,
+              labels: {
+                color: "white",
+              },
+              align: "end",
+              position: "bottom",
+            },
+            tooltip: {
+              mode: "index",
+              intersect: false,
+            },
           },
           scales: {
-            xAxes: [
+            xAxes: 
               {
                 ticks: {
-                  beginAtZero: true,
+                  color: "white",
+                  maxRotation: 40,
+                  autoSkip: true,
+                  maxTicksLimit: 6,
+                },
+                display: true,
+                title: {
+                  display: false,
+                  text: "Date",
+                  color: "white",
+                },
+                grid: {
+                  display: true,
+                  color: "#2A4456",
+                  borderDash: [2],
+                  borderDashOffset: [2],
+                },
+            },
+            yAxes: 
+              {
+                ticks: {
+                  color: "white",
+                }, 
+                display: true,
+                title: {
+                  display: true,
+                  text: chartData.unit,
+                  color:"white"
+                },
+                grid: {
+                  color: "#2A4456",
+                  borderDash: [3],
+                  borderDashOffset: [3],
+                  drawBorder: true,
+                  zeroLineColor: "white",
+                  zeroLineBorderDash: [0],
+                  zeroLineBorderDashOffset: [2],
                 },
               },
-            ],
-            yAxes: [{
-              scaleLabel: {
-                display: true,
-                labelString: "Unit",
-                fontColor: "white",
-              },  
-            }]
+            //],
           },
-          maintainAspectRatio: false,
         },
       });
 
