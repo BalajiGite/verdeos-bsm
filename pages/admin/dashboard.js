@@ -129,21 +129,21 @@ export default function Dashboard(props) {
 
       <hr className="my-4 md:min-w-full" />
       <div className="flex flex-wrap mt-4">
-        <div className="p-1 w-full flex">
-          <div className="m-2 mb-8 w-1/2 bg-portfolio-certification">
+        <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
+          <div className="p-1 w-full bg-portfolio-certification">
             <NabersRatingWidget
               buildingType={selectedBuildingType}
               dateSpan={selectedDateSpan}
               dataSet={selectedDataSet}
             />
           </div>
-          <div className="m-2 mb-8 w-1/2 bg-portfolio-certification">
+          {/**<div className="m-2 mb-8 w-1/2 bg-portfolio-certification">
             <GreenStarRatingWidget
               buildingType={selectedBuildingType}
               dateSpan={selectedDateSpan}
               dataSet={selectedDataSet}
             />
-          </div>
+          </div>**/}
         </div>
       </div>
 

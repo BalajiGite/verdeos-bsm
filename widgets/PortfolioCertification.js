@@ -18,46 +18,38 @@ const PortfolioCertification = (props) => {
   );
 
   const fetchData = async (buildingType, dateSpan, dataSet, isPageLoad) => {
-    //console.log("called from Portfolio Certification:" + buildingType + " " + dateSpan + " " + dataSet + " " + isPageLoad);
-    
     const resp = await getApiDataFromAws(
-      "buildingType="+buildingType+"&functionName=verdeosDemoGetAllNabersRatings&ratingType=" +
-      ratingFilter + "&certification=" + filter
+      "buildingType=" +
+        buildingType +
+        "&functionName=verdeosDemoGetAllNabersRatings&ratingType=" +
+        ratingFilter +
+        "&certification=" +
+        filter
     );
     setCertificationData(resp);
   };
 
   useEffect(() => {
-    fetchData(
-      props.buildingType,
-      props.dateSpan,
-      props.dataSet,
-      false
+    fetchData(props.buildingType, props.dateSpan, props.dataSet, false);
+  }, [props.buildingType, props.dateSpan, props.dataSet, filter, ratingFilter]); // Empty dependency array means this effect will run once when the component mounts
+
+  const setInitialData = async () => {
+    const certFilter = await getApiDataFromAws(
+      "functionName=verdeosDemoCertification"
     );
-  }, [props.buildingType, props.dateSpan, props.dataSet,filter, ratingFilter]); // Empty dependency array means this effect will run once when the component mounts
+    setCertification(certFilter);
+    setFilter(certFilter[0].name);
 
-  const setInitialData = async (b) => {
-      const certFilter = await getApiDataFromAws(
-        "functionName=verdeosDemoCertification"
-      );
-      setCertification(certFilter);
-      setFilter(certFilter[0].name);
+    const rateFilter = await getApiDataFromAws(
+      "functionName=verdeosDemoRatingType"
+    );
+    setRating(rateFilter);
+    setRatingFilter(rateFilter[0].name);
+  };
 
-      const rateFilter = await getApiDataFromAws(
-        "functionName=verdeosDemoRatingType"
-      );
-      setRating(rateFilter);
-      setRatingFilter(rateFilter[0].name);
-  }
   useEffect(() => {
-
-    setInitialData()
-    fetchData(
-      props.buildingType,
-      props.dateSpan,
-      props.dataSet,
-      true
-    );
+    setInitialData();
+    fetchData(props.buildingType, props.dateSpan, props.dataSet, true);
   }, []); // Empty dependency array means this effect will run once when the component mounts
 
   return (
@@ -76,7 +68,9 @@ const PortfolioCertification = (props) => {
                   className="table-bg-color"
                   selected={ratingFilter}
                   options={rating}
-                  onSelect={(selectedFilter) => setRatingFilter(selectedFilter)}
+                  onSelect={(selectedFilter) =>
+                    setRatingFilter(selectedFilter)
+                  }
                 />
               </div>
               <div className="mr-4">
@@ -91,6 +85,7 @@ const PortfolioCertification = (props) => {
           </div>
         </div>
       </div>
+      
       <div className="w-full overflow-x-auto">
         <table className="items-center w-full bg-transparent border-collapse">
           <thead>
@@ -129,19 +124,34 @@ const PortfolioCertification = (props) => {
                             key={index}
                             className="items-center w-full bg-transparent border-collapse"
                           >
-                            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                            <td
+                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center"
+                              style={{ fontSize: "14px" }}
+                            >
                               {item.building}
                             </td>
-                            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                            <td
+                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center"
+                              style={{ fontSize: "14px" }}
+                            >
                               {item.certification}
                             </td>
-                            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                            <td
+                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center"
+                              style={{ fontSize: "14px" }}
+                            >
                               {item.starValue}
                             </td>
-                            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                            <td
+                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center"
+                              style={{ fontSize: "14px" }}
+                            >
                               {item.ratingType}
                             </td>
-                            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                            <td
+                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center"
+                              style={{ fontSize: "14px" }}
+                            >
                               {item.certificateValidTo}
                             </td>
                           </tr>

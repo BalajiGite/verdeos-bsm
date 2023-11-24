@@ -7,24 +7,27 @@ import Auth from "layouts/Auth.js";
 export default function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(true); // Added loading state
+
+  const router = useRouter();
 
   useEffect(() => {
     const isAuthenticated = !!Cookies.get("auth");
-    if (!isAuthenticated) {
-      router.push("/");
-    } else {
+    if (isAuthenticated) {
       router.push("/dashboard");
+    }else {
+      setIsLoading(false); // Set loading to false after checking authentication
     }
-  }, []);
+  }, [router]);
 
-  const router = useRouter();
+  
   const authenticateUser = (username, password) => {
     if (username === "demo" && password === "demo") {
       const userData = {
         username,
         password,
       };
-      const expirationTime = new Date(new Date().getTime() + 90000);
+      const expirationTime = new Date(new Date().getTime() + 24 * 60 * 60 * 1000); // 24 hours in milliseconds
       Cookies.set("auth", JSON.stringify(userData), {
         expires: expirationTime,
       });
@@ -41,6 +44,12 @@ export default function Login() {
       alert("Incorrect username and password");
     }
   };
+
+  if (isLoading) {
+    return (
+    <div style={{ textAlign: 'center', color: 'white', fontSize: 'larger' }}>Loading...</div>
+    )
+  }
 
   return (
     <>

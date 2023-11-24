@@ -110,7 +110,7 @@ const PortfolioPerformanceChart = (props) => {
                     Energy Usage
                   </div>
                   <div className="text-color-card-header text-sm">
-                    Top 9 Total Building Energy Usage by Site
+                    Top 10 Total Building Energy Usage by Site
                   </div>
                 </div>
                 <PortfolioPerformance data={energyUsageBySite} />
@@ -132,7 +132,7 @@ const PortfolioPerformanceChart = (props) => {
                     Carbon Emission
                   </div>
                   <div className="text-color-card-header text-sm">
-                    Top 9 Total Building Emission by Site
+                    Top 10 Total Building Emission by Site
                   </div>
                 </div>
                 <PortfolioPerformance data={carbonEmmisionBySite} />
@@ -154,7 +154,7 @@ const PortfolioPerformanceChart = (props) => {
                     Water Usage
                   </div>
                   <div className="text-color-card-header text-sm">
-                    Top 9 Total Building Water Usage by Site
+                    Top 10 Total Building Water Usage by Site
                   </div>
                 </div>
                 <PortfolioPerformance data={waterUsgaeBySite} />
@@ -185,7 +185,7 @@ const PortfolioPerformanceChart = (props) => {
                     Total Alarms
                   </div>
                   <div className="text-color-card-header text-sm">
-                    Top 9 Building Alarms by Site
+                    Top 10 Building Alarms by Site
                   </div>
                 </div>
                 <PortfolioPerformance data={totalAlarmsBySite} />
@@ -207,7 +207,7 @@ const PortfolioPerformanceChart = (props) => {
                     Total Insights
                   </div>
                   <div className="text-color-card-header text-sm">
-                    Top 9 Building Insights by Site
+                    Top 10 Building Insights by Site
                   </div>
                 </div>
                 <PortfolioPerformance data={totalBreakdownBySite} />
@@ -229,7 +229,7 @@ const PortfolioPerformanceChart = (props) => {
                     Total Overrides
                   </div>
                   <div className="text-color-card-header text-sm">
-                    Top 9 Building Overrides by Site
+                    Top 10 Building Overrides by Site
                   </div>
                 </div>
                 <PortfolioPerformance data={totalovveridesBySite} />
