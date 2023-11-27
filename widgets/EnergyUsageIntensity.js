@@ -6,6 +6,7 @@ import EnergyIntensityWidget from "./EnergyIntensityWidget";
 
 export default function EnergyUsageIntensity(props) {
   const [chartData, setChartData] = useState(null);
+  const [portfolioCompliance, setPortfolioCompliance] = useState({});
 
   const fetchData = async (buildingType, dateSpan, dataSet) => {
     if (buildingType != null && dateSpan != null && dataSet != null) {
@@ -14,6 +15,9 @@ export default function EnergyUsageIntensity(props) {
         `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=${dataSet}&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
       );
       setChartData(resp[0]);
+      const complianceJson = {"tarTitle": resp[0].tarTitle,"tarPerc":resp[0].tarPerc, "tarColor":resp[0].tarColor, "valTot":resp[0].valTot}
+      setPortfolioCompliance(complianceJson)
+
     }
   };
 
@@ -168,7 +172,7 @@ export default function EnergyUsageIntensity(props) {
         <div className="rounded-t mb-0 px-1 py-1 bg-transparent">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full ">
-              <EnergyIntensityWidget />
+              <EnergyIntensityWidget data={portfolioCompliance}/>
             </div>
           </div>
         </div>

@@ -5,26 +5,13 @@ import {
 } from "../api/dashboardDataService";
 import Dropdown from "../components/Dropdowns/Dropdown.js"; // Create Dropdown component
 
-const EnergyIntensityWidget = () => {
+const EnergyIntensityWidget = (props) => {
   const [portfolioCompliance, setPortfolioCompliance] = useState(null);
-  const [dateSet, setDateSet] = useState(null);
-  const [selectedDataSet, setSelectedDataSet] = useState(null);
 
-  const [buildingType, setBuildingType] = useState(null);
-  const [selectedBuildingType, setSelectedBuildingType] = useState(null);
-
-  const handleOptionSelect = (option) => {
-    setSelectedDataSet(option);
-  };
-
-  const handleBuildingType = (option) => {
-    setSelectedBuildingType(option);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
-      const portfolioCompliance = await getPortfolioComplianceDemo(9);
-      setPortfolioCompliance(portfolioCompliance);
+     
     };
 
     fetchData();
@@ -56,47 +43,34 @@ const EnergyIntensityWidget = () => {
       </div>
 
       <div className="flex justify-start">
-        {portfolioCompliance && (
+        {props.data && (
           <>
             <table>
               <tbody>
                 <tr>
-                  <td className="text-center font-medium">Sites Connected</td>
-                  <td className="text-center font-medium">Site EUI</td>
-                  <td className="text-center font-medium">Trend</td>
-                 
+                  <td className="text-center font-medium">Total Energy Consumed</td>
+                  <td className="text-center font-medium">Trend</td>                 
                 </tr>
                 <tr>
                   <td>
                     <p className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded flex">
                       <span
-                        style={{ background: portfolioCompliance.siteEuiColor }}
+                        style={{ background: props.data.tarColor }}
                         className="w-3 h-3 rounded-full mt-1 flex items-center justify-center"
                       ></span>
                       <span className="flex items-center justify-center ml-2">
-                        {portfolioCompliance.sitesConnected}
+                        {props.data.valTot}
                       </span>
                     </p>
                   </td>
                   <td>
                     <p className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded flex">
                       <span
-                        style={{ background: portfolioCompliance.siteEuiColor }}
+                        style={{ background: props.data.tarColor }}
                         className="w-3 h-3 rounded-full mt-1 flex items-center justify-center"
                       ></span>
                       <span className="flex items-center justify-center ml-2">
-                        {portfolioCompliance.sitesConnected}
-                      </span>
-                    </p>
-                  </td>
-                  <td>
-                    <p className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded flex">
-                      <span
-                        style={{ background: portfolioCompliance.siteEuiColor }}
-                        className="w-3 h-3 rounded-full mt-1 flex items-center justify-center"
-                      ></span>
-                      <span className="flex items-center justify-center ml-2">
-                        {portfolioCompliance.trend}
+                        {props.data.tarPerc}
                       </span>
                     </p>
                   </td>
