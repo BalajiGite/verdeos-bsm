@@ -18,6 +18,7 @@ function PortfolioMap(props) {
       const resp = await getApiDataFromAws(prepareData);
       setStateMarkers(resp);
       setLoading(false);
+      loadMapData()
     }
   };
 
@@ -37,6 +38,11 @@ function PortfolioMap(props) {
 
   const mapRef = React.useRef(null);
   useEffect(() => {
+    setLoading(true)
+    loadMapData()
+  }, [loading, props.buildingType, props.dateSpan, props.dataSet]);
+
+  const loadMapData = async()=>{
     if (!loading && props.buildingType && props.dateSpan && props.dataSet) {
       let google = window.google;
       let map = mapRef.current;
@@ -103,7 +109,7 @@ function PortfolioMap(props) {
         content: contentString,
       });
     }
-  }, [loading, props.buildingType, props.dateSpan, props.dataSet]);
+  };
 
   return (
     <>

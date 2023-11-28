@@ -37,7 +37,7 @@ export default function Navbar() {
             </div>
             <div className="ml-2 inline-block">
               <h2 className="text-lg font-bold mb-2">Grosvenor</h2>
-              <p className="text-sm text-white">Refining Building Outcomes</p>
+              <p className="text-sm text-white">Redefining Building Outcomes</p>
             </div>
           </div>
         </div>
