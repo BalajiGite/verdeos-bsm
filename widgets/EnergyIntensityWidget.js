@@ -48,7 +48,7 @@ const EnergyIntensityWidget = (props) => {
             <table>
               <tbody>
                 <tr>
-                  <td className="text-center font-medium">Total Energy Consumed</td>
+                  <td className="text-center font-medium">{props.data.tarTitle}</td>
                   <td className="text-center font-medium">Trend</td>                 
                 </tr>
                 <tr>
