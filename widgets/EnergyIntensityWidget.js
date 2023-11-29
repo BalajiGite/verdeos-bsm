@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretUp,faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import {
   getPortfolioComplianceDemo,
   getApiDataFromAws,
@@ -19,7 +21,7 @@ const EnergyIntensityWidget = (props) => {
 
   return (
     <div className="p-2 rounded shadow text-white energy-usage-intensity-button-bg-color-content">
-      <div className="flex w-full">
+      {/**<div className="flex w-full">
         <div className="flex justify-start w-full">
           <div>
             <div className="flex">
@@ -40,7 +42,7 @@ const EnergyIntensityWidget = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div>**/}
 
       <div className="flex justify-start">
         {props.data && (
@@ -76,17 +78,9 @@ const EnergyIntensityWidget = (props) => {
                   </td>
                  
                   <td>
-                    <div className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded">
-                      <img
-                        alt="Polygon2"
-                        className="w-3 h-3"
-                        src="/img/Polygon3.png"
-                      />
-                      <img
-                        alt="Polygon3"
-                        className="w-3 h-3"
-                        src="/img/Polygon2.png"
-                      />
+                    <div className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded" >
+                      <div><FontAwesomeIcon icon={faCaretUp} size="xl" style={{color: "#2d69d2", margin: "0"}} /></div>
+                      <div><FontAwesomeIcon icon={faCaretDown} size="xl" style={{color: "#2d69d2",  margin: "0"}}/></div>
                     </div>
                   </td>
                 </tr>

@@ -55,7 +55,7 @@ export default function EnergyUsageIntensity(props) {
               ? "#4397F6"
               : "rgb(127, 181, 57)",
           borderDash:
-            dataset.label === "Industry Standards" || dataset.label === "Internal Standards"
+            dataset.label === "Target Upper" || dataset.label === "Target Lower"
               ? [5, 5]
               : [],
           fill: false,
@@ -159,9 +159,7 @@ export default function EnergyUsageIntensity(props) {
 
       <div className="mt-3">
         <div className="border-b border-slate-500 mb-1 flex">
-          <span className="text-color-card-header energy-usage-intensity-button-bg-color text-sm p-3 border bg-slate-600 border-slate-500">
-            Standards
-          </span>
+         
           <span className="text-color-card-header energy-usage-intensity-target-button-bg-color text-sm p-3 border bg-slate-600 border-slate-500">
             Targets
           </span>
