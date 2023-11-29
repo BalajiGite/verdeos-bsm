@@ -31,7 +31,7 @@ export default function Navbar() {
                 <img
                   alt="..."
                   className="w-full rounded-full align-middle shadow-lg"
-                  src="/img/team-1-800x800.jpg"
+                  src="/img/nick.jfif"
                 />
               </span>
             </div>
