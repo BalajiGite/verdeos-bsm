@@ -51,7 +51,7 @@ const EnergyIntensityWidget = (props) => {
               <tbody>
                 <tr>
                   <td className="text-center font-medium">{props.data.tarTitle}</td>
-                  <td className="text-center font-medium">Trend</td>                 
+                  <td className="text-center font-medium">YoY Trend</td>                 
                 </tr>
                 <tr>
                   <td>
@@ -79,8 +79,9 @@ const EnergyIntensityWidget = (props) => {
                  
                   <td>
                     <div className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded" >
-                      <div><FontAwesomeIcon icon={faCaretUp} size="xl" style={{color: "#2d69d2", margin: "0"}} /></div>
-                      <div><FontAwesomeIcon icon={faCaretDown} size="xl" style={{color: "#2d69d2",  margin: "0"}}/></div>
+                     {props.data.arrowIndex == 1? <div><FontAwesomeIcon icon={faCaretUp} size="xl" style={{color: props.data.tarColor, margin: "0"}} /></div>
+                      :<div><FontAwesomeIcon icon={faCaretDown} size="xl" style={{color: props.data.tarColor,  margin: "0"}}/></div>
+                      }
                     </div>
                   </td>
                 </tr>

@@ -24,7 +24,7 @@ const ConnectedBuilding = (props) => {
               Sites Connected
             </div>
             <div className="w-20 ml-auto flex bg-black items-center justify-end">
-              <div className="w-3 h-3 bg-yellow-500 rounded-full flex items-center justify-center"></div>
+              <div className="w-3 h-3 rounded-full flex items-center justify-center"  style={{ background: cartData.color }}></div>
               <span className="ml-2 text-color-lable-value font-medium">
                 {cartData.totalSite}
               </span>
@@ -53,7 +53,7 @@ const ConnectedBuilding = (props) => {
           <div className="flex mb-4">
             <div className="w-80 text-color-lable">Total</div>
             <div className="float-left bg-black flex items-center justify-start" style={{width:"11rem"}}>
-              <div className="w-3 h-3 bg-yellow-500 rounded-full flex items-center justify-center"></div>
+              <div className="w-3 h-3  rounded-full flex items-center justify-center"  style={{ background: cartData.color }}></div>
               <span className="ml-2 text-color-lable-value">
                 {cartData.totalReadings}
               </span>
