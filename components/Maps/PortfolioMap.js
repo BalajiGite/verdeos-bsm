@@ -46,11 +46,11 @@ function PortfolioMap(props) {
     if (!loading && props.buildingType && props.dateSpan && props.dataSet) {
       let google = window.google;
       let map = mapRef.current;
-      let lat = "-25.2744";
-      let lng = "133.7751";
+      let lat = "-31.466002";
+      let lng = "145.796241";
       const myLatlng = new google.maps.LatLng(lat, lng);
       const mapOptions = {
-        zoom: 4,
+        zoom: 5,
         center: myLatlng,
         scrollwheel: false,
         zoomControl: true,
