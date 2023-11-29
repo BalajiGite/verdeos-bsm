@@ -50,8 +50,8 @@ const EnergyIntensityWidget = (props) => {
             <table>
               <tbody>
                 <tr>
-                  <td className="text-center font-medium">{props.data.tarTitle}</td>
-                  <td className="text-center font-medium">YoY Trend</td>                 
+                  <td className="text-center font-medium mr-4 ml-4">{props.data.tarTitle}</td>
+                  <td className="text-center font-medium mr-4 ml-4">YoY Trend</td>                 
                 </tr>
                 <tr>
                   <td>
