@@ -33,7 +33,7 @@ const NabersRatingWidget = (props) => {
                 {nabersRatings && 
                   <>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.zeroColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.zeroColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
@@ -48,7 +48,7 @@ const NabersRatingWidget = (props) => {
                       </span>
                     </th>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.zerofiveColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.zerofiveColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
@@ -63,14 +63,14 @@ const NabersRatingWidget = (props) => {
                       </span>
                     </th>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.oneColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.oneColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
                           top: "54%",
                           left: "50%",
                           transform: "translate(-50%, -50%)",
-                          color: "white",
+                          color: "black",
                           fontSize: "0.8rem",
                         }}
                       >
@@ -78,14 +78,14 @@ const NabersRatingWidget = (props) => {
                       </span>
                     </th>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.onehalfColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.onehalfColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
                           top: "54%",
                           left: "50%",
                           transform: "translate(-50%, -50%)",
-                          color: "white",
+                          color: "black",
                           fontSize: "0.8rem",
                         }}
                       >
@@ -93,14 +93,14 @@ const NabersRatingWidget = (props) => {
                       </span>
                     </th>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.twoColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.twoColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
                           top: "54%",
                           left: "50%",
                           transform: "translate(-50%, -50%)",
-                          color: "white",
+                          color: "black",
                           fontSize: "0.8rem",
                         }}
                       >
@@ -108,14 +108,14 @@ const NabersRatingWidget = (props) => {
                       </span>
                     </th>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.twofiveColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.twofiveColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
                           top: "54%",
                           left: "50%",
                           transform: "translate(-50%, -50%)",
-                          color: "white",
+                          color: "black",
                           fontSize: "0.8rem",
                         }}
                       >
@@ -123,7 +123,7 @@ const NabersRatingWidget = (props) => {
                       </span>
                     </th>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.threeColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.threeColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
@@ -138,7 +138,7 @@ const NabersRatingWidget = (props) => {
                       </span>
                     </th>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.threefiveColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.threefiveColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
@@ -153,7 +153,7 @@ const NabersRatingWidget = (props) => {
                       </span>
                     </th>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.fourColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.fourColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
@@ -168,7 +168,7 @@ const NabersRatingWidget = (props) => {
                       </span>
                     </th>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.fourfiveColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.fourfiveColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
@@ -183,7 +183,7 @@ const NabersRatingWidget = (props) => {
                       </span>
                     </th>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.fiveColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.fiveColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
@@ -198,7 +198,7 @@ const NabersRatingWidget = (props) => {
                       </span>
                     </th>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.fivefiveColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.fivefiveColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
@@ -213,7 +213,7 @@ const NabersRatingWidget = (props) => {
                       </span>
                     </th>
                     <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.sixColor, fontSize: "70px" }} />
+                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.sixColor, fontSize: "3.5vw" }} />
                       <span
                         style={{
                           position: "absolute",
