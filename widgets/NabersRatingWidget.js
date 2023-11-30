@@ -10,7 +10,7 @@ const NabersRatingWidget = (props) => {
     const dates = getDates(dateSpan)
     const resp = await getApiDataFromAws(
       "buildingType="+buildingType+
-      "&functionName=verdeosDemoTotalPropertiesByNABERSRating&ratingType=Energy&certification=NABERS"
+      "&functionName=verdeosDemoTotalPropertiesByNABERSRating&ratingType="+dataSet+"&certification=NABERS"
     );
     setNabersRatings(resp && resp[0]);
   };
