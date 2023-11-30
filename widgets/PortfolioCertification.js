@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "../components/Dropdowns/Dropdown.js"; // Create Dropdown component
-
+import NabersRatingWidget from "widgets/NabersRatingWidget";
 import { getApiDataFromAws } from "../api/dashboardDataService";
 
 const PortfolioCertification = (props) => {
@@ -54,7 +54,7 @@ const PortfolioCertification = (props) => {
 
   return (
     <div className="relative flex flex-col min-w-0 break-words text-white energy-usage-intensity-button-bg-color-content w-full mb-6 shadow-lg rounded">
-      <div className="rounded-t mb-0 px-4 py-3 border-0">
+      <div className="rounded-t mb-0 px-4 pt-4 border-0">
         <div className="flex flex-wrap items-center">
           <div className="relative w-full px-4 max-w-full flex-grow flex-1">
             <h3 className="font-semibold text-base text-blueGray-700">
@@ -85,7 +85,25 @@ const PortfolioCertification = (props) => {
           </div>
         </div>
       </div>
-      
+      <hr className="md:min-w-full" />
+      <div className="flex flex-wrap ">
+        <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
+          <div className="p-1 w-full bg-portfolio-certification">
+            <NabersRatingWidget
+              buildingType={props.buildingType}
+              dateSpan={props.dateSpan}
+              dataSet={ratingFilter}
+            />
+          </div>
+          {/**<div className="m-2 mb-8 w-1/2 bg-portfolio-certification">
+            <GreenStarRatingWidget
+              buildingType={selectedBuildingType}
+              dateSpan={selectedDateSpan}
+              dataSet={selectedDataSet}
+            />
+          </div>**/}
+        </div>
+      </div>
       <div className="w-full overflow-x-auto">
         <table className="items-center w-full bg-transparent border-collapse">
           <thead>
