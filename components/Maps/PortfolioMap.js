@@ -103,7 +103,7 @@ function PortfolioMap(props) {
       }
       const contentString =
         '<div class="info-window-content"><h2>VerdeOS</h2>' +
-        "<p>We are using Google map to Show States from verdeos on Click Event</p></div>";
+        "<p>Stay tuned for additional insights in the upcoming VerdeOS app release.</p></div>";
 
       const infowindow = new google.maps.InfoWindow({
         content: contentString,
