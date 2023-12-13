@@ -5,10 +5,11 @@ import Head from "next/head";
 import Router from "next/router";
 
 import PageChange from "components/PageChange/PageChange.js";
+import "../styles/tailwind.css";
 import "../styles/custom.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "styles/tailwind.css";
 import "@aws-amplify/ui-react/styles.css";
+import "../styles/index.css"
 
 // Router.events.on("routeChangeStart", (url) => {
 //   console.log(`Loading: ${url}`);
