@@ -19,7 +19,7 @@ const BuildingTypesWidget = (props) => {
   const getIconForBuildingType = (buildingType) => {
     return "/buildingTypes/" + buildingType + ".svg";
   };
-
+      
   const getMenuSelectionClass = (name) => {
     return props.menuSelection === name && "menu-Active";
   };

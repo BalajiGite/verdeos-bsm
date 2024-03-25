@@ -66,6 +66,7 @@ export default class MyApp extends App {
           <title>VerdeOS - BPM </title>
           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWfMIGf1Q70ffpgIxOwdHsGg5fLPXcI4U"></script>
         </Head>
+        
         <Layout>
           <Component {...pageProps} />
         </Layout>
