@@ -98,9 +98,13 @@
   text-align: left !important;
   color: #EEF1F499 !important;
 }
+.border-bottom{
+  border-bottom: 1px solid #8E8E8E4D;
+}
 
 .energy-usage-intensity-button-bg {
-  background-color: #001F3B;
+  background: #101922;
+  border: 1px solid #C5C5C533;
 }
 
 /* .energy-usage-intensity-button-bg-color {
@@ -143,7 +147,10 @@ linear-gradient(0deg, rgba(142, 142, 142, 0.3), rgba(142, 142, 142, 0.3));
 }
 
 .energy-usage-intensity-button-bg-color-content {
-  background-color: #2A4456 !important;
+  background: linear-gradient(104.5deg, #2A3035 0%, rgba(27, 34, 40, 0) 100%);
+  border: 1px solid #8E8E8E4D;
+  box-shadow: 0px 6px 10px 0px #6060600D;
+  border-radius: 5px;
 }
 
 .energy-usage-intensity-bg-color-content {

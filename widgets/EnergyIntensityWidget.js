@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretUp,faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import {
   getPortfolioComplianceDemo,
   getApiDataFromAws,
@@ -10,17 +10,16 @@ import Dropdown from "../components/Dropdowns/Dropdown.js"; // Create Dropdown c
 const EnergyIntensityWidget = (props) => {
   const [portfolioCompliance, setPortfolioCompliance] = useState(null);
 
-
   useEffect(() => {
     const fetchData = async () => {
-     
+
     };
 
     fetchData();
   }, []);
 
   return (
-    <div className="p-2 rounded shadow text-white energy-usage-intensity-button-bg-color-content">
+    <div className=" text-white border-bottom">
       {/**<div className="flex w-full">
         <div className="flex justify-start w-full">
           <div>
@@ -44,14 +43,14 @@ const EnergyIntensityWidget = (props) => {
         </div>
       </div>**/}
 
-      <div className="flex justify-start">
+      <div className="flex justify-start p-2">
         {props.data && (
           <>
             <table>
               <tbody>
                 <tr>
-                  <td className="text-center font-medium mr-4 ml-4">{props.data.tarTitle}</td>
-                  <td className="text-center font-medium mr-4 ml-4">YoY Trend</td>                 
+                  <td className="text-center font-normal text-xs leading-3  text-[#C5C5C5] mr-4 ml-4">{props.data.tarTitle}</td>
+                  <td className="text-center font-normal text-xs leading-3  text-[#C5C5C5] mr-4 ml-4">YoY Trend</td>
                 </tr>
                 <tr>
                   <td>
@@ -76,11 +75,11 @@ const EnergyIntensityWidget = (props) => {
                       </span>
                     </p>
                   </td>
-                 
+
                   <td>
-                    <div className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded" >
-                     {props.data.arrowIndex == 1? <div><FontAwesomeIcon icon={faCaretUp} size="xl" style={{color: props.data.tarColor, margin: "0"}} /></div>
-                      :<div><FontAwesomeIcon icon={faCaretDown} size="xl" style={{color: props.data.tarColor,  margin: "0"}}/></div>
+                    <div className="text-center mr-4 ml-4  w-30 rounded" >
+                      {props.data.arrowIndex == 1 ? <div><FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: props.data.tarColor, margin: "0" }} /></div>
+                        : <div><FontAwesomeIcon icon={faCaretDown} size="xl" style={{ color: props.data.tarColor, margin: "0" }} /></div>
                       }
                     </div>
                   </td>
