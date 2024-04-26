@@ -22,7 +22,7 @@ export default function EnergyUsageIntensity(props) {
 
     }
   };
-  
+
   useEffect(() => {
     fetchData(props.buildingType, props.dateSpan, props.dataSet);
   }, [props.buildingType, props.dateSpan, props.dataSet]);
@@ -70,23 +70,25 @@ export default function EnergyUsageIntensity(props) {
     }
   }, [chartData]);
   let targetUper = chartData?.datasets[0];
-  console.log(targetUper);
-
   let targetLower = chartData?.datasets[1];
   let performance = chartData?.datasets[2];
 
   let options = {
     chart: {
       type: 'spline',
+      height: 280,
       backgroundColor: 'transparent'
     },
     title: {
-      text: 'PORTFOLIO COMPLIANCE',
+      text: 'Portfolio Compliance',
       align: 'left',
+      // Allow title to float
+
+      // Adjust vertical position of the title
       style: {
         fontFamily: 'Inter, sans-serif',
         fontWeight: '600',    // Set font weight to 600
-        fontSize: '18px',     // Set font size to 18 pixels
+        fontSize: '15px',     // Set font size to 18 pixels
         lineHeight: '21.78px', // Set line height to 21.78 pixels
         color: '#C5C5C5'      // Set title color to white
       }
@@ -102,9 +104,9 @@ export default function EnergyUsageIntensity(props) {
       },
     },
     yAxis: [{
-    gridLineWidth: 1, // Change gridline width
-        gridLineColor: '#8E8E8E4D', // Change gridline color
-        gridLineDashStyle: 'Dash', // Change gridline dash style
+      gridLineWidth: 1, // Change gridline width
+      gridLineColor: '#8E8E8E4D', // Change gridline color
+      gridLineDashStyle: 'Dash', // Change gridline dash style
       title: {
         text: 'Temperature (°C)',
         style: {
@@ -130,11 +132,17 @@ export default function EnergyUsageIntensity(props) {
         color: '#C5C5C5',
         fontWeight: 400,
         fontSize: "12px",
-        fontfamily: 'Inter'         // Set legend text color to red
+        fontfamily: 'Inter' ,
+        
       },
       itemHoverStyle: {
         color: 'white' // Set legend text color to white on hover
       },
+      align: 'right', // Align legend labels to the right
+      verticalAlign: 'top',
+      floating: true,
+      // Align legend labels to top
+      // Adjust vertical position of the legend
       // Highcharts.defaultOptions.legend.backgroundColor || // theme
     },
     plotOptions: {
@@ -148,8 +156,9 @@ export default function EnergyUsageIntensity(props) {
       name: targetUper?.label,
       data: targetUper?.data.map((value) => parseFloat(value)),
       marker: {
-        enabled: false // Hide the markers
-      }
+        enabled: false ,// Hide the markers
+      },
+
 
     }, {
       name: targetLower?.label,
@@ -170,31 +179,22 @@ export default function EnergyUsageIntensity(props) {
   }
   return (
     <>
-      <div className="text-color-card-header font-medium uppercase">
-        Portfolio Compliance
-      </div>
-      <div className="mt-3">
-        <div className="border-b border-slate-500 mb-1 flex">
-          <span className="text-color-card-header energy-usage-intensity-target-button-bg-color text-sm p-3 border bg-slate-600 border-slate-500">
-            Targets
-          </span>
-        </div>
-      </div>
       {/* Your JSX for the chart */}
-      <div className="relative flex flex-col min-w-0 break-words w-full">
+      {/* <div className="relative  min-w-0 break-words w-full">
         <div className="rounded-t mb-0 px-1 py-1 bg-transparent">
           <div className="flex flex-wrap items-center">
-            <div className="relative w-full ">
-              <EnergyIntensityWidget data={portfolioCompliance} />
-            </div>
+           
           </div>
         </div>
         <div className="p-1 flex-auto">
-          {/* Chart */}
-          <div className="p-5 relative energy-usage-intensity-button-bg-color-content">
-            <HighchartsReact highcharts={Highcharts} options={options} />
-          </div>
         </div>
+      </div> */}
+      {/* Chart */}
+      <div className=" relative energy-usage-intensity-button-bg-color-content">
+        <div className="relative w-full">
+          <EnergyIntensityWidget data={portfolioCompliance} />
+        </div>
+        <HighchartsReact highcharts={Highcharts} options={options} />
       </div>
     </>
   );
