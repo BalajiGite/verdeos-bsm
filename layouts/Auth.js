@@ -4,7 +4,7 @@ import React from "react";
 
 import Navbar from "components/Navbars/AuthNavbar.js";
 import FooterSmall from "components/Footers/FooterSmall.js";
-
+import admin from './Admin'
 export default function Auth({ children }) {
   return (
     <>

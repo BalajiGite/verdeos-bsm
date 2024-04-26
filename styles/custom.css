@@ -1,135 +1,205 @@
 /** Custom Classes  **/
 .custom-bg-color {
-    background-color: #07243E;
+  background-color: #07243E;
+}
+
+.secondary-bg-color {
+  border-radius: 4px;
+  background-color: #A0ACB5;
+}
+
+.price-tag {
+  background-color: #4285F4;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-size: 14px;
+  padding: 10px 15px;
+  position: relative;
+}
+
+.price-tag::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, 0);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #4285F4;
+}
+
+.chart-border-color {
+  border-color: #2A4456;
+  border-width: 10px !important;
+}
+
+.chart-button-color {
+  background-color: #2A4456;
+}
+
+.header-font {
+  font-family: Aldrich !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 14px !important;
+  letter-spacing: 0em !important;
+  text-align: left !important;
+  color: #E6E9F5 !important;
+}
+
+.subHeader-font-bold {
+  font-family: Montserrat Alternates !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  line-height: 12px !important;
+  letter-spacing: 0em !important;
+  color: #E6E9F5 !important;
+}
+
+.dataSource-font {
+  font-family: Aldrich !important;
+  font-size: 8px !important;
+  font-weight: 400 !important;
+  line-height: 8px !important;
+  letter-spacing: 0em !important;
+  text-align: left !important;
+  color: #E6E9F5 !important;
+  ;
+}
+
+.subHeader-font {
+  font-family: Montserrat Alternates !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  line-height: 12px !important;
+  letter-spacing: 0em !important;
+  text-align: left !important;
+  color: #E6E9F5 !important;
+}
+
+.menu-font {
+  font-family: Montserrat !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 18px !important;
+  letter-spacing: 0px !important;
+  text-align: left !important;
+  color: #EEF1F499 !important;
+}
+
+.menu-font-site-connected {
+  font-family: Montserrat !important;
+  font-size: 8px !important;
+  font-weight: 400 !important;
+  line-height: 10px !important;
+  letter-spacing: 0em !important;
+  text-align: left !important;
+  color: #EEF1F499 !important;
+}
+
+.energy-usage-intensity-button-bg {
+  background-color: #001F3B;
+}
+
+/* .energy-usage-intensity-button-bg-color {
+  background-color: #00365F !important;
+} */
+
+
+
+.scrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+ .content-bg-color{
+  background-color: #0A1016;
+}
+ .background-color-linear{
+  background: linear-gradient(104.5deg, #2A3035 0%, rgba(27, 34, 40, 0) 100%),
+linear-gradient(0deg, rgba(142, 142, 142, 0.3), rgba(142, 142, 142, 0.3));
+
+ }
+/* Track */
+.scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+.scrollbar::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background:#C5C5C5; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+/* .scrollbar::-webkit-scrollbar-thumb:window-inactive {
+	background: 'green'; 
+} */
+
+.energy-usage-intensity-target-button-bg-color {
+  background-color: #00182F !important;
+}
+
+.energy-usage-intensity-button-bg-color-content {
+  background-color: #2A4456 !important;
+}
+
+.energy-usage-intensity-bg-color-content {
+  background-color: #5a6872 !important;
+}
+
+.energy-usage-intensity-tab {
+  position: relative !important;
+  left: -14px !important;
+  top: -8px !important;
+}
+
+.italic-font {
+  font-style: italic;
+}
+
+.menu-Active {
+  background-color: #3b3e57 !important;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.imageCount {
+  position: absolute;
+  top: 45%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 0.5rem;
+}
+
+@media (min-width: 1280px) {
+
+  .xl\:w-1\/3 {
+    width: 33.333333%;
   }
 
-  .secondary-bg-color {
-    border-radius: 4px;
-    background-color: #A0ACB5;
-  }
-
-  .price-tag {
-    background-color: #4285F4;
-    border-radius: 8px;
-    color: #FFFFFF;
-    font-size: 14px;
-    padding: 10px 15px;
-    position: relative;
-  }
-  
-  .price-tag::after {
-    content: "";
+  .imageCount {
     position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translate(-50%, 0);
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 8px solid #4285F4;
+    top: 45%;
+    left: 41%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 0.5rem;
   }
+}
+.box-shadow{
+  box-shadow: 0px 6px 10px 0px #6060601A;
 
-  .chart-border-color	{
-    border-color:#2A4456;
-    border-width: 10px !important;
-  }
+}
+@media (min-width: 1920px) {
 
-  .chart-button-color	{
-    background-color:#2A4456;
-  }
-
-  .header-font {
-    font-family: Aldrich !important;
-    font-size: 14px !important;
-    font-weight: 400 !important;
-    line-height: 14px !important;
-    letter-spacing: 0em !important;
-    text-align: left !important;
-    color: #E6E9F5 !important;
-  }
-
-  .subHeader-font-bold {
-    font-family: Montserrat Alternates !important; 
-    font-size: 10px !important;
-    font-weight: 700 !important;
-    line-height: 12px !important;
-    letter-spacing: 0em !important;
-    color: #E6E9F5 !important;
-  }
-
-  .dataSource-font {
-    font-family: Aldrich !important;
-    font-size: 8px !important;
-    font-weight: 400 !important;
-    line-height: 8px !important;
-    letter-spacing: 0em !important;
-    text-align: left !important;
-    color: #E6E9F5 !important;
-    ;
-  }
-
-  .subHeader-font {
-    font-family: Montserrat Alternates !important;
-    font-size: 10px !important;
-    font-weight: 400 !important;
-    line-height: 12px !important;
-    letter-spacing: 0em !important;
-    text-align: left !important;
-    color: #E6E9F5 !important;
-  }
-
-  .menu-font {
-    font-family: Montserrat !important;
-    font-size: 12px !important;
-    font-weight: 400 !important;
-    line-height: 18px !important;
-    letter-spacing: 0px !important;
-    text-align: left !important;
-    color: #EEF1F499 !important;
-  }
-  .menu-font-site-connected {
-    font-family: Montserrat !important;
-    font-size: 8px !important;
-    font-weight: 400 !important;
-    line-height: 10px !important;
-    letter-spacing: 0em !important;
-    text-align: left !important;
-    color: #EEF1F499 !important;
-  }
-  .energy-usage-intensity-button-bg {
-    background-color:#001F3B;
-  }
-  .energy-usage-intensity-button-bg-color {
-    background-color: #00365F !important;
-  }
-  .energy-usage-intensity-target-button-bg-color {
-    background-color: #00182F !important;
-  }
-  .energy-usage-intensity-button-bg-color-content {
-    background-color: #2A4456 !important;
-  }
-
-  .energy-usage-intensity-bg-color-content {
-    background-color: #5a6872 !important;
-  }
-
-  .energy-usage-intensity-tab{
-    position: relative !important;
-    left: -14px !important;
-    top: -8px !important;
-  }
-
-  .italic-font{
-    font-style: italic;
-  }
-
-  .menu-Active{
-    background-color: #3b3e57 !important;
-  }
-
-  .clickable {
-    cursor: pointer;
+  .xl\:w-1\/3 {
+    width: 33.333333%;
   }
 
   .imageCount {
@@ -140,41 +210,18 @@
     color: black;
     font-size: 0.5rem;
   }
+}
 
-  @media (min-width: 1280px) {
-
-    .xl\:w-1\/3 {
-      width: 33.333333%;
-    }
-
-    .imageCount {
-      position: absolute;
-      top: 45%;
-      left: 41%;
-      transform: translate(-50%, -50%);
-      color: black;
-      font-size: 0.5rem;
-    }
+@media (min-width: 768px) {
+  .md\:w-75 {
+    width: 19rem;
   }
-  
-  @media (min-width: 1920px) {
+}
 
-    .xl\:w-1\/3 {
-      width: 33.333333%;
-    }
-
-    .imageCount {
-      position: absolute;
-      top: 45%;
-      left: 25%;
-      transform: translate(-50%, -50%);
-      color: black;
-      font-size: 0.5rem;
-    }
-  }
-
-  @media (min-width: 768px){
-      .md\:w-75 {
-          width: 19rem;
-      }
-  }
+.background-linear {
+  background: linear-gradient(104.5deg, #2A3035 0%, rgba(27, 34, 40, 0) 100%),
+    linear-gradient(0deg, rgba(142, 142, 142, 0.3), rgba(142, 142, 142, 0.3));
+  border: 1px solid #8E8E8E4D;
+  box-shadow: 0px 6px 10px 0px #6060600D;
+  border-radius: 5px;
+}
