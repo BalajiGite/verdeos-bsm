@@ -61,7 +61,7 @@ export default function Admin({ children }) {
             <div className=""> <img src="/img/close.png" className="h-6 w-6"/></div>
           </div>
 
-          <AdminNavbar />
+        {/* <AdminNavbar /> */}
           {/* Header */}
           <HeaderStats />
           <div className="px-4 md:px-10 mx-auto w-full  -m-30">

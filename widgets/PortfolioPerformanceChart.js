@@ -17,67 +17,65 @@ const PortfolioPerformanceChart = (props) => {
       const dates = getDates(dateSpan);
       const resp = await getApiDataFromAws(
         "startDateString=" +
-          dates.start +
-          "&endDateString=" +
-          dates.end +
-          "&buildingType=" +
-          buildingType +
-          "&dataSet=Electrical&functionName=verdeosDemoPortfolioPerformance"
+        dates.start +
+        "&endDateString=" +
+        dates.end +
+        "&buildingType=" + buildingType + "&dataSet=Electrical&functionName=verdeosDemoPortfolioPerformance"
       );
       setEnergyUsageBySite(resp);
 
       const carbonEmmision = await getApiDataFromAws(
         "startDateString=" +
-          dates.start +
-          "&endDateString=" +
-          dates.end +
-          "&buildingType=" +
-          buildingType +
-          "&dataSet=Emissions&functionName=verdeosDemoPortfolioPerformance"
+        dates.start +
+        "&endDateString=" +
+        dates.end +
+        "&buildingType=" +
+        buildingType +
+        "&dataSet=Emissions&functionName=verdeosDemoPortfolioPerformance"
       );
       setCarbonEmmisionBySite(carbonEmmision);
 
       const water = await getApiDataFromAws(
         "startDateString=" +
-          dates.start +
-          "&endDateString=" +
-          dates.end +
-          "&buildingType=" +
-          buildingType +
-          "&dataSet=Water&functionName=verdeosDemoPortfolioPerformance"
+        dates.start +
+        "&endDateString=" +
+        dates.end +
+        "&buildingType=" +
+        buildingType +
+        "&dataSet=Water&functionName=verdeosDemoPortfolioPerformance"
       );
       setWaterUsgaeBySite(water);
 
       const alarm = await getApiDataFromAws(
         "startDateString=" +
-          dates.start +
-          "&endDateString=" +
-          dates.end +
-          "&buildingType=" +
-          buildingType +
-          "&dataSet=Faults&functionName=verdeosDemoPortfolioPerformance"
+        dates.start +
+        "&endDateString=" +
+        dates.end +
+        "&buildingType=" +
+        buildingType +
+        "&dataSet=Faults&functionName=verdeosDemoPortfolioPerformance"
       );
       setTotalAlarmsBySite(alarm);
 
       const ovverides = await getApiDataFromAws(
         "startDateString=" +
-          dates.start +
-          "&endDateString=" +
-          dates.end +
-          "&buildingType=" +
-          buildingType +
-          "&dataSet=Overrides&functionName=verdeosDemoPortfolioPerformance"
+        dates.start +
+        "&endDateString=" +
+        dates.end +
+        "&buildingType=" +
+        buildingType +
+        "&dataSet=Overrides&functionName=verdeosDemoPortfolioPerformance"
       );
       setTotalovveridesBySite(ovverides);
 
       const breakdown = await getApiDataFromAws(
         "startDateString=" +
-          dates.start +
-          "&endDateString=" +
-          dates.end +
-          "&buildingType=" +
-          buildingType +
-          "&dataSet=Insights&functionName=verdeosDemoPortfolioPerformance"
+        dates.start +
+        "&endDateString=" +
+        dates.end +
+        "&buildingType=" +
+        buildingType +
+        "&dataSet=Insights&functionName=verdeosDemoPortfolioPerformance"
       );
       setTotalBreakdownBySite(breakdown);
 
@@ -100,11 +98,10 @@ const PortfolioPerformanceChart = (props) => {
           </span>
         </div>
       </div>
-      <div className="flex">
-        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
+        <div className="w-full  p-1">
           <div className="rounded-lg shadow-lg">
             {energyUsageBySite.length > 0 && (
-              <div className="p-1 rounded border border-4 chart-border-color">
+              <div className="p-1 rounded border border-1"style={{borderColor:"#2A4456"}}>
                 <div className="p-1">
                   <div className="text-color-card-header font-medium">
                     Energy Usage
@@ -116,17 +113,18 @@ const PortfolioPerformanceChart = (props) => {
                 <PortfolioPerformance data={energyUsageBySite} />
               </div>
             )}
-            <div className="float-right">
+            {/* <div className="float-right">
               <span className="text-color-lable text-xs uppercase rounded chart-button-color p-4">
                 Share My Report
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
-        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
+      {/* <div className="flex"> */}
+        <div className="w-full  p-1">
           <div className="rounded-lg shadow-lg">
             {carbonEmmisionBySite.length > 0 && (
-              <div className="p-1 p-1 rounded border border-4 chart-border-color">
+              <div className="p-1 rounded border border-1 "style={{borderColor:"#2A4456"}}>
                 <div className="p-1">
                   <div className="text-color-card-header font-medium">
                     Carbon Emission
@@ -138,17 +136,17 @@ const PortfolioPerformanceChart = (props) => {
                 <PortfolioPerformance data={carbonEmmisionBySite} />
               </div>
             )}
-            <div className="float-right">
+            {/* <div className="float-right">
               <span className="text-color-lable text-xs uppercase rounded chart-button-color p-4">
                 Share My Report
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
-        <div className="w-full sm:w-1/2 md:w-4/12 lg:w-4/12 xl:w-1/3 p-1">
+        <div className="w-full  p-1">
           <div className="rounded-lg shadow-lg">
             {waterUsgaeBySite.length > 0 && (
-              <div className="p-1 rounded border border-4 chart-border-color">
+              <div className="p-1 rounded border border-1" style={{borderColor:"#2A4456"}}>
                 <div className="p-1">
                   <div className="text-color-card-header font-medium">
                     Water Usage
@@ -160,14 +158,14 @@ const PortfolioPerformanceChart = (props) => {
                 <PortfolioPerformance data={waterUsgaeBySite} />
               </div>
             )}
-            <div className="float-right">
+            {/* <div className="float-right">
               <span className="text-color-lable text-xs uppercase rounded chart-button-color p-4">
                 Share My Report
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
-      </div>
+      {/* </div> */}
       <div className="mt-3">
         <div className="border-b border-slate-500 mb-1 flex">
           <span className="text-color-card-header text-sm p-3 border bg-slate-600 border-slate-500">

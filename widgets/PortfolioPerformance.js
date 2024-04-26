@@ -1,118 +1,97 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto"; // Import from "chart.js/auto" instead of "chart.js"
+import HighchartsReact from "highcharts-react-official";
+import Highcharts from "highcharts";
 
 const PortfolioPerformance = ({ data }) => {
-  const chartRefs = data.map(() => useRef());
+  let datas = data?.map((item) => item);
+  console.log(datas[0].data);
 
-  useEffect(() => {
-    // Destroy previous charts before rendering new ones
-    chartRefs.forEach((chartRef) => {
-      const chartInstance = chartRef.current.chart;
-      if (chartInstance) {
-        chartInstance.destroy();
+  let options = {
+    chart: {
+      type: 'column',
+      height: 350,
+      backgroundColor: 'transparent'
+    },
+    title: {
+      text: '',
+      align: 'left',
+      style: {
+        fontFamily: 'Inter, sans-serif',
+        fontWeight: '600',    // Set font weight to 600
+        fontSize: '18px',     // Set font size to 18 pixels
+        lineHeight: '21.78px', // Set line height to 21.78 pixels
+        color: '#C5C5C5'      // Set title color to white
       }
-    });
-
-    // Create new charts
-    data.forEach((chartData, index) => {
-      const ctx = chartRefs[index].current.getContext("2d");
-      const newChartInstance = new Chart(ctx, {
-        type: "bar", // "horizontalBar" is changed to "bar"
-        data: {
-          labels: chartData.labels,
-          datasets: [
-            {
-              label: "",
-              data: chartData.data,
-              backgroundColor: "rgba(54, 162, 235, 1)",
-              borderColor: "rgba(54, 162, 235, 1)",
-              borderWidth: 1,
-            },
-          ],
+    },
+    xAxis: {
+      categories: datas[0].labels,
+      lineColor: '#8E8E8E',
+      labels: {
+        style: {
+          color: '#C5C5C5',// Set y-axis label color to white
+          fontWeight: '400'
+        }
+      },
+    },
+    yAxis: [{
+      gridLineWidth: 1, // Change gridline width
+      gridLineColor: '#8E8E8E4D', // Change gridline color
+      gridLineDashStyle: 'Dash', // Change gridline dash style
+      title: {
+        text: '',
+        style: {
+          fontFamily: 'Inter, sans-serif',
+          fontWeight: '400',    // Set font weight to 600
+          fontSize: '12px',     // Set font size to 18 pixels
+          lineHeight: '12.1px', // Set line height to 21.78 pixels
+          color: '#C5C5C5',
+          // Set title color to white
+        }
+      },
+      labels: {
+        style: {
+          color: '#C5C5C5',// Set y-axis label color to white
+          fontWeight: '400'
+        }
+      }
+    }],
+    legend: {
+      //layout: 'horizontal',
+      backgroundColor: 'transparent',
+      itemStyle: {
+        color: '#C5C5C5',
+        fontWeight: 400,
+        fontSize: "12px",
+        fontfamily: 'Inter'         // Set legend text color to red
+      },
+      itemHoverStyle: {
+        color: 'white' // Set legend text color to white on hover
+      },
+      // Highcharts.defaultOptions.legend.backgroundColor || // theme
+    },
+    plotOptions: {
+      line: {
+        dataLabels: {
+          enabled: true,
         },
-        options: {
-          indexAxis: 'y',
-          maintainAspectRatio: false,
-          responsive: true,
-          plugins: {
-            title: {
-              display: false,
-              text: "Portfolio Compliance",
-              color: "white",
-            },
-            legend: {
-              display: false,
-              labels: {
-                color: "white",
-              },
-              align: "end",
-              position: "bottom",
-            },
-            tooltip: {
-              mode: "index",
-              intersect: false,
-            },
-          },
-          scales: {
-            xAxes: 
-              {
-                ticks: {
-                  color: "white",
-                  maxRotation: 40,
-                  autoSkip: true,
-                  maxTicksLimit: 6,
-                },
-                display: true,
-                title: {
-                  display: false,
-                  text: "Date",
-                  color: "white",
-                },
-                grid: {
-                  display: true,
-                  color: "#2A4456",
-                  borderDash: [2],
-                  borderDashOffset: [2],
-                },
-            },
-            yAxes: 
-              {
-                ticks: {
-                  color: "white",
-                }, 
-                display: true,
-                title: {
-                  display: true,
-                  text: chartData.unit,
-                  color:"white"
-                },
-                grid: {
-                  color: "#2A4456",
-                  borderDash: [3],
-                  borderDashOffset: [3],
-                  drawBorder: true,
-                  zeroLineColor: "white",
-                  zeroLineBorderDash: [0],
-                  zeroLineBorderDashOffset: [2],
-                },
-              },
-            //],
-          },
-        },
-      });
-
-      // Attach the chart instance to the chartRef
-      chartRefs[index].current.chart = newChartInstance;
-    });
-  }, [data]);
+      },
+      column: {
+        borderWidth: 0,
+        pointWidth: 15,
+        borderRadius: 10
+      }
+    },
+    series: [{
+      name:"",
+      showInLegend: false ,
+      data: datas[0]?.data
+    }]
+  }
 
   return (
     <div className="w-full">
-      {data.map((chartData, index) => (
-        <div key={index}>
-          <canvas ref={chartRefs[index]} style={{ height: "250px" }}></canvas>
-        </div>
-      ))}
+      <HighchartsReact highcharts={Highcharts} options={options}/>
     </div>
   );
 };
