@@ -160,7 +160,7 @@ export default function Sidebar(props) {
               <p className="font-medium text-[#C5C5C5]" >Sev 2</p>
               <div className="grid gap-4 grid-cols-2">
                 <p className="text-[#C5C5C5]">AFC 5</p>
-                <button className="text-[#C5C5C5] border-2	 rounded-md border-inherit">HVAC Failure</button>
+                <button className="text-[#C5C5C5] border-2	 rounded-md border-inherit">HVAC</button>
               </div>
               <div className="grid gap-4 grid-cols-2">
               <p className="text-[#C5C5C5]">AFC 3</p>
@@ -174,7 +174,7 @@ export default function Sidebar(props) {
                   <p className="font-medium text-[#C5C5C5]" >Sev 1</p>
               <div className="grid gap-4 grid-cols-2">
                 <p className="text-[#C5C5C5]">AFC 5</p>
-                <button className="text-[#C5C5C5] border-2	 rounded-md border-inherit">HVAC Failure</button>
+                <button className="text-[#C5C5C5] border-2	 rounded-md border-inherit">HVAC</button>
               </div>
               <div className="grid gap-4 grid-cols-2">
               <p className="text-[#C5C5C5]">AFC 3</p>
@@ -188,11 +188,13 @@ export default function Sidebar(props) {
                   <button className="text-[#C5C5C5] text-xs border-2	 rounded-md border-inherit w-full text-center p-1">Maintenance Manager Notification</button>
                   <button className="text-[#C5C5C5] text-sm border-2	 rounded-md border-inherit w-full text-center p-1">Building Services Partner</button>
             </div>
-            <MyBpmWidget />
+            {/**
+              <MyBpmWidget />  
+            */}
+           
             <hr className="my-4 md:min-w-full" />
-
             <BuildingTypesWidget {...props} />
-
+            {/**
             <hr className="my-4 md:min-w-full" />
 
             <ConnectedBuilding {...props} />
@@ -211,6 +213,7 @@ export default function Sidebar(props) {
             <hr className="my-4 md:min-w-full" />
 
             <ComplianceReporting />
+            */}
             <hr className="my-4 md:min-w-full" />
           </div>
         </div>

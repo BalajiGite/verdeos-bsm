@@ -38,7 +38,7 @@ export default function Navbar(props) {
 
   return (
     <>
-      <nav className="top-0 sticky  z-50 w-full flex relative flex-wrap items-center justify-between px-6 py-3 navbar-expand-lg custom-bg-color box-shadow ">
+      <nav className="top-0 sticky  z-50 w-full flex relative flex-wrap items-center justify-between px-6 py-4 navbar-expand-lg custom-bg-color box-shadow ">
         {/* {brand} */}
         <Link href="/">
           <a
@@ -47,8 +47,9 @@ export default function Navbar(props) {
           >
             <img
               alt="..."
-              className="w-44 h-12 rounded-full align-middle border-none"
-              src="/img/VerdeOS Logo.png"
+              className="rounded-full align-middle border-none"
+              src="/img/logo.png"
+              width="150"
             ></img>
           </a>
         </Link>
@@ -56,14 +57,15 @@ export default function Navbar(props) {
           selected={selectedDataSet}
           options={dateSet}
           onSelect={handleOptionSelect}
-        />            <div className="flex">
+        />
+        <div className="flex">
           <section className="mr-3">
             <img src="./img/notification.png" alt="notification png" />
           </section>
           <section>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" style={{ cursor: 'pointer', width: "auto", height: "30px" }}>
               <circle cx="20" cy="20" r="20" fill="#1B2228" />
-              <text x="50%" y="50%" textAnchor="middle" alignmentBaseline="middle" fontSize="14" fill="#fff">{ }</text>
+              <text x="50%" y="50%" textAnchor="middle" alignmentBaseline="middle" fontSize="14" fill="#fff">NL</text>
             </svg>
           </section>
 

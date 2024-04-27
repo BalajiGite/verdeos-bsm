@@ -95,7 +95,7 @@ export default function EnergyUsageIntensity(props) {
     },
     credits: {
       enabled: false
-  },
+    },
     xAxis: {
       categories: chartData?.ts,
       lineColor: '#8E8E8E',
@@ -179,17 +179,6 @@ export default function EnergyUsageIntensity(props) {
   
   return (
     <>
-      {/* Your JSX for the chart */}
-      {/* <div className="relative  min-w-0 break-words w-full">
-        <div className="rounded-t mb-0 px-1 py-1 bg-transparent">
-          <div className="flex flex-wrap items-center">
-           
-          </div>
-        </div>
-        <div className="p-1 flex-auto">
-        </div>
-      </div> */}
-      {/* Chart */}
       <div className=" relative energy-usage-intensity-button-bg-color-content">
         <div className="relative w-full">
           <EnergyIntensityWidget data={portfolioCompliance} />
