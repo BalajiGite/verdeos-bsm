@@ -128,10 +128,10 @@ const PortfolioCertification = (props) => {
         </table>
         <table className="items-center w-full bg-transparent border-collapse">
           <tbody>
-            <tr className="w-full overflow-auto">
-              <td className="w-full overflow-auto">
+            <tr className="w-full overflow-auto cert-table-body">
+              <td className="w-full overflow-auto cert-table-body">
                 <div
-                  className="w-full overflow-auto"
+                  className="w-full overflow-auto cert-table-body"
                   style={{ maxHeight: "500px" }}
                 >
                   <table className="items-center w-full bg-transparent border-collapse">

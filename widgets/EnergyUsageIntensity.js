@@ -19,9 +19,15 @@ export default function EnergyUsageIntensity(props) {
       setChartData(resp[0]);
       const complianceJson = { "tarTitle": resp[0]?.tarTitle, "tarPerc": resp[0]?.tarPerc, "tarColor": resp[0]?.tarColor, "valTot": resp[0]?.valTot, "arrowIndex": resp[0]?.arrowIndex }
       setPortfolioCompliance(complianceJson)
-
     }
   };
+
+  function formatDateToDayMonth(timestamp) {
+    const date = new Date(timestamp); // Convert to Date object
+    const day = date.getDate(); // Get day
+    const month = date.toLocaleString('default', { month: 'short' }); // Get abbreviated month name
+    return `${day} ${month}`; // Return formatted date
+  }
 
   useEffect(() => {
     fetchData(props.buildingType, props.dateSpan, props.dataSet);
@@ -97,7 +103,7 @@ export default function EnergyUsageIntensity(props) {
       enabled: false
     },
     xAxis: {
-      categories: chartData?.ts,
+      categories:  chartData?.ts?.map(ts => formatDateToDayMonth(ts)),
       lineColor: '#8E8E8E',
       labels: {
         style: {
