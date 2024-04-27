@@ -38,13 +38,13 @@ const PortfolioCertification = (props) => {
       "functionName=verdeosDemoCertification"
     );
     setCertification(certFilter);
-    setFilter(certFilter[0].name);
+    setFilter(certFilter[0]?.name);
 
     const rateFilter = await getApiDataFromAws(
       "functionName=verdeosDemoRatingType"
     );
     setRating(rateFilter);
-    setRatingFilter(rateFilter[0].name);
+    setRatingFilter(rateFilter[0]?.name);
   };
 
   useEffect(() => {
@@ -137,7 +137,7 @@ const PortfolioCertification = (props) => {
                   <table className="items-center w-full bg-transparent border-collapse">
                     <tbody className="items-center w-full bg-transparent border-collapse">
                       {filteredData &&
-                        filteredData.map((item, index) => (
+                        filteredData?.map((item, index) => (
                           <tr
                             key={index}
                             className="items-center w-full bg-transparent border-collapse"

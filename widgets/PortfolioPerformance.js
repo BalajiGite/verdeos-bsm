@@ -3,9 +3,9 @@ import Highcharts from "highcharts";
 import { useState,useEffect } from "react";
 const PortfolioPerformance = ({ data, color }) => {
   const [chartOptions, setChartOptions] = useState(null);
-
   useEffect(() => {
-    if (data) {
+    // debugger
+    if (data && data.length > 0) {
       const datas = data?.map((item) => item);
       let options = {
         chart: {
@@ -24,8 +24,11 @@ const PortfolioPerformance = ({ data, color }) => {
             color: '#C5C5C5'      // Set title color to white
           }
         },
+        credits: {
+          enabled: false
+      },
         xAxis: {
-          categories: datas[0].labels,
+          categories: datas[0]?.labels,
           lineColor: '#8E8E8E',
           labels: {
             style: {

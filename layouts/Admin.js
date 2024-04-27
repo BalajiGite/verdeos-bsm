@@ -25,8 +25,8 @@ export default function Admin({ children }) {
           menuSelection={menuSelection}
         />
         <div className="relative md:ml-64">
-          <div className="flex first-letter:items-center border border-gray-300 p-1 mx-14 border-[#8E8E8E] rounded-md mt-5">
-            <img src="/img/Group.png" alt="Description of the image" className="mr-2 h-6 w-6 ml-6" />
+          <div className="flex first-letter:items-center border border-gray-300 p-1 mx-14 border-[#8E8E8E] rounded-md mt-5 items-center">
+            <img src="/img/ai.png" alt="Description of the image" className="mr-2 h-4 w-4 ml-6" />
             <span className="text-[#C5C5C5] mr-2 font-semibold">Automative Insights:</span>
             <input type="text" placeholder="Type a question about your data" className="text-[#C5C5C5] outline-none focus:outline-none flex-grow bg-transparent" />
           </div>
