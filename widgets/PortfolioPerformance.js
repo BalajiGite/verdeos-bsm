@@ -24,9 +24,9 @@ const PortfolioPerformance = ({ data, color }) => {
             color: '#C5C5C5'      // Set title color to white
           }
         },
-        credits: {
-          enabled: false
-      },
+        credits:{
+          enabled:false
+        },
         xAxis: {
           categories: datas[0]?.labels,
           lineColor: '#8E8E8E',
