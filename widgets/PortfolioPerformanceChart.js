@@ -40,8 +40,10 @@ const PortfolioPerformanceChart = (props) => {
   const [totalovveridesBySite, setTotalovveridesBySite] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0); // State to track current slide index
   const [currentSlider1 , setCurrentSlider1] = useState(0);
+
   const sliderRef = useRef(null);
   const sliderRef1 = useRef(null);
+
   const fetchData = async (buildingType, dateSpan, dataSet) => {
     if (buildingType != null && dateSpan != null) {
       //alert("called from Portfolio Performance:" + buildingType + " " + dateSpan + " " + dataSet);
@@ -156,7 +158,7 @@ const PortfolioPerformanceChart = (props) => {
         <div className="p-3 border-bottom flex items-center font-semibold">
           Portfolio Performance by:
           <ul style={{ display: 'flex' }} className="mx-2">
-            {portfolioName.map((_, index) => (
+            {portfolioName?.map((_, index) => (
               <li style={{ margin: '0 5px' }} className=" font-semibold text-xs leading-3">
                 <button
                   style={{
@@ -180,7 +182,7 @@ const PortfolioPerformanceChart = (props) => {
         </div>
         <Slider ref={sliderRef}  {...settings}>
           <div className="w-full p-3">
-            {energyUsageBySite.length > 0 && (
+            {energyUsageBySite?.length > 0 && (
               <div>
                 <div className="text-color-card-header font-normal text-xs leading-3  text-[#C5C5C5] mb-2">
                   Top 10 Industrial Buildings
@@ -192,7 +194,7 @@ const PortfolioPerformanceChart = (props) => {
           </div>
           {/* <div className="flex"> */}
           <div className="w-full  p-3 ">
-            {carbonEmmisionBySite.length > 0 && (
+            {carbonEmmisionBySite?.length > 0 && (
               <div className="p-1">
                 <div className="text-color-card-header font-normal text-xs leading-3  text-[#C5C5C5] mb-2">
                   Top 10 Industrial Buildings
@@ -202,7 +204,7 @@ const PortfolioPerformanceChart = (props) => {
             )}
           </div>
           <div className="w-full  p-3">
-            {waterUsgaeBySite.length > 0 && (
+            {waterUsgaeBySite?.length > 0 && (
               <div className="p-1">
                 <div className="text-color-card-header font-normal text-xs leading-3  text-[#C5C5C5] mb-2">
                   Top 10 Industrial Buildings
@@ -217,7 +219,7 @@ const PortfolioPerformanceChart = (props) => {
         <div className="p-3 border-bottom flex items-center font-semibold">
         Maintenance by:
           <ul style={{ display: 'flex' }} className="mx-2">
-            {maintainceName.map((_, index) => (
+            {maintainceName?.map((_, index) => (
               <li style={{ margin: '0 5px' }} className=" font-semibold text-xs leading-3">
                 <button
                   style={{
@@ -241,7 +243,7 @@ const PortfolioPerformanceChart = (props) => {
         </div>
         <Slider ref={sliderRef1} {...settings1}>
           <div className="w-full  p-3">
-            {totalAlarmsBySite.length > 0 && (
+            {totalAlarmsBySite?.length > 0 && (
               <div className="p-1">
                 {/* <div className="text-color-card-header font-medium">
                     Total Faults
@@ -254,7 +256,7 @@ const PortfolioPerformanceChart = (props) => {
             )}
           </div>
           <div className="w-full  p-3">
-            {totalBreakdownBySite && totalBreakdownBySite.length > 0 && (
+            {totalBreakdownBySite && totalBreakdownBySite?.length > 0 && (
               <div className="p-1">
                 {/* <div className="te  xt-color-card-header font-medium">
                     Total Insights
@@ -267,7 +269,7 @@ const PortfolioPerformanceChart = (props) => {
             )}
           </div>
           <div className="w-full  p-3">
-            {totalovveridesBySite.length > 0 && (
+            {totalovveridesBySite?.length > 0 && (
               <div className=" p-1">
                 {/* <div className="text-color-card-header font-medium">
                     Total Overrides

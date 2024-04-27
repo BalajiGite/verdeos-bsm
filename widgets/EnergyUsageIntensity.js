@@ -17,7 +17,7 @@ export default function EnergyUsageIntensity(props) {
         `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=${dataSet}&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
       );
       setChartData(resp[0]);
-      const complianceJson = { "tarTitle": resp[0].tarTitle, "tarPerc": resp[0].tarPerc, "tarColor": resp[0].tarColor, "valTot": resp[0].valTot, "arrowIndex": resp[0].arrowIndex }
+      const complianceJson = { "tarTitle": resp[0]?.tarTitle, "tarPerc": resp[0]?.tarPerc, "tarColor": resp[0]?.tarColor, "valTot": resp[0]?.valTot, "arrowIndex": resp[0]?.arrowIndex }
       setPortfolioCompliance(complianceJson)
 
     }
@@ -93,6 +93,9 @@ export default function EnergyUsageIntensity(props) {
         color: '#C5C5C5'      // Set title color to white
       }
     },
+    credits: {
+      enabled: false
+  },
     xAxis: {
       categories: chartData?.ts,
       lineColor: '#8E8E8E',
@@ -132,8 +135,8 @@ export default function EnergyUsageIntensity(props) {
         color: '#C5C5C5',
         fontWeight: 400,
         fontSize: "12px",
-        fontfamily: 'Inter' ,
-        
+        fontfamily: 'Inter',
+
       },
       itemHoverStyle: {
         color: 'white' // Set legend text color to white on hover
@@ -156,17 +159,14 @@ export default function EnergyUsageIntensity(props) {
       name: targetUper?.label,
       data: targetUper?.data.map((value) => parseFloat(value)),
       marker: {
-        enabled: false ,// Hide the markers
+        enabled: false,// Hide the markers
       },
-
-
     }, {
       name: targetLower?.label,
       data: targetLower?.data.map((value) => parseFloat(value)),
       marker: {
         enabled: false // Hide the markers
       }
-
     },
     {
       name: performance?.label,
@@ -174,9 +174,9 @@ export default function EnergyUsageIntensity(props) {
       marker: {
         enabled: false // Hide the markers
       }
-
     }]
   }
+  
   return (
     <>
       {/* Your JSX for the chart */}
