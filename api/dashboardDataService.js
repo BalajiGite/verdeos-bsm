@@ -7,7 +7,12 @@ const demoAPI = "https://day4cmh9h6.execute-api.ap-southeast-2.amazonaws.com/tes
 
 export const getApiDataFromAws = async (item) => {
     try {
-        const response = await axios.get(API_URL+"/verdeosSkysparkApiTest/?" + item);
+        const headers = {
+            'Content-Type': 'application/json',
+            'Access-Control-Request-Method': 'GET', // If a preflight request is required
+            'Access-Control-Request-Headers': '*', // Custom headers
+        };
+        const response = await axios.get(API_URL+"/verdeosSkysparkApiTest?" + item);
         const data = response.data;
         return data;
     } catch (error) {
@@ -93,7 +98,6 @@ export const getApiDataFromAws = async (item) => {
             const formattedFirstDayOfLastYear = firstDayOfLastYear.toISOString().split('T')[0];
             const formattedLastDayOfLastYear = lastDayOfLastYear.toISOString().split('T')[0];
             data = {"start":formattedFirstDayOfLastYear, "end":formattedLastDayOfLastYear }
-
         }
         
         return data;
@@ -123,8 +127,6 @@ export const getConnectedBuilding = async () => {
         return console.error('Error fetching data:', error);
     }
 }
-
-
 
 export const getConnectedBuildingDemo = async (item) => {
   try {

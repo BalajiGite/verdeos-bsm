@@ -38,6 +38,57 @@ html::-webkit-scrollbar-thumb {
   /* Adjust the color as needed */
 }
 
+.txt_sidebar{
+
+  /* Left Panel/Unselected 14 Regular */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.custom-divider {
+  background-color: hsla(0, 0%, 56%, .3);
+  margin: 12px 0;
+  font-feature-settings: "tnum", "tnum";
+  border-top: 1px solid rgba(0, 0, 0, .06);
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, .85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  padding: 0;
+}
+
+.ant-popover {
+  background-color: #0a1016;
+  border: 1px solid hsla(0, 0%, 56%, .3) !important;
+  border-radius: 5px !important;
+}
+
+.ant-popover-placement-bottomRight .ant-popover-arrow {
+  display: none;
+  right: 16px;
+}
+
+.ant-popover-inner {
+  border-radius: 10px !important;
+  background-color: #0a1016 !important;
+}
+
+.ant-popover-inner-content {
+  background: linear-gradient(0deg, #0a1016, #0a1016), linear-gradient(0deg, hsla(0, 0%, 56%, .3), hsla(0, 0%, 56%, .3));
+  border-radius: 0;
+  color: #c5c5c5 !important;
+  padding: 0 !important;
+}
+
+.ant-popover-inner-content h6 {
+  color: #c5c5c5;
+}
+
 .price-tag {
   background-color: #4285F4;
   border-radius: 8px;

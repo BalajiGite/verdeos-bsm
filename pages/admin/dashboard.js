@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-
 // components
 
 import EnergyUsageIntensity from "widgets/EnergyUsageIntensity.js";
@@ -29,21 +28,32 @@ export default function Dashboard(props) {
   const menuSelection = useContext(MenuSelectionContext);
 
   const fetchDataInitial = async () => {
+
     const buildingTypeJson = await getApiDataFromAws(
       "functionName=verdeosDemoBuildingType"
     );
-    setBuildingType(buildingTypeJson);
-    setSelectedBuildingType(buildingTypeJson[0].name);
 
-    const dateSpan = await getApiDataFromAwsDemo("21");
-    setDateSpan(dateSpan);
-    setSelectedDateSpan(dateSpan[4].name);
+    if(buildingTypeJson !== undefined){
+      setBuildingType(buildingTypeJson);
+      setSelectedBuildingType(buildingTypeJson[0].name);
+    }
+    
 
     const dataSets = await getApiDataFromAws(
       "functionName=verdeosDemoDataSets"
     );
-    setDateSet(dataSets);
-    setSelectedDataSet(dataSets[0].name);
+
+    if(dataSets !==undefined){
+      setDateSet(dataSets);
+      setSelectedDataSet(dataSets[0].name);
+    }
+   
+    const dateSpan = await getApiDataFromAwsDemo("21");
+
+    if(dateSpan !==undefined){
+      setDateSpan(dateSpan);
+      setSelectedDateSpan(dateSpan[4].name);
+    }
   };
 
   useEffect(() => {

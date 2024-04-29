@@ -9,7 +9,9 @@ const ConnectedBuilding = (props) => {
       const resp = await getApiDataFromAws(
         "buildingType="+buildingType+"&functionName=verdeosDemoSiteConnected"
       );
-      setCartData(resp[0]);
+      if(resp !==undefined){
+        setCartData(resp[0]);
+      }
     };
 
     fetchData(props.menuSelection);
@@ -17,7 +19,7 @@ const ConnectedBuilding = (props) => {
 
   return (
     <>
-      {cartData && (
+      {cartData &&  (
         <div>
           <div className="flex">
             <div className="w-80 text-color-card-header font-medium uppercase">

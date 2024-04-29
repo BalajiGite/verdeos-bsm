@@ -696,12 +696,20 @@ video {
   left: 0px;
 }
 
+.left-6 {
+  left: 1.5rem;
+}
+
 .right-0 {
   right: 0px;
 }
 
 .top-0 {
   top: 0px;
+}
+
+.top-14 {
+  top: 3.5rem;
 }
 
 .top-auto {
@@ -1080,10 +1088,6 @@ video {
 
 .w-40 {
   width: 10rem;
-}
-
-.w-44 {
-  width: 11rem;
 }
 
 .w-5 {
@@ -1846,6 +1850,11 @@ video {
 }
 
 .text-\[\#C5C5C5\] {
+  --tw-text-opacity: 1;
+  color: rgb(197 197 197 / var(--tw-text-opacity));
+}
+
+.text-\[\#c5c5c5\] {
   --tw-text-opacity: 1;
   color: rgb(197 197 197 / var(--tw-text-opacity));
 }

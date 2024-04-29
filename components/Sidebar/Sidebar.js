@@ -79,30 +79,6 @@ export default function Sidebar(props) {
 
             {/* <hr className="my-4 md:min-w-full" /> */}
             <div className="mt-4 space-y-8">
-              <div className="text-center flex">
-                <img className="w-6 h-6 mr-3" src="/img/portfolio.png" alt="portfolio" />
-                <p className=" text-[#C5C5C5] font-medium">  Portfolio Manager</p>
-              </div>
-
-              <div className="text-center flex">
-                <img className="w-6 h-6 mr-3" src="/img/system_Management.png" alt="system_management" />
-                <p className=" text-[#8E8E8E] font-medium">  Systems Manager</p>
-              </div>
-
-              <div className="text-center flex">
-                <img className="w-6 h-6 mr-3" src="/img/maintenance.png" alt="maintenance" />
-                <p className="  text-[#8E8E8E] font-medium"> Maintenance Manager</p>
-              </div>
-
-              <div className="text-center flex">
-                <img className="w-6 h-6 mr-3" src="/img/sustainable.png" alt="sustainable" />
-                <p className="  text-[#8E8E8E] font-medium"> Sustainable Manager</p>
-              </div>
-
-              <div className="text-center flex">
-                <img className="w-6 h-6 mr-3 " src="/img/DataPla.png" alt="data_Platform" />
-                <p className="  text-[#8E8E8E] font-medium"> Data Platform</p>
-              </div>
               {/* <div className="w-80 ml-4">
                 <div className="font-medium text-color-card-header">
                  
@@ -111,19 +87,28 @@ export default function Sidebar(props) {
                   Team Homepage
                 </div>
               </div> */}
+              <BuildingTypesWidget {...props} />
 
-              <hr className=" md:min-w-full custom-text-color " />
+              <hr className="custom-divider my-4 md:min-w-full" />
+
+              <ConnectedBuilding {...props} />
+
+              <hr className="custom-divider my-4 md:min-w-full" />
+
+              <DataSourceWidget />
+
+              <hr className="custom-divider md:min-w-full custom-text-color " />
               <div className="flex items-center">
-                <img className="h-4 w-4 mr-3" src="/img/Settings.png" alt="setting" />
-                <p className=" text-[#8E8E8E]">Settings</p>
+                <img className="mr-3" src="/img/settings.svg" alt="setting" />
+                <p className="txt_sidebar text-[#8E8E8E]">Settings</p>
               </div>
 
               <div className="flex items-center">
-                <img className="h-4 w-4 mr-3" src="/img/support.png" alt="setting" />
-                <p className=" text-[#8E8E8E]">Supports</p>
+                <img className="mr-3" src="/img/support.svg" alt="setting" />
+                <p className="txt_sidebar text-[#8E8E8E]">Supports</p>
               </div>
             </div>
-            <div className="background-linear p-2 space-y-4 mt-4">
+             {/**<div className="background-linear p-2 space-y-4 mt-4">
               <p className=" font-medium text-[#C5C5C5]">Total Alarms </p>
               <div className="flex text-[#8E8E8E] custom-border-color rounded border-2 w-36 px-2">last 30 days
                 <span class="pointer-events-none  inset-y-0 right-0 ml-1 flex items-center pr-2">
@@ -188,23 +173,11 @@ export default function Sidebar(props) {
                   <button className="text-[#C5C5C5] text-xs border-2	 rounded-md border-inherit w-full text-center p-1">Maintenance Manager Notification</button>
                   <button className="text-[#C5C5C5] text-sm border-2	 rounded-md border-inherit w-full text-center p-1">Building Services Partner</button>
             </div>
-            {/**
+           
               <MyBpmWidget />  
             */}
            
-            <hr className="my-4 md:min-w-full" />
-            <BuildingTypesWidget {...props} />
-            {/**
-            <hr className="my-4 md:min-w-full" />
-
-            <ConnectedBuilding {...props} />
-
-            <hr className="my-4 md:min-w-full" />
-
-            <DataSourceWidget />
-
-            <hr className="my-4 md:min-w-full" />
-
+            {/** 
             <Team />
 
             <hr className="my-4 md:min-w-full" />
@@ -213,8 +186,10 @@ export default function Sidebar(props) {
             <hr className="my-4 md:min-w-full" />
 
             <ComplianceReporting />
+           
+            <hr className="custom-divider my-4 md:min-w-full" />
             */}
-            <hr className="my-4 md:min-w-full" />
+
           </div>
         </div>
       </nav>

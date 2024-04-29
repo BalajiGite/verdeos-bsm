@@ -37,14 +37,20 @@ const PortfolioCertification = (props) => {
     const certFilter = await getApiDataFromAws(
       "functionName=verdeosDemoCertification"
     );
-    setCertification(certFilter);
-    setFilter(certFilter[0]?.name);
 
+    if(certFilter !==undefined){
+      setCertification(certFilter);
+      setFilter(certFilter[0]?.name);
+    }
+    
     const rateFilter = await getApiDataFromAws(
       "functionName=verdeosDemoRatingType"
     );
-    setRating(rateFilter);
-    setRatingFilter(rateFilter[0]?.name);
+
+    if(rateFilter !==undefined){
+      setRating(rateFilter);
+      setRatingFilter(rateFilter[0]?.name);
+    }
   };
 
   useEffect(() => {

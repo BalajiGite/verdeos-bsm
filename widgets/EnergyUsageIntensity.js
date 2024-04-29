@@ -16,9 +16,11 @@ export default function EnergyUsageIntensity(props) {
       const resp = await getApiDataFromAws(
         `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=${dataSet}&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
       );
-      setChartData(resp[0]);
-      const complianceJson = { "tarTitle": resp[0]?.tarTitle, "tarPerc": resp[0]?.tarPerc, "tarColor": resp[0]?.tarColor, "valTot": resp[0]?.valTot, "arrowIndex": resp[0]?.arrowIndex }
-      setPortfolioCompliance(complianceJson)
+      if (resp !== undefined) {
+        setChartData(resp[0]);
+        const complianceJson = { "tarTitle": resp[0]?.tarTitle, "tarPerc": resp[0]?.tarPerc, "tarColor": resp[0]?.tarColor, "valTot": resp[0]?.valTot, "arrowIndex": resp[0]?.arrowIndex }
+        setPortfolioCompliance(complianceJson)
+      }
     }
   };
 

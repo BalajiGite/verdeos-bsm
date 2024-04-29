@@ -27,12 +27,13 @@ const BuildingTypesWidget = (props) => {
   return (
     <>
       <div className="flex mb-2">
-        <div className="w-80 text-color-card-header font-medium uppercase">
+        <div className="w-80 txt_sidebar text-[#c5c5c5] uppercase">
           Building Types
         </div>
       </div>
       <ul className="md:flex-col md:min-w-full flex flex-col list-none font-montserrat text-white">
-        {buildingTypes.map((type) => (
+      {buildingTypes && buildingTypes.length > 0 ? (
+        buildingTypes.map((type) => (
           <li
             key={type.id}
             className={`flex items-center my-1 ${getMenuSelectionClass(
@@ -54,7 +55,10 @@ const BuildingTypesWidget = (props) => {
               <span className="text-sm text-color-lable">{type.name}</span>
             </a>
           </li>
-        ))}
+        ))
+      ) : (
+        <li>No building types available</li>
+      )}
       </ul>
       <div className="flex ml-1 mt-3">
         <div className="w-20">
