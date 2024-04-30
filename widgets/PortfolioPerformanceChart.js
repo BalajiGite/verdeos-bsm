@@ -156,8 +156,10 @@ const PortfolioPerformanceChart = (props) => {
     <>
       <div className="text-color-card-header energy-usage-intensity-button-bg-color-content">
         <div className="p-3 border-bottom flex items-center font-semibold">
-          Portfolio Performance by:
-          <ul style={{ display: 'flex' }} className="mx-2">
+          <div className="title_text">
+            Portfolio Performance by:
+          </div>
+          <ul style={{ display: 'flex' }} className="mx-2 mb-0">
             {portfolioName?.map((_, index) => (
               <li style={{ margin: '0 5px' }} className=" font-semibold text-xs leading-3">
                 <button
@@ -217,8 +219,10 @@ const PortfolioPerformanceChart = (props) => {
       </div>
       <div className="text-color-card-header energy-usage-intensity-button-bg-color-content mt-4">
         <div className="p-3 border-bottom flex items-center font-semibold">
-        Maintenance by:
-          <ul style={{ display: 'flex' }} className="mx-2">
+          <div className="title_text">
+            Maintenance by:
+          </div>
+          <ul style={{ display: 'flex' }} className="mx-2 mb-0">
             {maintainceName?.map((_, index) => (
               <li style={{ margin: '0 5px' }} className=" font-semibold text-xs leading-3">
                 <button
