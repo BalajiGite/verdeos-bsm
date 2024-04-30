@@ -192,8 +192,25 @@ html::-webkit-scrollbar-thumb {
   background-color: #00365F !important;
 } */
 
+.ant-collapse-header{
+  padding: 5px 0px 5px !important;
+  color: #C5C5C5 !important;
+  font-size: 14px;
+  font-weight: 600;
+}
 
+.ant-collapse-content-box{
+  background: #0A1016;
+  padding: 0px !important;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #8E8E8E;
+}
 
+.ant-collapse-arrow{
+  display: inline-flex !important;
+  margin-right: 5px !important;
+}
 .scrollbar::-webkit-scrollbar {
     width: 5px;
 }
@@ -201,8 +218,7 @@ html::-webkit-scrollbar-thumb {
   background-color: #0A1016;
 }
  .background-color-linear{
-  background: linear-gradient(104.5deg, #2A3035 0%, rgba(27, 34, 40, 0) 100%),
-linear-gradient(0deg, rgba(142, 142, 142, 0.3), rgba(142, 142, 142, 0.3));
+  background: linear-gradient(104.5deg, #2A3035 0%, rgba(27, 34, 40, 0) 100%);
 
  }
 /* Track */
