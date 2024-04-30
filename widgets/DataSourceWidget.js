@@ -21,12 +21,12 @@ const DataSourceWidget = () => {
   return (
     <div>
       <div className="flex mb-4">
-        <div className="w-80 font-medium uppercase text-color-card-header">
+        <div className="w-80 font-medium uppercase txt_sidebar text-[#c5c5c5]">
           Data Sources
         </div>
       </div>
       <div className="flex mb-4">
-        <div className="w-80 text-color-lable text-sm uppercase">
+        <div className="w-80 txt_sidebar text-[#c5c5c5] uppercase">
           Data Quality
         </div>
         <div className="w-20 ml-auto flex items-center justify-end">
@@ -37,7 +37,7 @@ const DataSourceWidget = () => {
       </div>
       {dataSource.map((data, index) => (
         <div className="flex mb-2" key={index}>
-          <div className="w-40 text-color-lable text-sm">{data.name}</div>
+          <div className="w-40 txt_sidebar text-[#c5c5c5]">{data.name}</div>
           <div className="w-60 ml-auto flex items-center justify-end">
             <div className="w-10 text-sm text-color-lable-value">
               {data.percentage}

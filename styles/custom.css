@@ -1,4 +1,13 @@
 /** Custom Classes  **/
+.brand {
+  color: #c5c5c5;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
 .custom-bg-color {
   background-color: #001529;
 }
@@ -42,9 +51,9 @@ html::-webkit-scrollbar-thumb {
 
   /* Left Panel/Unselected 14 Regular */
   font-family: Inter;
-  font-size: 14px;
+  font-size: 13px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   line-height: normal;
 }
 

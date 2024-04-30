@@ -78,7 +78,7 @@ export default function Sidebar(props) {
             </form>
 
             {/* <hr className="my-4 md:min-w-full" /> */}
-            <div className="mt-4 space-y-8">
+            <div className="mt-4">
               {/* <div className="w-80 ml-4">
                 <div className="font-medium text-color-card-header">
                  
@@ -87,6 +87,14 @@ export default function Sidebar(props) {
                   Team Homepage
                 </div>
               </div> */}
+
+              <div className="brand">
+                {/*<img src={context.logoUrl} alt=""  width={150} />*/}
+                Building Portfolio Manager(BPM)
+              </div>
+
+              <hr className="custom-divider my-4 md:min-w-full" />
+              
               <BuildingTypesWidget {...props} />
 
               <hr className="custom-divider my-4 md:min-w-full" />
@@ -98,14 +106,14 @@ export default function Sidebar(props) {
               <DataSourceWidget />
 
               <hr className="custom-divider md:min-w-full custom-text-color " />
-              <div className="flex items-center">
+              <div className="flex items-center mb-2">
                 <img className="mr-3" src="/img/settings.svg" alt="setting" />
-                <p className="txt_sidebar text-[#8E8E8E]">Settings</p>
+                <div className="mt-1 txt_sidebar text-[#c5c5c5]">Settings</div>
               </div>
 
               <div className="flex items-center">
                 <img className="mr-3" src="/img/support.svg" alt="setting" />
-                <p className="txt_sidebar text-[#8E8E8E]">Supports</p>
+                <div className="mt-1 txt_sidebar text-[#c5c5c5]">Supports</div>
               </div>
             </div>
              {/**<div className="background-linear p-2 space-y-4 mt-4">
