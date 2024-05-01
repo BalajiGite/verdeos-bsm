@@ -1,4 +1,13 @@
 /** Custom Classes  **/
+.brand {
+  color: #c5c5c5;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
 .custom-bg-color {
   background-color: #001529;
 }
@@ -42,7 +51,43 @@ html::-webkit-scrollbar-thumb {
 
   /* Left Panel/Unselected 14 Regular */
   font-family: Inter;
-  font-size: 14px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.dotted-vertical-line {
+  height: 3rem; /* Adjust the height */
+  width: 1px;   /* Width for the vertical line */
+  background-color: rgba(142, 142, 142, 0.30); /* Background color */
+  border-left: 2px dotted rgba(142, 142, 142, 0.30); /* Dotted border */
+  margin: auto auto; /* Adds some margin and centers horizontally */
+ 
+}
+
+.parent-grid{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.title_text{
+  color: #C5C5C5;
+  /* Section title/T1 18 Semibold */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.nabers_text{
+  color: rgba(197, 197, 197, 0.80);
+  text-align: center;
+  font-family: Inter;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;

@@ -90,16 +90,7 @@ export default function EnergyUsageIntensity(props) {
     title: {
       text: 'Portfolio Compliance',
       align: 'left',
-      // Allow title to float
-
-      // Adjust vertical position of the title
-      style: {
-        fontFamily: 'Inter, sans-serif',
-        fontWeight: '600',    // Set font weight to 600
-        fontSize: '15px',     // Set font size to 18 pixels
-        lineHeight: '21.78px', // Set line height to 21.78 pixels
-        color: '#C5C5C5'      // Set title color to white
-      }
+      class:'title_text'    
     },
     credits: {
       enabled: false

@@ -12,7 +12,19 @@ const NabersRatingWidget = (props) => {
       "buildingType="+buildingType+
       "&functionName=verdeosDemoTotalPropertiesByNABERSRating&ratingType="+dataSet+"&certification=NABERS"
     );
-    setNabersRatings(resp && resp[0]);
+
+    if(resp !== undefined){
+      const objNabersData = {
+        "zeroOne": resp[0].zero + resp[0].zerofive + resp[0].one,
+        "oneTwo": resp[0].onehalf + resp[0].two,
+        "twoThree": resp[0].twofive + resp[0].three,
+        "threeFour": resp[0].threefive + resp[0].four,
+        "fourFive": resp[0].fourfive + resp[0].five,
+        "fiveSix": resp[0].fivefive + resp[0].six
+      }
+      setNabersRatings(objNabersData);
+    }
+    
   };
 
   useEffect(() => {
@@ -22,210 +34,51 @@ const NabersRatingWidget = (props) => {
   let count = -0.5;
   return (
     <div className="flex">
-      <div className="text-color-card-header p-4 mt-4 rounded shadow w-80">
-        <img src="/energy/nabers.png" alt="NABERS Ratings"  />
+      <div className="text-color-card-header p-4 mt-12 rounded">
+        <img src="/energy/nabers/NABERS_Logo.svg" alt="NABERS Ratings"  />
       </div>
-      <div className="w-full text-color-card-header p-4 rounded shadow" style={{ overflowX: "auto" }}>
+      <div className="w-full text-color-card-header p-2 rounded shadow" style={{ overflowX: "auto" }}>
         <div className="justify-between text-color-lable">
           <table className="w-full">
             <thead>
               <tr>
                 {nabersRatings && 
                   <>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.zeroColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "white",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {0}
-                      </span>
+                    <th style={{ position: "relative", textAlign:"-webkit-center" }}>
+                      <div className="parent-grid">
+                        <img src="/energy/nabers/Star_1.svg" alt="NABERS Ratings"  />
+                        <div class="dotted-vertical-line"></div>
+                      </div>
                     </th>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.zerofiveColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "white",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {0.5}
-                      </span>
+                    <th style={{ position: "relative", textAlign:"-webkit-center" }}>
+                      <div className="parent-grid">
+                        <img src="/energy/nabers/Star_2.svg" alt="NABERS Ratings"  />
+                        <div class="dotted-vertical-line"></div>
+                      </div>
                     </th>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.oneColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "black",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {1}
-                      </span>
+                    <th style={{ position: "relative", textAlign:"-webkit-center" }}>
+                      <div className="parent-grid">
+                        <img src="/energy/nabers/Star_3.svg" alt="NABERS Ratings"  />
+                        <div class="dotted-vertical-line"></div>
+                      </div>
                     </th>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.onehalfColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "black",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {1.5}
-                      </span>
+                    <th style={{ position: "relative", textAlign:"-webkit-center" }}>
+                      <div className="parent-grid">
+                        <img src="/energy/nabers/Star_4.svg" alt="NABERS Ratings"  />
+                        <div class="dotted-vertical-line"></div>
+                      </div>
                     </th>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.twoColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "black",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {2}
-                      </span>
+                    <th style={{ position: "relative", textAlign:"-webkit-center" }}>
+                      <div className="parent-grid">
+                        <img src="/energy/nabers/Star_5.svg" alt="NABERS Ratings"  />
+                        <div class="dotted-vertical-line"></div>
+                      </div>
                     </th>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.twofiveColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "black",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {2.5}
-                      </span>
-                    </th>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.threeColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "white",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {3}
-                      </span>
-                    </th>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.threefiveColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "white",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {3.5}
-                      </span>
-                    </th>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.fourColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "white",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {4}
-                      </span>
-                    </th>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.fourfiveColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "white",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {4.5}
-                      </span>
-                    </th>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.fiveColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "white",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {5}
-                      </span>
-                    </th>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.fivefiveColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "white",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {5.5}
-                      </span>
-                    </th>
-                    <th style={{ position: "relative" }}>
-                      <FontAwesomeIcon icon={faStar} style={{ color: nabersRatings.sixColor, fontSize: "3.5vw" }} />
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "54%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          color: "white",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {6}
-                      </span>
+                    <th style={{ position: "relative", textAlign:"-webkit-center", height:"140px" }}>
+                      <div className="parent-grid">
+                        <img src="/energy/nabers/Star_6.svg" alt="NABERS Ratings"  />
+                        <div class="dotted-vertical-line"></div>  
+                      </div>
                     </th>
                   </>
                 
@@ -237,71 +90,36 @@ const NabersRatingWidget = (props) => {
                 {nabersRatings &&
                   <>
                       <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.zero}
+                        <p className="text-center nabers_text">
+                          <span>(0-1)<br/>Poor<br/>{nabersRatings.zeroOne + " Buildings"}<br/>found</span>
                         </p>
                       </td>
                       <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.zerofive}
+                        <p className="nabers_text text-center">
+                          <span>(1-2)<br/>Below Average<br/>{nabersRatings.oneTwo + " Buildings"}<br/>found</span>
                         </p>
                       </td>
                       <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.one}
+                        <p className="nabers_text text-center">
+                          <span>(2-3)<br/>Average<br/>{nabersRatings.twoThree + " Buildings"}<br/>found</span>
                         </p>
                       </td>
                       <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.onehalf}
+                        <p className="nabers_text text-center">
+                          <span>(3-4)<br/>Good<br/>{nabersRatings.threeFour + " Buildings"}<br/>found</span>
                         </p>
                       </td>
                       <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.two}
+                        <p className="nabers_text text-center">
+                          <span>(4-5)<br/>Excellent<br/>{nabersRatings.fourFive + " Buildings"}<br/>found</span>
                         </p>
                       </td>
                       <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.twofive}
+                        <p className="nabers_text text-center">
+                          <span>(5-6)<br/>Market Leaders<br/>{nabersRatings.fiveSix + " Buildings"}<br/>found</span>
                         </p>
-                      </td>
-                      <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.three}
-                        </p>
-                      </td>
-                      <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.threefive}
-                        </p>
-                      </td>
-                      <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.four}
-                        </p>
-                      </td>
-                      <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.fourfive}
-                        </p>
-                      </td>
-                      <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.five}
-                        </p>
-                      </td>
-                      <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.fivefive}
-                        </p>
-                      </td>
-                      <td>
-                        <p className="mt-4 pl-4 pr-4 mr-2 text-white bg-slate-600 border border-white text-center">
-                          {nabersRatings.six}
-                        </p>
-                      </td>
-                    </>
+                      </td>          
+                    </> 
                   }
               </tr>
             </tbody>
