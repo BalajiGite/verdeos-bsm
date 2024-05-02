@@ -37,9 +37,9 @@ export default function Admin({ children }) {
             <div className="border-r pr-5 border-[#8E8E8E] px-3">
               <p className="text-xl font-semibold text-[#C5C5C5] mb-0 text-sm">Actionable Insights Summary</p>
               <p className="text-[#C5C5C5] mb-0 text-sm">Since your last login you have:</p>
-              <p className="text-[#C5C5C5] mb-0 text-sm">11     Services calls initiated</p>
-              <p className="text-[#C5C5C5] mb-0 text-sm">14    New sites connected</p>
-              <p className="text-[#C5C5C5] mb-0 text-sm">154  Persistent alarms cleared</p>
+              <p className="text-[#C5C5C5] mb-0 text-sm">11 Services calls initiated</p>
+              <p className="text-[#C5C5C5] mb-0 text-sm">14 New sites connected</p>
+              <p className="text-[#C5C5C5] mb-0 text-sm">154 Persistent alarms cleared</p>
             </div>
             <div className="mx-3 bg-[#0A1016] py-1 border border-[#8E8E8E] rounded">
               <p className="text-[#C5C5C5] py-1 px-3 mb-0">2022 Environmental Sustainability Highlights</p>

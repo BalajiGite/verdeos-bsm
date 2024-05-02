@@ -1,62 +1,65 @@
 import React, { useState, useEffect } from "react";
-import Dropdown from "../components/Dropdowns/Dropdown.js"; // Create Dropdown component
+import Dropdown from "../components/Dropdowns/Dropdown.js";
 import NabersRatingWidget from "widgets/NabersRatingWidget";
 import { getApiDataFromAws } from "../api/dashboardDataService";
 
 const PortfolioCertification = (props) => {
-  const [certification, setCertification] = useState(null);
-  const [filter, setFilter] = useState(null); // Set "All" as the initial filter
+  const [certification, setCertification] = useState([]);
+  const [filter, setFilter] = useState("All");
 
-  const [rating, setRating] = useState(null);
-  const [ratingFilter, setRatingFilter] = useState(null); // Set "All" as the initial filter
+  const [rating, setRating] = useState([]);
+  const [ratingFilter, setRatingFilter] = useState("All");
 
-  const [certificationData, setCertificationData] = useState([]); // State to store the fetched data
-
-  // Function to filter data based on the selected filter
-  const filteredData = certificationData?.filter((item) =>
-    filter === "All" ? true : item.certification === filter
-  );
-
-  const fetchData = async (buildingType, dateSpan, dataSet, isPageLoad) => {
-    const resp = await getApiDataFromAws(
-      "buildingType=" +
-        buildingType +
-        "&functionName=verdeosDemoGetAllNabersRatings&ratingType=" +
-        ratingFilter +
-        "&certification=" +
-        filter
-    );
-    setCertificationData(resp);
-  };
-
-  useEffect(() => {
-    fetchData(props.buildingType, props.dateSpan, props.dataSet, false);
-  }, [props.buildingType, props.dateSpan, props.dataSet, filter, ratingFilter]); // Empty dependency array means this effect will run once when the component mounts
+  const [certificationData, setCertificationData] = useState([]);
+  const [initialDataFetched, setInitialDataFetched] = useState(false);
 
   const setInitialData = async () => {
-    const certFilter = await getApiDataFromAws(
-      "functionName=verdeosDemoCertification"
-    );
-
-    if(certFilter !==undefined){
+    try {
+      const certFilter = await getApiDataFromAws(
+        "functionName=verdeosDemoCertification"
+      );
       setCertification(certFilter);
-      setFilter(certFilter[0]?.name);
-    }
-    
-    const rateFilter = await getApiDataFromAws(
-      "functionName=verdeosDemoRatingType"
-    );
 
-    if(rateFilter !==undefined){
+      const rateFilter = await getApiDataFromAws(
+        "functionName=verdeosDemoRatingType"
+      );
       setRating(rateFilter);
-      setRatingFilter(rateFilter[0]?.name);
+
+      setFilter(certFilter.length > 0 ? certFilter[0].name : "All");
+      setRatingFilter(rateFilter.length > 0 ? rateFilter[0].name : "All");
+
+      setInitialDataFetched(true);
+    } catch (error) {
+      console.error("Error fetching initial data:", error);
     }
   };
 
+  const fetchData = async (buildingType, dateSpan, dataSet) => {
+    if (initialDataFetched) {
+      try {
+        const response = await getApiDataFromAws(
+          `buildingType=${buildingType}&functionName=verdeosDemoGetAllNabersRatings&ratingType=${ratingFilter}&certification=${filter}`
+        );
+        setCertificationData(response);
+      } catch (error) {
+        console.error("Error fetching certification data:", error);
+      }
+    }
+  };
+
+  // Fetch initial data when the component mounts
   useEffect(() => {
     setInitialData();
-    fetchData(props.buildingType, props.dateSpan, props.dataSet, true);
-  }, []); // Empty dependency array means this effect will run once when the component mounts
+  }, []);
+
+  // Fetch certification data once initial data has been fetched
+  useEffect(() => {
+    fetchData(props.buildingType, props.dateSpan, props.dataSet);
+  }, [initialDataFetched, filter, ratingFilter, props.buildingType, props.dateSpan, props.dataSet]);
+
+  const filteredData = certificationData.filter(
+    (item) => filter === "All" || item.certification === filter
+  );
 
   return (
     <div className="relative flex flex-col min-w-0 break-words text-white energy-usage-intensity-button-bg-color-content w-full mb-6 shadow-lg rounded">
