@@ -114,7 +114,7 @@ export default function Navbar(props) {
           <div style={{ justifyContent: "center", display: "flex" }}>
             <img src="/img/Header-section/SBM.svg" alt="SBM-svg" />
           </div>
-          <p>SBM</p>
+          <p><a style={{color:"#c5c5c5"}} href={"https://sbm.verdeos.com"}>SBM</a></p>
         </Col>
         <Col>
           <div style={{ justifyContent: "center", display: "flex" }}>
