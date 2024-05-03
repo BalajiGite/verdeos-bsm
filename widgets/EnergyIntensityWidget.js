@@ -19,7 +19,7 @@ const EnergyIntensityWidget = (props) => {
   }, []);
 
   return (
-    <div className=" text-white border-bottom">
+    <div className=" text-white">
       {/**<div className="flex w-full">
         <div className="flex justify-start w-full">
           <div>
@@ -54,30 +54,30 @@ const EnergyIntensityWidget = (props) => {
                 </tr>
                 <tr>
                   <td>
-                    <p className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded flex">
+                    <p className="text-center mr-4 ml-4 mb-0 energy-usage-intensity-button-bg p-2 w-30 rounded flex">
                       <span
                         style={{ background: props.data.tarColor }}
                         className="w-3 h-3 rounded-full mt-1 flex items-center justify-center"
                       ></span>
-                      <span className="flex items-center justify-center ml-2">
+                      <span className="flex items-center justify-center ml-2 title_text">
                         {props.data.valTot}
                       </span>
                     </p>
                   </td>
                   <td>
-                    <p className="text-center mr-4 ml-4 energy-usage-intensity-button-bg p-3 w-30 rounded flex">
+                    <p className="text-center mr-4 ml-4 mb-0 energy-usage-intensity-button-bg p-2 w-30 rounded flex">
                       <span
                         style={{ background: props.data.tarColor }}
                         className="w-3 h-3 rounded-full mt-1 flex items-center justify-center"
                       ></span>
-                      <span className="flex items-center justify-center ml-2">
+                      <span className="flex items-center justify-center ml-2 title_text">
                         {props.data.tarPerc}
                       </span>
                     </p>
                   </td>
 
                   <td>
-                    <div className="text-center mr-4 ml-4  w-30 rounded" >
+                    <div className="text-center mr-4 ml-4 mb-1  w-30 rounded flex" >
                       {props.data.arrowIndex == 1 ? <div><FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: props.data.tarColor, margin: "0" }} /></div>
                         : <div><FontAwesomeIcon icon={faCaretDown} size="xl" style={{ color: props.data.tarColor, margin: "0" }} /></div>
                       }

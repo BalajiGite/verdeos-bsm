@@ -115,7 +115,7 @@ const PortfolioCertification = (props) => {
       </div>
       <div className="w-full overflow-x-auto">
         <table className="items-center w-full bg-transparent border-collapse">
-          <thead>
+          <thead className="title_text" style={{fontSize:"12px"}}>
             <tr>
               <th style={{width:"20%", borderColor: "hsla(0, 0%, 56%, 0.3)"}} className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
                 Certification
@@ -144,7 +144,7 @@ const PortfolioCertification = (props) => {
                   style={{ maxHeight: "500px" }}
                 >
                   <table className="items-center w-full bg-transparent border-collapse">
-                    <tbody className="items-center w-full bg-transparent border-collapse">
+                    <tbody className="items-center w-full bg-transparent border-collapse title_text" style={{fontSize:"12px"}}>
                       {filteredData &&
                         filteredData?.map((item, index) => (
                           <tr
@@ -153,31 +153,31 @@ const PortfolioCertification = (props) => {
                           >
                             <td
                               className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-3 text-center"
-                              style={{ fontSize: "14px", width:"20%" }}
+                              style={{width:"20%" }}
                             >
                               {item.building}
                             </td>
                             <td
                               className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-3 text-center"
-                              style={{ fontSize: "14px", width:"20%"  }}
+                              style={{ width:"20%"  }}
                             >
                               {item.certification}
                             </td>
                             <td
                               className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-3 text-center"
-                              style={{ fontSize: "14px", width:"20%"  }}
+                              style={{ width:"20%"  }}
                             >
                               {item.starValue}
                             </td>
                             <td
                               className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-3 text-center"
-                              style={{ fontSize: "14px" , width:"20%" }}
+                              style={{  width:"20%" }}
                             >
                               {item.ratingType}
                             </td>
                             <td
                               className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-3 text-center"
-                              style={{ fontSize: "14px" , width:"20%" }}
+                              style={{  width:"20%" }}
                             >
                               {item.certificateValidTo}
                             </td>
