@@ -88,9 +88,16 @@ export default function EnergyUsageIntensity(props) {
       backgroundColor: 'transparent'
     },
     title: {
-      text: 'Portfolio Compliance',
+      text: '',
       align: 'left',
-      class:'title_text'    
+      style: {
+        color: '#C5C5C5',  // Ensure the color value is in quotes
+        fontFamily: 'Inter',  // Use camelCase for property names
+        fontSize: '16px',  // Enclose pixel values in quotes
+        fontStyle: 'normal',  // Enclose in quotes and use camelCase
+        fontWeight: '600',  // Enclose in quotes and use numeric value for weight
+        lineHeight: 'normal'  // Use camelCase and ensure value is in quotes
+      }      
     },
     credits: {
       enabled: false
@@ -179,7 +186,8 @@ export default function EnergyUsageIntensity(props) {
   return (
     <>
       <div className=" relative energy-usage-intensity-button-bg-color-content">
-        <div className="relative w-full">
+        <div className="w-full flex items-center space-x-3  border-bottom">
+          <div className="p-3 title_text">Portfolio Compliance</div>
           <EnergyIntensityWidget data={portfolioCompliance} />
         </div>
         <HighchartsReact highcharts={Highcharts} options={options} />
@@ -187,84 +195,3 @@ export default function EnergyUsageIntensity(props) {
     </>
   );
 }
-
-// const config = {
-//   type: "line",
-//   data: {
-//     labels: labels,
-//     datasets: datasets,
-//   },
-//   options: {
-//     maintainAspectRatio: false,
-//     responsive: true,
-//     plugins: {
-//       title: {
-//         display: false,
-//         text: "Portfolio Compliance",
-//         color: "white",
-//       },
-//       legend: {
-//         display: true,
-//         labels: {
-//           color: "white",
-//         },
-//         align: "end",
-//         position: "bottom",
-//       },
-//       tooltip: {
-//         mode: "index",
-//         intersect: false,
-//       },
-//     },
-//     scales: {
-//       xAxes:
-//         {
-//           ticks: {
-//             color: "white",
-//             maxRotation: 0,
-//             autoSkip: true,
-//             maxTicksLimit: 7,
-//           },
-//           display: true,
-//           title: {
-//             display: false,
-//             text: "Date",
-//             color: "white",
-//           },
-//           grid: {
-//             display: true,
-//             color: "#2A4456",
-//             borderDash: [2],
-//             borderDashOffset: [2],
-//           },
-//       },
-//       yAxes:
-//         {
-//           ticks: {
-//             color: "white",
-//             maxTicksLimit: 10,
-//             suggestedMin: 0,
-//           },
-//           display: true,
-//           title: {
-//             display: true,
-//             text: chartData.unit,
-//             color:"white"
-//           },
-//           grid: {
-//             color: "#2A4456",
-//             borderDash: [3],
-//             borderDashOffset: [3],
-//             drawBorder: true,
-//             zeroLineColor: "white",
-//             zeroLineBorderDash: [0],
-//             zeroLineBorderDashOffset: [2],
-//           },
-//         },
-//       //],
-//     },
-//   },
-// };
-
-// const ctx = document.getElementById("line-chart").getContext("2d");
-// window.myLine = new Chart(ctx, config);

@@ -19,66 +19,72 @@ import { useRouter } from "next/router";
 
 export default function Dashboard(props) {
   const router = useRouter();
-  const [dateSet, setDateSet] = useState(null);
-  const [dateSpan, setDateSpan] = useState(null);
-  const [buildingType, setBuildingType] = useState(null);
-    const [selectedDataSet, setSelectedDataSet] = useState(null);
-  const [selectedDateSpan, setSelectedDateSpan] = useState(null);
-  const [selectedBuildingType, setSelectedBuildingType] = useState(null);
+  const [dateSet, setDateSet] = useState([]);
+  const [dateSpan, setDateSpan] = useState([]);
+  const [buildingType, setBuildingType] = useState([]);
+  const [selectedDataSet, setSelectedDataSet] = useState([]);
+  const [selectedDateSpan, setSelectedDateSpan] = useState([]);
+  const [selectedBuildingType, setSelectedBuildingType] = useState([]);
   const menuSelection = useContext(MenuSelectionContext);
 
   const fetchDataInitial = async () => {
-
-    const buildingTypeJson = await getApiDataFromAws(
-      "functionName=verdeosDemoBuildingType"
-    );
-
-    if(buildingTypeJson !== undefined){
-      setBuildingType(buildingTypeJson);
-      setSelectedBuildingType(buildingTypeJson[0].name);
+    const buildingTypeJson = await getApiDataFromAws("functionName=verdeosDemoBuildingType");
+    if (buildingTypeJson !== undefined) {
+      if (buildingType.length === 0) {
+        setBuildingType(buildingTypeJson);
+        setSelectedBuildingType(buildingTypeJson[0].name);
+      }
     }
-    
-
-    const dataSets = await getApiDataFromAws(
-      "functionName=verdeosDemoDataSets"
-    );
-
-    if(dataSets !==undefined){
-      setDateSet(dataSets);
-      setSelectedDataSet(dataSets[0].name);
+  
+    const dataSets = await getApiDataFromAws("functionName=verdeosDemoDataSets");
+    if (dataSets !== undefined) {
+      if (dateSet.length === 0) {
+        setDateSet(dataSets);
+        setSelectedDataSet(dataSets[0].name);
+      }
     }
-   
-    const dateSpan = await getApiDataFromAwsDemo("21");
-
-    if(dateSpan !==undefined){
-      setDateSpan(dateSpan);
-      setSelectedDateSpan(dateSpan[4].name);
+  
+    const dateSpans = await getApiDataFromAwsDemo("21");
+    if (dateSpans !== undefined) {
+      if (dateSpan.length === 0) {
+        setDateSpan(dateSpans);
+        setSelectedDateSpan(dateSpans[4].name);
+      }
     }
   };
+  
 
   useEffect(() => {
     const isAuthenticated = !!Cookies.get("auth");
     if (!isAuthenticated) {
       router.push("/");
     } else {
-      fetchDataInitial();
+      if (selectedBuildingType.length ==0 && selectedDateSpan.length == 0 && selectedDataSet.length == 0) {
+        fetchDataInitial();
+      }
     }
   }, []);
 
   useEffect(() => {
-    setSelectedBuildingType(props.menuSelection);
-  }, [props.menuSelection]);
+    setSelectedBuildingType(menuSelection);
+  }, [menuSelection]);
 
   const handleOptionSelect = (option) => {
-    setSelectedDataSet(option);
+    if (option !== selectedDataSet) {
+      setSelectedDataSet(option);
+    }
   };
 
   const handleBuildingType = (option) => {
-    setSelectedBuildingType(option);
+    if (option !== selectedBuildingType) {
+      setSelectedBuildingType(option);
+    }
   };
 
   const handleDateSpan = (option) => {
-    setSelectedDateSpan(option);
+    if (option !== selectedDateSpan) {
+      setSelectedDateSpan(option);
+    }
   };
   return (
     <>
@@ -118,21 +124,33 @@ export default function Dashboard(props) {
 
       <div className="flex flex-wrap mt-5">
         <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
-          <EnergyUsageIntensity
-            buildingType={selectedBuildingType}
-            dateSpan={selectedDateSpan}
-            dataSet={selectedDataSet}
-          />
+          {selectedBuildingType && (selectedBuildingType.length > 0 && selectedBuildingType==menuSelection) &&
+            selectedDateSpan && selectedDateSpan.length > 0 &&
+            selectedDataSet && selectedDataSet.length > 0 ? (
+              <EnergyUsageIntensity
+                buildingType={selectedBuildingType}
+                dateSpan={selectedDateSpan}
+                dataSet={selectedDataSet}
+              />
+            ) : (
+              <p>No data available or loading...</p> // Fallback when the condition isn't met
+          )}
         </div>
       </div>
       
       <div className="flex flex-wrap mt-4">
         <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
-          <PortfolioPerformanceChart
-            buildingType={selectedBuildingType}
-            dateSpan={selectedDateSpan}
-            dataSet={selectedDataSet}
-          />
+          {selectedBuildingType && (selectedBuildingType.length > 0 && selectedBuildingType==menuSelection) &&
+            selectedDateSpan && selectedDateSpan.length > 0 &&
+            selectedDataSet && selectedDataSet.length > 0 ? (
+            <PortfolioPerformanceChart
+              buildingType={selectedBuildingType}
+              dateSpan={selectedDateSpan}
+              dataSet={selectedDataSet}
+            />
+          ) : (
+            <p>Loading data...</p> // or some other fallback content
+          )}
         </div>
       </div>
 
@@ -159,11 +177,16 @@ export default function Dashboard(props) {
       <div className="flex flex-wrap mt-4">
         <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
           <div className="p-1 w-full">
-            <PortfolioCertification
-              buildingType={selectedBuildingType}
-              dateSpan={selectedDateSpan}
-              dataSet={selectedDataSet}
-            />
+            {selectedBuildingType && (selectedBuildingType.length > 0 && selectedBuildingType==menuSelection) &&
+              selectedDateSpan && selectedDateSpan.length > 0 &&
+              selectedDataSet && selectedDataSet.length > 0 ? (
+              <PortfolioCertification
+                buildingType={selectedBuildingType}
+                dateSpan={selectedDateSpan}
+                dataSet={selectedDataSet}
+              />) : (
+                <p>Loading data...</p> // or some other fallback content
+              )}
           </div>
         </div>
       </div>
