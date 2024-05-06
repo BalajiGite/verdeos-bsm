@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 
 // components
 
@@ -9,12 +9,36 @@ import FooterAdmin from "components/Footers/FooterAdmin.js";
 import { MenuSelectionContext } from "../components/PageChange/MenuSelectionContext";
 import DashboardPage from "../pages/admin/dashboard";
 import Navbar from '../components/Navbars/IndexNavbar';
+import { getApiDataFromAws } from "../api/dashboardDataService";
+
 export default function Admin({ children }) {
   const [menuSelection, setMenuSelection] = useState("All");
   const [visiblenotification, setVisibleNotification] = useState(true);
   const updateMenuSelection = (menu) => {
     setMenuSelection(menu);
   };
+
+  const [emissions, setEmissions] = useState("");
+  const [energy, setEnergy] = useState("");
+  const [water, setWater] = useState("");
+  const [sitesConnected, setSitesConnected] = useState("");
+  const [connectorFaults, setConnectorFaults] = useState("");
+  const [dataQuality, setDataQuality] = useState("");
+  const [insights, setInsights] = useState("");
+  const [faults, setFaults] = useState("");
+  const [overrides, setOverrides] = useState("");
+
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const resp = await getApiDataFromAws(
+        "functionName=verdeosDemoBuildingType"
+      );
+      //setOverrides(resp);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -79,16 +103,16 @@ export default function Admin({ children }) {
                     </div>
 
                     <div className="flex flex-1 items-center px-2 py-1 border-r border-[#8E8E8E] justify-center">
-                      <img src="/img/vector-2.png" className="h-10 w-10 object-contain" alt="Data Connector Down" />
+                      <img src="/img/data.png" className="h-10 w-10 object-contain" alt="Data Connector Down" />
                       <p className="text-[#C5C5C5] px-1 mb-0">
-                        Data Connector
+                         Connector Faults
                         <br />
                         <span className="text-[#C5C5C5]">-18%</span>
                       </p>
                     </div>
 
                     <div className="flex flex-1 items-center px-2 py-1 justify-center">
-                      <img src="/img/vector-2.png" className="h-10 w-10 object-contain" alt="TimeSeries Data Quality" />
+                      <img src="/img/dataQuality.png" className="h-10 w-10 object-contain" alt="TimeSeries Data Quality" />
                       <p className="text-[#C5C5C5] px-1 mb-0">
                          Data Quality
                         <br />
@@ -103,7 +127,7 @@ export default function Admin({ children }) {
 
                   <div className="flex justify-between w-full">
                     <div className="flex flex-1 items-center px-2 py-1 border-r border-[#8E8E8E] justify-center">
-                      <img src="/img/vector-3.png" className="h-10 w-10 object-contain" alt="Insights" />
+                      <img src="/img/insights.png" className="h-10 w-10 object-contain" alt="Insights" />
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Insights
                         <br />
@@ -112,7 +136,7 @@ export default function Admin({ children }) {
                     </div>
 
                     <div className="flex flex-1 items-center px-2 py-1 border-r border-[#8E8E8E] justify-center">
-                      <img src="/img/vector-4.png" className="h-10 w-10 object-contain" alt="Overrides" />
+                      <img src="/img/overrides.svg" className="h-10 w-10 object-contain" alt="Overrides" />
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Overrides
                         <br />
@@ -121,7 +145,7 @@ export default function Admin({ children }) {
                     </div>
 
                     <div className="flex flex-1 items-center px-2 py-1 justify-center">
-                      <img src="/img/trash.png" className="h-10 w-10 object-contain" alt="Faults" />
+                      <img src="/img/fault.png" className="h-10 w-10 object-contain" alt="Faults" />
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Faults
                         <br />

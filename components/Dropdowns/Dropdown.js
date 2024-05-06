@@ -31,7 +31,7 @@ const Dropdown = ({ selected, options, onSelect }) => {
           aria-haspopup="listbox"
         >
           {selected}
-          <FontAwesomeIcon icon={faAngleDown} style={{ fontSize: '20px', margin:"1px", paddingLeft:"3px" }}/>
+          
         </button>
       </div>
 

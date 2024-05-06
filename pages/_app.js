@@ -64,6 +64,7 @@ export default class MyApp extends App {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <title>VerdeOS - BPM </title>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" />
           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWfMIGf1Q70ffpgIxOwdHsGg5fLPXcI4U"></script>
         </Head>
         
