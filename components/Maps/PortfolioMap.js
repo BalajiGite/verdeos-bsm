@@ -54,8 +54,12 @@ function PortfolioMap(props) {
         center: myLatlng,
         scrollwheel: false,
         zoomControl: true,
+        mapTypeId: google.maps.MapTypeId.HYBRID,
         styles: [
-          // ... (your existing styles)
+          {
+            featureType: "labels",
+            elementType: "labels.text.fill",
+          }
         ],
       };
 
