@@ -9,7 +9,7 @@ import FooterAdmin from "components/Footers/FooterAdmin.js";
 import { MenuSelectionContext } from "../components/PageChange/MenuSelectionContext";
 import DashboardPage from "../pages/admin/dashboard";
 import Navbar from '../components/Navbars/IndexNavbar';
-import { getApiDataFromAws } from "../api/dashboardDataService";
+import { getApiDataFromAws, getDates } from "../api/dashboardDataService";
 
 export default function Admin({ children }) {
   const [menuSelection, setMenuSelection] = useState("All");
@@ -30,15 +30,68 @@ export default function Admin({ children }) {
 
   
   useEffect(() => {
-    const fetchData = async () => {
-      const resp = await getApiDataFromAws(
-        "functionName=verdeosDemoBuildingType"
+    const fetchData = async (buildingType) => {
+      const dataResp = await getApiDataFromAws(
+        "buildingType=Industrial&functionName=verdeosDataQualityHighlighter"
       );
+
+      if (dataResp !== undefined) {
+        setConnectorFaults(dataResp[0].dataConnectorsInFault)
+        setDataQuality(dataResp[0].timeSeriesDataQuality)
+      }
+
+      const resp = await getApiDataFromAws(
+        "buildingType="+buildingType+"&functionName=verdeosDemoSiteConnected"
+      );
+      if(resp !==undefined){
+        const per = (parseFloat(resp[0].totalReadings.split("/")[0])/parseFloat(resp[0].totalReadings.split("/")[1]))*100
+        setSitesConnected(per.toFixed(0)+"%");
+      }
+
+      if (buildingType != null) {
+        const dates = getDates("Last Month");
+        const Electrical = await getApiDataFromAws(
+          `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=Electrical&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
+        );
+
+        const Water = await getApiDataFromAws(
+          `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=Water&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
+        );
+
+        const Insights = await getApiDataFromAws(
+          `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=Insights&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
+        );
+
+        const Emissions = await getApiDataFromAws(
+          `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=Emissions&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
+        );
+
+        const Overrides = await getApiDataFromAws(
+          `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=Overrides&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
+        );
+
+        const Faults = await getApiDataFromAws(
+          `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=Faults&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
+        );
+
+        if (Electrical !== undefined) {
+          setEmissions(Emissions[0].valTot)
+          setEnergy(Electrical[0].valTot)
+          setWater(Water[0].valTot)
+          setFaults(Faults[0].valTot)
+          setOverrides(Overrides[0].valTot)
+        }
+        if (Insights !== undefined) {
+          setInsights(Insights[0]?.valTot)
+        }
+
+      }
+
       //setOverrides(resp);
     };
 
-    fetchData();
-  }, []);
+    fetchData(menuSelection);
+  }, [menuSelection]);
 
   return (
     <>
@@ -71,17 +124,17 @@ export default function Admin({ children }) {
                   <div className="flex px-4 mt-1 justify-between w-full">
                     <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E] px-2">
                       <img src="/img/Co2.png" className="h-10 w-10 object-contain" alt="Co2 group" />
-                      <p className="text-[#C5C5C5] px-1 mb-0"> Emissions <br /><span className="text-[#C5C5C5]">-86%</span></p>
+                      <p className="text-[#C5C5C5] px-1 mb-0"> Emissions <br /><span className="text-[#C5C5C5]">{emissions}</span></p>
                     </div>
 
                     <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E] px-2">
                       <img src="/img/energy.png" className="h-10 w-10 object-contain" alt="Vector" />
-                      <p className="text-[#C5C5C5] px-1 mb-0"> Energy<br /><span className="text-[#C5C5C5]">-53%</span></p>
+                      <p className="text-[#C5C5C5] px-1 mb-0"> Energy<br /><span className="text-[#C5C5C5]">{energy}</span></p>
                     </div>
 
                     <div className="flex-1 flex items-center justify-center px-2">
                       <img src="/img/water.png" className="h-10 w-10 object-contain" alt="Layer" />
-                      <p className="text-[#C5C5C5] px-1 mb-0"> Water<br /><span className="text-[#C5C5C5]">-60%</span></p>
+                      <p className="text-[#C5C5C5] px-1 mb-0"> Water<br /><span className="text-[#C5C5C5]">{water}</span></p>
                     </div>
                   </div>
                 </div>
@@ -98,7 +151,7 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Sites Connected
                         <br />
-                        <span className="text-[#C5C5C5]">+16%</span>
+                        <span className="text-[#C5C5C5]">{sitesConnected}</span>
                       </p>
                     </div>
 
@@ -107,7 +160,7 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                          Connector Faults
                         <br />
-                        <span className="text-[#C5C5C5]">-18%</span>
+                        <span className="text-[#C5C5C5]">{connectorFaults}</span>
                       </p>
                     </div>
 
@@ -116,7 +169,7 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                          Data Quality
                         <br />
-                        <span className="text-[#C5C5C5]">-29%</span>
+                        <span className="text-[#C5C5C5]">{dataQuality}</span>
                       </p>
                     </div>
                   </div>
@@ -131,7 +184,7 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Insights
                         <br />
-                        <span className="text-[#C5C5C5]">+68%</span>
+                        <span className="text-[#C5C5C5]">{insights}</span>
                       </p>
                     </div>
 
@@ -140,7 +193,7 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Overrides
                         <br />
-                        <span className="text-[#C5C5C5]">-14%</span>
+                        <span className="text-[#C5C5C5]">{overrides}</span>
                       </p>
                     </div>
 
@@ -149,7 +202,7 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Faults
                         <br />
-                        <span className="text-[#C5C5C5]">+9%</span>
+                        <span className="text-[#C5C5C5]">{faults}</span>
                       </p>
                     </div>
                   </div>
