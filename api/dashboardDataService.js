@@ -82,8 +82,8 @@ export const getApiDataFromAws = async (item) => {
             data = {"start":formattedOneYearAgo, "end":formattedToday }
 
         }else if(dateSpan == "Last Month"){
-            const firstDayOfLastMonth = new Date(today.getFullYear(), today.getMonth() - 1, 1);
-            const lastDayOfLastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+            const firstDayOfLastMonth = new Date(today.getFullYear(), today.getMonth()-2, 1);
+            const lastDayOfLastMonth = new Date(today.getFullYear(), today.getMonth()-1, 0);
 
             // Format the dates as "YYYY-MM-DD"
             const formattedFirstDayOfLastMonth = firstDayOfLastMonth.toISOString().split('T')[0];

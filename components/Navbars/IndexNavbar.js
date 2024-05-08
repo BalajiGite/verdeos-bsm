@@ -42,34 +42,39 @@ export default function Navbar(props) {
   };
   const people = [
     {
-      name: 'Nicolas Lianos',
-      role: 'Head of real estate',
-      imageUrl: 'img/img-1.png',
+      name: 'Nicholas Lianos',
+      role: 'Executive Chairman',
+      imageUrl: 'img/nick.jfif',
     },
     {
-      name: 'Constantinos Tsalikis',
-      role: 'Building Services',
-      imageUrl: 'img/img-2.png',
+      name: 'Rob Aldrich',
+      role: 'CEO VerdeOS',
+      imageUrl: 'img/rob.jpeg',
     }, {
       name: 'Con Tsalikis',
-      role: 'Chief Technology Office',
-      imageUrl: 'img/img-3.png',
-    },
-    {
-      name: 'Keshav Agrawal',
-      role: 'Software Engineer',
-      imageUrl: 'img/img-4.png',
+      role: 'Chief Technology Officer',
+      imageUrl: 'img/cont.jpeg',
     },
     {
       name: 'Pouya Ghadami',
       role: 'National Analytics Manager',
-      imageUrl: 'img/img-5.png',
+      imageUrl: 'img/pouya.jfif',
+    },
+    {
+      name: 'Keshav Agrawal',
+      role: 'Lead Software Engineer',
+      imageUrl: 'img/kes.jpeg',
+    },
+    {
+      name: 'Balaji Gite',
+      role: 'Lead Software Engineer',
+      imageUrl: 'img/bala.jpeg',
     }];
 
   const text = (
     <ul role="list" className=" divide-y divide-[#8E8E8E] ">
       {people.map((people) => (
-        <li key ={people.name} className="flex justify-between gap-x-2 p-3">
+        <li key ={people.name} className="flex justify-between gap-x-2 p-1">
           <div className="flex min-w-0 gap-x-2 items-center">
             <img className="h-10 w-10 object-contain flex-none rounded-full bg-gray-50" src={people.imageUrl} alt="img-1" />
             <div className="min-w-0 flex-auto">
