@@ -184,7 +184,7 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Insights
                         <br />
-                        <span className="text-[#C5C5C5]">50% {/*insights*/}</span>
+                        <span className="text-[#C5C5C5]">{insights}</span>
                       </p>
                     </div>
 
@@ -193,7 +193,7 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Overrides
                         <br />
-                        <span className="text-[#C5C5C5]">20%{/*overrides*/}</span>
+                        <span className="text-[#C5C5C5]">{overrides}</span>
                       </p>
                     </div>
 
@@ -202,7 +202,7 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Faults
                         <br />
-                        <span className="text-[#C5C5C5]">10% {/*faults*/}</span>
+                        <span className="text-[#C5C5C5]">{faults}</span>
                       </p>
                     </div>
                   </div>

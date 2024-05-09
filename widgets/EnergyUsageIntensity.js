@@ -77,9 +77,19 @@ export default function EnergyUsageIntensity(props) {
       };
     }
   }, [chartData]);
-  let targetUper = chartData?.datasets[0];
-  let targetLower = chartData?.datasets[1];
-  let performance = chartData?.datasets[2];
+
+  console.log(chartData);
+  let targetUper = [];
+  let targetLower = [];
+  let performance = [];
+  if(chartData?.hasOwnProperty('isError')){
+   
+  }else{
+     targetUper = chartData?.datasets[0];
+     targetLower = chartData?.datasets[1];
+     performance = chartData?.datasets[2];
+  }
+ 
 
   let options = {
     chart: {
@@ -163,20 +173,20 @@ export default function EnergyUsageIntensity(props) {
     },
     series: [{
       name: targetUper?.label,
-      data: targetUper?.data.map((value) => parseFloat(value)),
+      data: targetUper?.data?.map((value) => parseFloat(value)),
       marker: {
         enabled: false,// Hide the markers
       },
     }, {
       name: targetLower?.label,
-      data: targetLower?.data.map((value) => parseFloat(value)),
+      data: targetLower?.data?.map((value) => parseFloat(value)),
       marker: {
         enabled: false // Hide the markers
       }
     },
     {
       name: performance?.label,
-      data: performance?.data.map((value) => parseFloat(value)),
+      data: performance?.data?.map((value) => parseFloat(value)),
       marker: {
         enabled: false // Hide the markers
       }
