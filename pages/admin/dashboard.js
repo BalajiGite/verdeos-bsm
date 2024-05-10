@@ -122,21 +122,23 @@ export default function Dashboard(props) {
         </div>
       </div>
 
-      <div className="flex flex-wrap mt-5">
-        <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
-          {selectedBuildingType && (selectedBuildingType.length > 0 && selectedBuildingType==menuSelection) &&
-            selectedDateSpan && selectedDateSpan.length > 0 &&
-            selectedDataSet && selectedDataSet.length > 0 ? (
-              <EnergyUsageIntensity
-                buildingType={selectedBuildingType}
-                dateSpan={selectedDateSpan}
-                dataSet={selectedDataSet}
-              />
-            ) : (
-              <p>No data available or loading...</p> // Fallback when the condition isn't met
-          )}
+      {selectedDataSet && selectedDataSet.length > 0 && !(selectedDataSet=="Faults" || selectedDataSet == "Insights" || selectedDataSet == "Overrides") && (
+        <div className="flex flex-wrap mt-5">
+          <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
+            {selectedBuildingType && selectedBuildingType.length > 0 && selectedBuildingType === menuSelection &&
+              selectedDateSpan && selectedDateSpan.length > 0 ? (
+                <EnergyUsageIntensity
+                  buildingType={selectedBuildingType}
+                  dateSpan={selectedDateSpan}
+                  dataSet={selectedDataSet}
+                />
+              ) : (
+                <p>No data available or loading...</p>
+            )}
+          </div>
         </div>
-      </div>
+      )}
+
       
       <div className="flex flex-wrap mt-4">
         <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">

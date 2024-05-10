@@ -66,23 +66,23 @@ export default function Admin({ children }) {
           `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=Emissions&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
         );
 
-        const Overrides = await getApiDataFromAws(
+        /**const Overrides = await getApiDataFromAws(
           `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=Overrides&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
-        );
+        );*/
 
         const Faults = await getApiDataFromAws(
           `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=Faults&functionName=verdeosDemoPortfolioComplianceData&regionDis=All&stateDis=null&horizontalRollup=null&horizontalRollupPassed=null&verticalRollupPassed=null`
         );
 
         if (Electrical !== undefined) {
-          setEmissions(Emissions[0].valTot)
-          setEnergy(Electrical[0].valTot)
-          setWater(Water[0].valTot)
-          setFaults(Faults[0].valTot)
-          setOverrides(Overrides[0].valTot)
+          setEmissions(Emissions[0].tarPerc)
+          setEnergy(Electrical[0].tarPerc)
+          setWater(Water[0].tarPerc)
+          setFaults(Faults[0].valTot.replace(null, ""))
+          //setOverrides(Overrides[0].valTot)
         }
         if (Insights !== undefined) {
-          setInsights(Insights[0]?.valTot)
+          setInsights(Insights[0]?.valTot.replace(null, ""))
         }
 
       }
@@ -193,7 +193,7 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Overrides
                         <br />
-                        <span className="text-[#C5C5C5]">{overrides}</span>
+                        <span className="text-[#C5C5C5]">0{/*overrides*/}</span>
                       </p>
                     </div>
 
