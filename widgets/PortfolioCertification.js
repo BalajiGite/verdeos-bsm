@@ -152,31 +152,31 @@ const PortfolioCertification = (props) => {
                             className="items-center w-full bg-transparent border-collapse"
                           >
                             <td
-                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-3 text-center"
+                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-1 text-center"
                               style={{width:"20%" }}
                             >
                               {item.building}
                             </td>
                             <td
-                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-3 text-center"
+                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-1 text-center"
                               style={{ width:"20%"  }}
                             >
                               {item.certification}
                             </td>
                             <td
-                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-3 text-center"
+                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-1 text-center"
                               style={{ width:"20%"  }}
                             >
                               {item.starValue}
                             </td>
                             <td
-                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-3 text-center"
+                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-1 text-center"
                               style={{  width:"20%" }}
                             >
                               {item.ratingType}
                             </td>
                             <td
-                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-3 text-center"
+                              className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-1 text-center"
                               style={{  width:"20%" }}
                             >
                               {item.certificateValidTo}

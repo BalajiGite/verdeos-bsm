@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Spin  } from "antd";
 import {
   getApiDataFromAws,
   getDates,
@@ -11,7 +12,7 @@ function PortfolioMap(props) {
 
   const fetchData = async (buildingType, dateSpan, dataSet) => {
     //alert("called from Map:" + buildingType + " " + dateSpan + " " + dataSet);
-    
+    setLoading(true);
     if(buildingType != null && dateSpan !=null && dataSet !=null){
       const dates = getDates(dateSpan);
       const prepareData = `startDateString=${dates.start}&endDateString=${dates.end}&buildingType=${buildingType}&dataSet=${dataSet}&functionName=verdeosDemoGlobalPortfolio`;
@@ -38,7 +39,7 @@ function PortfolioMap(props) {
 
   const mapRef = React.useRef(null);
   useEffect(() => {
-    setLoading(true)
+    //setLoading(true)
     loadMapData()
   }, [loading, props.buildingType, props.dateSpan, props.dataSet]);
 
@@ -118,11 +119,13 @@ function PortfolioMap(props) {
   return (
     <>
       <div className="relative w-full rounded h-300-px">
-        <div
-          className="rounded h-300-px"
-          ref={mapRef}
-          style={{ height: "450px" }}
-        />
+        <Spin spinning={loading} size="large" indicator={<img src="/img/loader.gif" style={{ fontSize: 50}} alt="Custom Spin GIF" />}>
+          <div
+            className="rounded h-300-px"
+            ref={mapRef}
+            style={{ height: "450px" }}
+          />
+        </Spin>
       </div>
     </>
   );

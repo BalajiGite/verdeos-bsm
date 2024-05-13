@@ -10,6 +10,7 @@ import { MenuSelectionContext } from "../components/PageChange/MenuSelectionCont
 import DashboardPage from "../pages/admin/dashboard";
 import Navbar from '../components/Navbars/IndexNavbar';
 import { getApiDataFromAws, getDates } from "../api/dashboardDataService";
+import { Spin  } from "antd";
 
 export default function Admin({ children }) {
   const [menuSelection, setMenuSelection] = useState("All");
@@ -17,7 +18,7 @@ export default function Admin({ children }) {
   const updateMenuSelection = (menu) => {
     setMenuSelection(menu);
   };
-
+  const [isLoading, setIsLoading] = useState(true);
   const [emissions, setEmissions] = useState("");
   const [energy, setEnergy] = useState("");
   const [water, setWater] = useState("");
@@ -30,6 +31,7 @@ export default function Admin({ children }) {
 
   
   useEffect(() => {
+    setIsLoading(true)
     const fetchData = async (buildingType) => {
       const dataResp = await getApiDataFromAws(
         "buildingType=Industrial&functionName=verdeosDataQualityHighlighter"
@@ -78,11 +80,11 @@ export default function Admin({ children }) {
           setEmissions(Emissions[0].tarPerc)
           setEnergy(Electrical[0].tarPerc)
           setWater(Water[0].tarPerc)
-          setFaults(Faults[0].valTot.replace(null, ""))
-          //setOverrides(Overrides[0].valTot)
+          setFaults(Faults[0]?.valTot?.replace(null, ""))
+          setIsLoading(false)
         }
         if (Insights !== undefined) {
-          setInsights(Insights[0]?.valTot.replace(null, ""))
+          setInsights(Insights[0]?.valTot?.replace(null, ""))
         }
 
       }
@@ -109,37 +111,38 @@ export default function Admin({ children }) {
           </div>
           {visiblenotification && (
             <div className="mx-14 mt-5 background-color-linear p-4 border rounded border-[#8E8E8E] relative">
+            <Spin spinning={isLoading} size="large" indicator={<img src="/img/loader.gif" style={{ fontSize: 50}} alt="Custom Spin GIF" />}>              
               <div className="absolute top-0 right-0"><img src="/img/close.png" className="h-6 w-6 cursor-pointer" onClick={() => setVisibleNotification(!visiblenotification)} /></div>
-              <div className=" justify-between grid grid-cols-2 gap-x-1 mt-1">
-                <div className="border-r  border-[#8E8E8E] px-3">
-                  <p className="brand mb-0" style={{marginTop:"-10px"}}>Actionable Insights Summary</p>
-                  <p className="text-[#C5C5C5] mb-0 text-sm">Since your last login you have:</p>
-                  <p className="text-[#C5C5C5] mb-0 text-sm">14 New sites connected</p>
-                  <p className="text-[#C5C5C5] mb-0 text-sm">154 Persistent alarms cleared</p>
-                </div>
-                <div className=" bg-[#0A1016] py-1 border border-[#8E8E8E] rounded">
-                  <p className="text-[#C5C5C5] py-1 px-3 mb-0">2024 Environmental Sustainability Highlights</p>
+                <div className=" justify-between grid grid-cols-2 gap-x-1 mt-1">
+                  <div className="border-r  border-[#8E8E8E] px-3">
+                    <p className="brand mb-0" style={{marginTop:"-10px"}}>Actionable Insights Summary</p>
+                    <p className="text-[#C5C5C5] mb-0 text-sm">Since your last login you have:</p>
+                    <p className="text-[#C5C5C5] mb-0 text-sm">14 New sites connected</p>
+                    <p className="text-[#C5C5C5] mb-0 text-sm">154 Persistent alarms cleared</p>
+                  </div>
+                  <div className=" bg-[#0A1016] py-1 border border-[#8E8E8E] rounded">
+                    <p className="text-[#C5C5C5] py-1 px-3 mb-0">2024 Environmental Sustainability Highlights</p>
 
-                  <hr className=" border-[#8E8E8E] w-full" />
-                  <div className="flex px-4 mt-1 justify-between w-full">
-                    <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E] px-2">
-                      <img src="/img/Co2.png" className="h-10 w-10 object-contain" alt="Co2 group" />
-                      <p className="text-[#C5C5C5] px-1 mb-0"> Emissions <br /><span className="text-[#C5C5C5]">{emissions}</span></p>
-                    </div>
+                    <hr className=" border-[#8E8E8E] w-full" />
+                    <div className="flex px-4 mt-1 justify-between w-full">
+                      <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E] px-2">
+                        <img src="/img/Co2.png" className="h-10 w-10 object-contain" alt="Co2 group" />
+                        <p className="text-[#C5C5C5] px-1 mb-0"> Emissions <br /><span className="text-[#C5C5C5]">{emissions}</span></p>
+                      </div>
 
-                    <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E] px-2">
-                      <img src="/img/energy.png" className="h-10 w-10 object-contain" alt="Vector" />
-                      <p className="text-[#C5C5C5] px-1 mb-0"> Energy<br /><span className="text-[#C5C5C5]">{energy}</span></p>
-                    </div>
+                      <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E] px-2">
+                        <img src="/img/energy.png" className="h-10 w-10 object-contain" alt="Vector" />
+                        <p className="text-[#C5C5C5] px-1 mb-0"> Energy<br /><span className="text-[#C5C5C5]">{energy}</span></p>
+                      </div>
 
-                    <div className="flex-1 flex items-center justify-center px-2">
-                      <img src="/img/water.png" className="h-10 w-10 object-contain" alt="Layer" />
-                      <p className="text-[#C5C5C5] px-1 mb-0"> Water<br /><span className="text-[#C5C5C5]">{water}</span></p>
+                      <div className="flex-1 flex items-center justify-center px-2">
+                        <img src="/img/water.png" className="h-10 w-10 object-contain" alt="Layer" />
+                        <p className="text-[#C5C5C5] px-1 mb-0"> Water<br /><span className="text-[#C5C5C5]">{water}</span></p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
+              
               <div className="mt-1 grid grid-cols-2 gap-x-1 ">
                 <div className="border border-[#8E8E8E] rounded bg-[#0A1016]">
                   <p className="text-[#C5C5C5] py-1 px-3 mb-0">2024 Data Performance Summary (YTD)</p>
@@ -208,7 +211,8 @@ export default function Admin({ children }) {
                   </div>
                 </div>
               </div>
-            </div>
+            </Spin>
+          </div>
           )}
           {/* <AdminNavbar /> */}
           {/* Header */}
