@@ -1756,6 +1756,11 @@ video {
   padding-top: 2rem;
 }
 
+.ps-3 {
+  -webkit-padding-start: 0.75rem;
+          padding-inline-start: 0.75rem;
+}
+
 .text-left {
   text-align: left;
 }

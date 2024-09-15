@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext , createContext} from "react";
 // components
-
 import EnergyUsageIntensity from "widgets/EnergyUsageIntensity.js";
 import PortfolioCertification from "widgets/PortfolioCertification.js";
 import NabersRatingWidget from "widgets/NabersRatingWidget";
@@ -10,13 +9,15 @@ import MapExample from "components/Maps/PortfolioMap";
 import GoogleMap from "components/Maps/GoogleMap.js";
 import Dropdown from "../../components/Dropdowns/Dropdown";
 import { MenuSelectionContext } from "../../components/PageChange/MenuSelectionContext";
+import Airtable from "../../components/Airtable_Gegroup_demo/airtable_interface";
+export const UserContext = createContext(false);
+
 import {
   getApiDataFromAws,
   getApiDataFromAwsDemo,
 } from "../../api/dashboardDataService";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-
 export default function Dashboard(props) {
   const router = useRouter();
   const [dateSet, setDateSet] = useState([]);
@@ -27,6 +28,8 @@ export default function Dashboard(props) {
   const [selectedBuildingType, setSelectedBuildingType] = useState([]);
   const menuSelection = useContext(MenuSelectionContext);
 
+  let popup = useContext(UserContext)
+  const [open, setOpen] = useState(false);
   const fetchDataInitial = async () => {
     const buildingTypeJson = await getApiDataFromAws("functionName=verdeosDemoBuildingType");
     if (buildingTypeJson !== undefined) {
@@ -35,7 +38,7 @@ export default function Dashboard(props) {
         setSelectedBuildingType(buildingTypeJson[0].name);
       }
     }
-  
+
     const dataSets = await getApiDataFromAws("functionName=verdeosDemoDataSets");
     if (dataSets !== undefined) {
       if (dateSet.length === 0) {
@@ -43,7 +46,7 @@ export default function Dashboard(props) {
         setSelectedDataSet(dataSets[0].name);
       }
     }
-  
+
     const dateSpans = await getApiDataFromAwsDemo("21");
     if (dateSpans !== undefined) {
       if (dateSpan.length === 0) {
@@ -52,14 +55,14 @@ export default function Dashboard(props) {
       }
     }
   };
-  
+
 
   useEffect(() => {
     const isAuthenticated = !!Cookies.get("auth");
     if (!isAuthenticated) {
       router.push("/");
     } else {
-      if (selectedBuildingType.length ==0 && selectedDateSpan.length == 0 && selectedDataSet.length == 0) {
+      if (selectedBuildingType.length == 0 && selectedDateSpan.length == 0 && selectedDataSet.length == 0) {
         fetchDataInitial();
       }
     }
@@ -86,8 +89,10 @@ export default function Dashboard(props) {
       setSelectedDateSpan(option);
     }
   };
+  
   return (
     <>
+    <UserContext.Provider value={{open , setOpen}}>
       <div className="flex flex-wrap mt-4">
         <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
           <div className="flex mb-2 justify-start ">
@@ -122,33 +127,34 @@ export default function Dashboard(props) {
         </div>
       </div>
 
-      {selectedDataSet && selectedDataSet.length > 0 && !(selectedDataSet=="Faults" || selectedDataSet == "Insights" || selectedDataSet == "Overrides") && (
+      {selectedDataSet && selectedDataSet.length > 0 && !(selectedDataSet == "Faults" || selectedDataSet == "Insights" || selectedDataSet == "Overrides") && (
         <div className="flex flex-wrap mt-5">
           <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
             {selectedBuildingType && selectedBuildingType.length > 0 && selectedBuildingType === menuSelection &&
               selectedDateSpan && selectedDateSpan.length > 0 ? (
-                <EnergyUsageIntensity
-                  buildingType={selectedBuildingType}
-                  dateSpan={selectedDateSpan}
-                  dataSet={selectedDataSet}
-                />
-              ) : (
-                <p>No data available or loading...</p>
+              <EnergyUsageIntensity
+                buildingType={selectedBuildingType}
+                dateSpan={selectedDateSpan}
+                dataSet={selectedDataSet}
+              />
+            ) : (
+              <p>No data available or loading...</p>
             )}
           </div>
         </div>
       )}
 
-      
+
       <div className="flex flex-wrap mt-4">
         <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
-          {selectedBuildingType && (selectedBuildingType.length > 0 && selectedBuildingType==menuSelection) &&
+          {selectedBuildingType && (selectedBuildingType.length > 0 && selectedBuildingType == menuSelection) &&
             selectedDateSpan && selectedDateSpan.length > 0 &&
             selectedDataSet && selectedDataSet.length > 0 ? (
             <PortfolioPerformanceChart
               buildingType={selectedBuildingType}
               dateSpan={selectedDateSpan}
               dataSet={selectedDataSet}
+              setOpen={setOpen}
             />
           ) : (
             <p>Loading data...</p> // or some other fallback content
@@ -179,7 +185,7 @@ export default function Dashboard(props) {
       <div className="flex flex-wrap mt-4">
         <div className="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
           <div className="p-1 w-full">
-            {selectedBuildingType && (selectedBuildingType.length > 0 && selectedBuildingType==menuSelection) &&
+            {selectedBuildingType && (selectedBuildingType.length > 0 && selectedBuildingType == menuSelection) &&
               selectedDateSpan && selectedDateSpan.length > 0 &&
               selectedDataSet && selectedDataSet.length > 0 ? (
               <PortfolioCertification
@@ -187,13 +193,15 @@ export default function Dashboard(props) {
                 dateSpan={selectedDateSpan}
                 dataSet={selectedDataSet}
               />) : (
-                <p>Loading data...</p> // or some other fallback content
-              )}
+              <p>Loading data...</p> // or some other fallback content
+            )}
           </div>
         </div>
       </div>
 
       <hr className="my-4 md:min-w-full" />
+      {open &&  <Airtable/>}
+      </UserContext.Provider>
     </>
   );
 }
