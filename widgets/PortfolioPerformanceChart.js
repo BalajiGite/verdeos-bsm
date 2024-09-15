@@ -281,7 +281,7 @@ const PortfolioPerformanceChart = (props) => {
                 <div className="text-color-card-header font-normal text-xs leading-3  text-[#C5C5C5] mb-2">
                   Top 10 Industrial Buildings
                 </div>
-                <PortfolioPerformance data={totalovveridesBySite} />
+                <PortfolioPerformance data={totalovveridesBySite}/>
               </div>
             )}
           </div>

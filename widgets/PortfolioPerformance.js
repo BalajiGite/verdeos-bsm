@@ -1,7 +1,14 @@
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
-
+import { UserContext } from "pages/admin/dashboard";
+import { useContext } from "react";
 const PortfolioPerformance = ({ data, color }) => {
+  // const [open, setOpen] = useState(false);
+let popup = useContext(UserContext);
+  const handleClick = () => {
+   popup.setOpen(true)
+  };
+
   const datas = data?.map((item) => item);
 
   const chartOptions = {
@@ -76,7 +83,10 @@ const PortfolioPerformance = ({ data, color }) => {
       column: {
         borderWidth: 0,
         pointWidth: 15,
-        borderRadius: 10
+        borderRadius: 10,
+        events: {
+          click: () => handleClick()
+        }
       }
     },
     series: [{
@@ -91,6 +101,7 @@ const PortfolioPerformance = ({ data, color }) => {
     <div className="w-full">
       <HighchartsReact highcharts={Highcharts} options={chartOptions} />
     </div>
+    
   );
 };
 
