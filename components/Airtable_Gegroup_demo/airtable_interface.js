@@ -11,7 +11,7 @@ const data = [
     age: "$5,345,000",
     address: '$4,970',
     totalCost:"$4,970",
-    payBack:"456.5"
+    payBack:"Under Investigation"
   
   },
   {
@@ -20,7 +20,7 @@ const data = [
     age: "$4,077,275",
     address: '$13,745',
     totalCost:"$4,970",
-    payBack:"--"
+    payBack:"To Be Implemented"
   },
   {
     key: '3',
@@ -28,7 +28,7 @@ const data = [
     age: "$2,904,648",
     address: '$5,265',
     totalCost:"$4,650",
-    payBack:"107.5"
+    payBack:"To Be Implemented"
   },
   {
     key: '4',
@@ -36,7 +36,7 @@ const data = [
     age: "$1,170,547",
     address: '$33,446',
     totalCost:"$970",
-    payBack:"15.5"
+    payBack:"Implemented"
   },
   {
     key: '5',
@@ -44,14 +44,14 @@ const data = [
     age: "$1,055,247",
     address: '--',
     totalCost:"$4,94",
-    payBack:"1456.5"
+    payBack:"Implemented"
   },
   {
     key: '6',
     name: 'Upgrade EOT Facility',
     age: "$819,440",
     address: '--',totalCost:"$33,446",
-    payBack:"516.5"
+    payBack:"Not To Be Implemented"
   },
   {
     key: '7',
@@ -59,7 +59,7 @@ const data = [
     age: "$395,000",
     address: '$23,456',
     totalCost:"--",
-    payBack:"1075.5"
+    payBack:"Implemented"
   },
   {
     key: '8',
@@ -67,7 +67,7 @@ const data = [
     age: "$284,156",
     address: '$1,234',
     totalCost:"14,000",
-    payBack:"296.6"
+    payBack:"Implemented"
   },
   
 ];
@@ -84,6 +84,9 @@ export default function Airtable() {
       backgroundColor: 'transparent'
 
     },
+    credits:{
+      enabled:false
+    },
     title: {
       text: 'Proposed by VerdeOS',
       align: 'left',
@@ -95,7 +98,8 @@ export default function Airtable() {
         color: '#C5C5C5'      // Set title color to white
       },
 
-    }, subtitle: {
+    }, 
+    subtitle: {
       text: '', // Empty subtitle
       useHTML: true, // Enable HTML for subtitle
       floating: true, // Allow subtitle to float above the chart
@@ -155,12 +159,13 @@ export default function Airtable() {
     ]
   }
   // Pie Demo chart // 
-
-
   let options2 = {
     chart: {
       type: 'pie',
-      backgroundColor: 'transparent'
+      backgroundColor:''
+    },
+    credits:{
+      enabled:false
     },
     title: {
       text: 'CAPEX vs OPEX Split',
@@ -207,12 +212,12 @@ export default function Airtable() {
         colorByPoint: true,
         data: [
           {
-            name: ' Wishlist (21)',
+            name: 'Wishlist (21)',
             y: 55
           },
           {
             name: 'OPEX (1)',
-            sliced: true,
+            sliced: false,
             selected: true,
             y: 26.71
           },
@@ -284,18 +289,18 @@ export default function Airtable() {
     },
     {
       title: 'Payback Period (years)',
-      dataIndex: 'age',
-      key: 'age',
-      sorter: (a, b) => a.age - b.age,
-      sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.order : null,
+      dataIndex: 'totalCost',
+      key: 'totalCost',
+      sorter: (a, b) => a.totalCost - b.totalCost,
+      sortOrder: sortedInfo.columnKey === 'totalCost' ? sortedInfo.order : null,
       ellipsis: true,
     },
     {
       title: 'Status',
-      dataIndex: 'age',
-      key: 'age',
-      sorter: (a, b) => a.age - b.age,
-      sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.order : null,
+      dataIndex: 'payBack',
+      key: 'payBack',
+      sorter: (a, b) => a.payBack - b.payBack,
+      sortOrder: sortedInfo.columnKey === 'payBack' ? sortedInfo.order : null,
       ellipsis: true,
     },
   ];
@@ -305,7 +310,7 @@ export default function Airtable() {
         Open Modal of 1000px width
       </Button> */}
       <Modal
-        title="Interface/Energy & Water Opportunities"
+        title="Energy & Water Opportunities"
         centered
         open={popup}
         onOk={handleCancel}
@@ -313,11 +318,6 @@ export default function Airtable() {
         width={1000}
       >
       <div className="section-color">
-        <Row gutter={[16, 16]}>
-          <Col span={22}>
-        <h1 className="heading-1">Energy and Water Opportunities</h1>
-          </Col>
-        </Row>
         <Row gutter={[16, 16]} align="middle"  style={{ columnGap: 8 , justifyContent:'space-around'}}>
           <Col span={8} className="background-linear py-3 px-2">
             <h2>Total Opportunities</h2>
@@ -341,9 +341,8 @@ export default function Airtable() {
             <Table columns={columns} dataSource={data} onChange={handleChange} pagination={8}/>
           </Col>
         </Row>
-</div>
+      </div>
       </Modal>
-
     </>
   );
 }
