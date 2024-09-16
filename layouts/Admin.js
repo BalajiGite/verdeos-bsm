@@ -127,7 +127,6 @@ export default function Admin({ children }) {
                           <span className="flex items-center">
                             <span style={{ background: "Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
                             <span className="ml-1 title_text text-[#C5C5C5]">10 (+12% YoY)</span>
-                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: "Green", marginLeft: "2" }} />
                           </span>
                         </p>
                       </div>
@@ -137,7 +136,6 @@ export default function Admin({ children }) {
                           <span className="flex items-center">
                             <span style={{ background: "Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
                             <span className="ml-1 title_text text-[#C5C5C5]">$46k (+6% YoY)</span>
-                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: "Green", marginLeft: "2" }} />
                           </span>
                         </p>
                       </div>
@@ -163,7 +161,6 @@ export default function Admin({ children }) {
                           <span className="flex items-center">
                             <span style={{ background: parseFloat(emissions?.replace("%","")) > 150? "Red": parseFloat(emissions?.replace("%","")) > 100? "Orange":"Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
                             <span className="ml-1 title_text text-[#C5C5C5]">{emissions}</span>
-                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: parseFloat(emissions?.replace("%","")) > 150? "Red": parseFloat(emissions?.replace("%","")) > 100? "Orange":"Green" , marginLeft: "2" }} />
                           </span>
                         </p>
                       </div>
@@ -173,7 +170,6 @@ export default function Admin({ children }) {
                           <span className="flex items-center">
                             <span style={{ background: parseFloat(energy?.replace("%","")) > 150? "Red": parseFloat(energy?.replace("%","")) > 100? "Orange":"Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
                             <span className="ml-1 title_text text-[#C5C5C5]">{energy}</span>
-                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: parseFloat(energy?.replace("%","")) > 150? "Red": parseFloat(energy?.replace("%","")) > 100? "Orange":"Green" , marginLeft: "2" }} />
 
                           </span>
                         </p>
@@ -185,7 +181,6 @@ export default function Admin({ children }) {
                           <span className="flex items-center">
                             <span style={{ background: parseFloat(water?.replace("%","")) > 150? "Red": parseFloat(water?.replace("%","")) > 100? "Orange":"Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
                             <span className="ml-1 title_text text-[#C5C5C5]">{water}</span>
-                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: parseFloat(water?.replace("%","")) > 150? "Red": parseFloat(water?.replace("%","")) > 100? "Orange":"Green", marginLeft: "2" }} />
 
                           </span>
                         </p>
