@@ -5,7 +5,10 @@ import React, { useState, useEffect  } from "react";
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import HeaderStats from "components/Headers/HeaderStats.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import FooterAdmin from "components/Footers/FooterAdmin.js";
+import Footer from "components/Footers/Footer.js";
 import { MenuSelectionContext } from "../components/PageChange/MenuSelectionContext";
 import DashboardPage from "../pages/admin/dashboard";
 import Navbar from '../components/Navbars/IndexNavbar';
@@ -104,40 +107,88 @@ export default function Admin({ children }) {
           menuSelection={menuSelection}
         />
         <div className="relative md:ml-64">
-          <div className="flex first-letter:items-center border border-gray-300 p-1 mx-14 border-[#8E8E8E] rounded-md mt-5 items-center">
+          {/** <div className="flex first-letter:items-center border border-gray-300 p-1 mx-14 border-[#8E8E8E] rounded-md mt-5 items-center">
             <img src="/img/ai.png" alt="Description of the image" className="mr-2 h-4 w-4 ml-6" />
             <span className="text-[#C5C5C5] mr-2 font-semibold">Automative Insights:</span>
             <input type="text" placeholder="Type a question about your data" className="text-[#C5C5C5] outline-none focus:outline-none flex-grow bg-transparent" />
-          </div>
+            </div>
+           */}
           {visiblenotification && (
             <div className="mx-14 mt-5 background-color-linear p-4 border rounded border-[#8E8E8E] relative">
             <Spin spinning={isLoading} size="large" indicator={<img src="/img/loader.gif" style={{ fontSize: 50}} alt="Custom Spin GIF" />}>              
               <div className="absolute top-0 right-0"><img src="/img/close.png" className="h-6 w-6 cursor-pointer" onClick={() => setVisibleNotification(!visiblenotification)} /></div>
                 <div className=" justify-between grid grid-cols-2 gap-x-1 mt-1">
-                  <div className="border-r  border-[#8E8E8E] px-3">
-                    <p className="brand mb-0" style={{marginTop:"-10px"}}>Actionable Insights Summary</p>
-                    <p className="text-[#C5C5C5] mb-0 text-sm">Since your last login you have:</p>
-                    <p className="text-[#C5C5C5] mb-0 text-sm">14 New sites connected</p>
-                    <p className="text-[#C5C5C5] mb-0 text-sm">154 Persistent alarms cleared</p>
+                <div className=" bg-[#0A1016] py-1 border border-[#8E8E8E] rounded">
+                    <p className="text-[#C5C5C5] py-1 px-3 mb-0">Strategic Improvement Plan Highlights (YTD)</p>
+                    <hr className=" border-[#8E8E8E] w-full" />
+                    <div className="flex px-4 mt-1 justify-between w-full">
+                      <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E]">
+                        <p className="text-[#C5C5C5] px-1 mb-0"> Completed Optimizations <br />
+                          <span className="flex items-center">
+                            <span style={{ background: "Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                            <span className="ml-1 title_text text-[#C5C5C5]">10 (+12% YoY)</span>
+                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: "Green", marginLeft: "2" }} />
+                          </span>
+                        </p>
+                      </div>
+
+                      <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E]">
+                        <p className="text-[#C5C5C5] px-1 mb-0"> Cost Savings Realized<br />
+                          <span className="flex items-center">
+                            <span style={{ background: "Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                            <span className="ml-1 title_text text-[#C5C5C5]">$46k (+6% YoY)</span>
+                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: "Green", marginLeft: "2" }} />
+                          </span>
+                        </p>
+                      </div>
+
+                      <div className="flex-1 flex items-center justify-center">
+                        <p className="text-[#C5C5C5] px-1 mb-0">Opportunities In Review<br />
+                          <span className="flex items-center">
+                            <span className="ml-1 title_text text-[#C5C5C5]">13</span>
+                          </span>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                   <div className=" bg-[#0A1016] py-1 border border-[#8E8E8E] rounded">
-                    <p className="text-[#C5C5C5] py-1 px-3 mb-0">2024 Environmental Sustainability Highlights</p>
+                    <p className="text-[#C5C5C5] py-1 px-3 mb-0">Environmental Sustainability Highlights (YTD)</p>
 
                     <hr className=" border-[#8E8E8E] w-full" />
                     <div className="flex px-4 mt-1 justify-between w-full">
                       <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E] px-2">
                         <img src="/img/Co2.png" className="h-10 w-10 object-contain" alt="Co2 group" />
-                        <p className="text-[#C5C5C5] px-1 mb-0"> Emissions <br /><span className="text-[#C5C5C5]">{emissions}</span></p>
+                        <p className="text-[#C5C5C5] px-1 mb-0"> 
+                          Emissions <br />
+                          <span className="flex items-center">
+                            <span style={{ background: parseFloat(emissions?.replace("%","")) > 150? "Red": parseFloat(emissions?.replace("%","")) > 100? "Orange":"Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                            <span className="ml-1 title_text text-[#C5C5C5]">{emissions}</span>
+                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: parseFloat(emissions?.replace("%","")) > 150? "Red": parseFloat(emissions?.replace("%","")) > 100? "Orange":"Green" , marginLeft: "2" }} />
+                          </span>
+                        </p>
                       </div>
-
                       <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E] px-2">
                         <img src="/img/energy.png" className="h-10 w-10 object-contain" alt="Vector" />
-                        <p className="text-[#C5C5C5] px-1 mb-0"> Energy<br /><span className="text-[#C5C5C5]">{energy}</span></p>
+                        <p className="text-[#C5C5C5] px-1 mb-0"> Energy<br />
+                          <span className="flex items-center">
+                            <span style={{ background: parseFloat(energy?.replace("%","")) > 150? "Red": parseFloat(energy?.replace("%","")) > 100? "Orange":"Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                            <span className="ml-1 title_text text-[#C5C5C5]">{energy}</span>
+                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: parseFloat(energy?.replace("%","")) > 150? "Red": parseFloat(energy?.replace("%","")) > 100? "Orange":"Green" , marginLeft: "2" }} />
+
+                          </span>
+                        </p>
                       </div>
 
                       <div className="flex-1 flex items-center justify-center px-2">
                         <img src="/img/water.png" className="h-10 w-10 object-contain" alt="Layer" />
-                        <p className="text-[#C5C5C5] px-1 mb-0"> Water<br /><span className="text-[#C5C5C5]">{water}</span></p>
+                        <p className="text-[#C5C5C5] px-1 mb-0"> Water<br />
+                          <span className="flex items-center">
+                            <span style={{ background: parseFloat(water?.replace("%","")) > 150? "Red": parseFloat(water?.replace("%","")) > 100? "Orange":"Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                            <span className="ml-1 title_text text-[#C5C5C5]">{water}</span>
+                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: parseFloat(water?.replace("%","")) > 150? "Red": parseFloat(water?.replace("%","")) > 100? "Orange":"Green", marginLeft: "2" }} />
+
+                          </span>
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -145,7 +196,7 @@ export default function Admin({ children }) {
               
               <div className="mt-1 grid grid-cols-2 gap-x-1 ">
                 <div className="border border-[#8E8E8E] rounded bg-[#0A1016]">
-                  <p className="text-[#C5C5C5] py-1 px-3 mb-0">2024 Data Performance Summary (YTD)</p>
+                  <p className="text-[#C5C5C5] py-1 px-3 mb-0">Data Performance Summary (YTD)</p>
                   <hr className=" border-[#8E8E8E] w-full" />
 
                   <div className="flex justify-between w-full">
@@ -154,7 +205,10 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Sites Connected
                         <br />
-                        <span className="text-[#C5C5C5]">{sitesConnected}</span>
+                        <span className="flex items-center">
+                            <span style={{ background: "Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                            <span className="ml-1 title_text text-[#C5C5C5]">{sitesConnected}</span>
+                        </span>
                       </p>
                     </div>
 
@@ -163,7 +217,10 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                          Connector Faults
                         <br />
-                        <span className="text-[#C5C5C5]">{connectorFaults}</span>
+                        <span className="flex items-center">
+                            <span style={{ background: "Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                            <span className="ml-1 title_text text-[#C5C5C5]">{connectorFaults}</span>
+                        </span>
                       </p>
                     </div>
 
@@ -172,13 +229,16 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                          Data Quality
                         <br />
-                        <span className="text-[#C5C5C5]">{dataQuality}</span>
+                        <span className="flex items-center">
+                            <span style={{ background: "Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                            <span className="ml-1 title_text text-[#C5C5C5]">{dataQuality}</span>
+                        </span>
                       </p>
                     </div>
                   </div>
                 </div>
                 <div className="border border-[#8E8E8E] rounded bg-[#0A1016] ">
-                  <p className="text-[#C5C5C5] py-1 px-3 mb-0">2024 Building Mainteance Summary (YTD)</p>
+                  <p className="text-[#C5C5C5] py-1 px-3 mb-0"> Building Mainteance Summary (YTD)</p>
                   <hr className=" border-[#8E8E8E] w-full" />
 
                   <div className="flex justify-between w-full">
@@ -187,7 +247,9 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Insights
                         <br />
-                        <span className="text-[#C5C5C5]">{insights}</span>
+                        <span className="flex items-center">
+                            <span className="ml-1 title_text text-[#C5C5C5]">{insights}</span>
+                        </span>
                       </p>
                     </div>
 
@@ -196,7 +258,9 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Overrides
                         <br />
-                        <span className="text-[#C5C5C5]">0{/*overrides*/}</span>
+                        <span className="flex items-center">
+                            <span className="ml-1 title_text text-[#C5C5C5]">0{/*overrides*/}</span>
+                        </span>
                       </p>
                     </div>
 
@@ -205,7 +269,9 @@ export default function Admin({ children }) {
                       <p className="text-[#C5C5C5] px-1 mb-0">
                         Faults
                         <br />
-                        <span className="text-[#C5C5C5]">{faults}</span>
+                        <span className="flex items-center">
+                            <span className="ml-1 title_text text-[#C5C5C5]">{faults}</span>
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -220,7 +286,8 @@ export default function Admin({ children }) {
           <div className="px-4 md:px-10 mx-auto w-full  -m-30">
             <DashboardPage menuSelection={menuSelection} />
             {/* {children} */}
-            {/**<FooterAdmin /> **/}
+            {/*<FooterAdmin /> */}
+            <Footer />
           </div>
         </div>
       </MenuSelectionContext.Provider>

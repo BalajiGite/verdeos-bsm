@@ -46,7 +46,7 @@ let popup = useContext(UserContext);
       gridLineColor: '#8E8E8E4D', // Change gridline color
       gridLineDashStyle: 'Dash', // Change gridline dash style
       title: {
-        text: '',
+        text: datas[0].unit,
         style: {
           fontFamily: 'Inter, sans-serif',
           fontWeight: '400', 

@@ -199,7 +199,6 @@ export default function Dashboard(props) {
         </div>
       </div>
 
-      <hr className="my-4 md:min-w-full" />
       {open &&  <Airtable/>}
       </UserContext.Provider>
     </>

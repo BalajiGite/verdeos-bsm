@@ -127,7 +127,12 @@ export default function Navbar(props) {
           </div>
           <p>DP</p>
         </Col>
-        <Col span={8}></Col>
+        <Col>
+          <div style={{ justifyContent: "center", display: "flex" }}>
+            <img width={20} src="/img/Header-section/at.png" alt="AT-svg" />
+          </div>
+          <p><a style={{color:"#c5c5c5"}} href={"https://airtable.com/app4poVPtxrz9SON9/pagcuBG0UFeW4uWhm"}>AT</a></p>
+        </Col>
       </Row>
     </div>
   );
@@ -137,13 +142,13 @@ export default function Navbar(props) {
       <Row style={{ justifyContent: "center", display: "flex" }}>
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
           <circle cx="20" cy="20" r="20" fill="#1B2228" />
-          <text x="50%" y="50%" textAnchor="middle" alignmentBaseline="middle" fontSize="14" fill="#fff">{"BIG"}</text>
+          <text x="50%" y="50%" textAnchor="middle" alignmentBaseline="middle" fontSize="14" fill="#fff">{"DM"}</text>
         </svg>
 
       </Row>
       <div style={{ textAlign: "center" }}>
-        <p style={{ marginBottom: "0px" }}><b>{"Balaji Gite"}</b></p>
-        <p>{"big@gegroup.com.au"}</p>
+        <p style={{ marginBottom: "0px" }}><b>{"Demo User"}</b></p>
+        <p>{"demo@gegroup.com.au"}</p>
       </div>
       <div>
         <h6>Account Setting</h6>
@@ -194,7 +199,7 @@ export default function Navbar(props) {
               <Popover placement="bottomLeft" content={profile()}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" style={{ cursor: 'pointer', width: "auto", height: "30px" }}>
                   <circle cx="20" cy="20" r="20" fill="#1B2228" />
-                  <text x="50%" y="50%" textAnchor="middle" alignmentBaseline="middle" fontSize="14" fill="#fff">BG</text>
+                  <text x="50%" y="50%" textAnchor="middle" alignmentBaseline="middle" fontSize="14" fill="#fff">DM</text>
                 </svg>
               </Popover>
             </ConfigProvider>
