@@ -1,7 +1,8 @@
+import { useContext } from "react";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import { UserContext } from "pages/admin/dashboard";
-import { useContext } from "react";
+
 const PortfolioPerformance = ({ data, color }) => {
   // const [open, setOpen] = useState(false);
 let popup = useContext(UserContext);

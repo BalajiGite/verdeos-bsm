@@ -2,15 +2,11 @@ import React, { useEffect, useState, useContext , createContext} from "react";
 // components
 import EnergyUsageIntensity from "widgets/EnergyUsageIntensity.js";
 import PortfolioCertification from "widgets/PortfolioCertification.js";
-import NabersRatingWidget from "widgets/NabersRatingWidget";
-import GreenStarRatingWidget from "widgets/GreenStarRatingWidget";
 import PortfolioPerformanceChart from "widgets/PortfolioPerformanceChart.js";
 import MapExample from "components/Maps/PortfolioMap";
-import GoogleMap from "components/Maps/GoogleMap.js";
 import Dropdown from "../../components/Dropdowns/Dropdown";
 import { MenuSelectionContext } from "../../components/PageChange/MenuSelectionContext";
 import Airtable from "../../components/Airtable_Gegroup_demo/airtable_interface";
-export const UserContext = createContext(false);
 
 import {
   getApiDataFromAws,
@@ -18,6 +14,8 @@ import {
 } from "../../api/dashboardDataService";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+export const UserContext = createContext(false);
+
 export default function Dashboard(props) {
   const router = useRouter();
   const [dateSet, setDateSet] = useState([]);

@@ -1,6 +1,5 @@
 import React, {  useContext, useState } from 'react';
 import { UserContext } from 'pages/admin/dashboard';
-// import Demo prasentation Highcharts;
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import { Button, Space, Table, Row, Col, Card, Modal } from 'antd';
