@@ -14,6 +14,7 @@ import DashboardPage from "../pages/admin/dashboard";
 import Navbar from '../components/Navbars/IndexNavbar';
 import { getApiDataFromAws, getDates } from "../api/dashboardDataService";
 import { Spin, Row  } from "antd";
+import ProjectTable from "../components/buildingData/ProjectTable";
 
 export default function Admin({ children }) {
   const [menuSelection, setMenuSelection] = useState("All");
@@ -31,7 +32,11 @@ export default function Admin({ children }) {
   const [insights, setInsights] = useState("");
   const [faults, setFaults] = useState("");
   const [overrides, setOverrides] = useState("");
+  const [openData, setOpenData] = useState(false); // State to control modal visibility
 
+  const showModal = () => {
+    setOpenData(true);
+  };
   
   useEffect(() => {
     setIsLoading(true)
@@ -121,7 +126,7 @@ export default function Admin({ children }) {
                 <div className=" bg-[#0A1016] py-1 border border-[#8E8E8E] rounded">
                     <p className="text-[#C5C5C5] py-1 px-3 mb-0">Strategic Improvement Plan Highlights (YTD)</p>
                     <hr className=" border-[#8E8E8E] w-full" />
-                    <div className="flex px-4 mt-1 justify-between w-full">
+                    <div className="flex px-4 mt-1 justify-between w-full" onClick={showModal}>
                       <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E]">
                         <p className="text-[#C5C5C5] px-1 mb-0"> Completed Optimizations <br />
                           <Row>
@@ -292,6 +297,7 @@ export default function Admin({ children }) {
           {/* Header */}
           <HeaderStats />
           <div className="px-4 md:px-10 mx-auto w-full  -m-30">
+            <ProjectTable open={openData} setOpen={setOpenData} />
             <DashboardPage menuSelection={menuSelection} />
             {/* {children} */}
             {/*<FooterAdmin /> */}
