@@ -13,7 +13,7 @@ import { MenuSelectionContext } from "../components/PageChange/MenuSelectionCont
 import DashboardPage from "../pages/admin/dashboard";
 import Navbar from '../components/Navbars/IndexNavbar';
 import { getApiDataFromAws, getDates } from "../api/dashboardDataService";
-import { Spin  } from "antd";
+import { Spin, Row  } from "antd";
 
 export default function Admin({ children }) {
   const [menuSelection, setMenuSelection] = useState("All");
@@ -124,19 +124,25 @@ export default function Admin({ children }) {
                     <div className="flex px-4 mt-1 justify-between w-full">
                       <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E]">
                         <p className="text-[#C5C5C5] px-1 mb-0"> Completed Optimizations <br />
-                          <span className="flex items-center">
-                            <span style={{ background: "Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
-                            <span className="ml-1 title_text text-[#C5C5C5]">10 (+12% YoY)</span>
-                          </span>
+                          <Row>
+                            <span className="flex items-center">
+                              <span style={{ background: "Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                              <span className="ml-1 title_text text-[#C5C5C5]">10 (+12% YoY)</span>
+                            </span>
+                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: "Green", marginLeft: "4" }} />
+                          </Row>
                         </p>
                       </div>
 
                       <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E]">
                         <p className="text-[#C5C5C5] px-1 mb-0"> Cost Savings Realized<br />
-                          <span className="flex items-center">
-                            <span style={{ background: "Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
-                            <span className="ml-1 title_text text-[#C5C5C5]">$46k (+6% YoY)</span>
-                          </span>
+                        <Row>
+                            <span className="flex items-center">
+                              <span style={{ background: "Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                              <span className="ml-1 title_text text-[#C5C5C5]">$46k (+6% YoY)</span>
+                            </span>
+                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: "Green", marginLeft: "4" }} />
+                          </Row>
                         </p>
                       </div>
 
@@ -158,31 +164,38 @@ export default function Admin({ children }) {
                         <img src="/img/Co2.png" className="h-10 w-10 object-contain" alt="Co2 group" />
                         <p className="text-[#C5C5C5] px-1 mb-0"> 
                           Emissions <br />
-                          <span className="flex items-center">
-                            <span style={{ background: parseFloat(emissions?.replace("%","")) > 150? "Red": parseFloat(emissions?.replace("%","")) > 100? "Orange":"Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
-                            <span className="ml-1 title_text text-[#C5C5C5]">{emissions}</span>
-                          </span>
+                          <Row>
+                            <span className="flex items-center">
+                              <span style={{ background: parseFloat(emissions?.replace("%","")) > 150? "Red": parseFloat(emissions?.replace("%","")) > 100? "Orange":"Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                              <span className="ml-1 title_text text-[#C5C5C5]">{emissions}</span>
+                            </span>
+                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: parseFloat(emissions?.replace("%","")) > 150? "Red": parseFloat(emissions?.replace("%","")) > 100? "Orange":"Green" , marginLeft: "4" }} />
+                          </Row>
                         </p>
                       </div>
                       <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E] px-2">
                         <img src="/img/energy.png" className="h-10 w-10 object-contain" alt="Vector" />
                         <p className="text-[#C5C5C5] px-1 mb-0"> Energy<br />
-                          <span className="flex items-center">
-                            <span style={{ background: parseFloat(energy?.replace("%","")) > 150? "Red": parseFloat(energy?.replace("%","")) > 100? "Orange":"Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
-                            <span className="ml-1 title_text text-[#C5C5C5]">{energy}</span>
-
-                          </span>
+                          <Row>
+                            <span className="flex items-center">
+                              <span style={{ background: parseFloat(energy?.replace("%","")) > 150? "Red": parseFloat(energy?.replace("%","")) > 100? "Orange":"Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                              <span className="ml-1 title_text text-[#C5C5C5]">{energy}</span>
+                            </span>
+                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: parseFloat(energy?.replace("%","")) > 150? "Red": parseFloat(energy?.replace("%","")) > 100? "Orange":"Green" , marginLeft: "4" }} />
+                          </Row>
                         </p>
                       </div>
 
                       <div className="flex-1 flex items-center justify-center px-2">
                         <img src="/img/water.png" className="h-10 w-10 object-contain" alt="Layer" />
                         <p className="text-[#C5C5C5] px-1 mb-0"> Water<br />
-                          <span className="flex items-center">
-                            <span style={{ background: parseFloat(water?.replace("%","")) > 150? "Red": parseFloat(water?.replace("%","")) > 100? "Orange":"Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
-                            <span className="ml-1 title_text text-[#C5C5C5]">{water}</span>
-
-                          </span>
+                          <Row>
+                            <span className="flex items-center">
+                              <span style={{ background: parseFloat(water?.replace("%","")) > 150? "Red": parseFloat(water?.replace("%","")) > 100? "Orange":"Green" }} className="w-3 h-3 rounded-full flex items-center justify-center"></span>
+                              <span className="ml-1 title_text text-[#C5C5C5]">{water}</span>
+                            </span>
+                            <FontAwesomeIcon icon={faCaretUp} size="xl" style={{ color: parseFloat(water?.replace("%","")) > 150? "Red": parseFloat(water?.replace("%","")) > 100? "Orange":"Green" , marginLeft: "4" }} />
+                          </Row>
                         </p>
                       </div>
                     </div>

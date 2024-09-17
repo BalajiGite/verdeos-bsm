@@ -315,6 +315,7 @@ export default function Airtable() {
         open={popup}
         onOk={handleCancel}
         onCancel={handleCancel}
+        footer={null}
         width={1000}
       >
       <div className="section-color">
