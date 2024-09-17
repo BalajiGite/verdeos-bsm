@@ -180,12 +180,14 @@ export default function EnergyUsageIntensity(props) {
         marker: {
           enabled: false,// Hide the markers
         },
+        dashStyle:'Dash'
       }, {
         name: targetLower?.label,
         data: targetLower?.data?.map((value) => parseFloat(value)),
         marker: {
           enabled: false // Hide the markers
-        }
+        },
+         dashStyle:'Dash'
       },
       {
         name: performance?.label,

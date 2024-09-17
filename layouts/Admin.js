@@ -124,7 +124,7 @@ export default function Admin({ children }) {
               <div className="absolute top-0 right-0"><img src="/img/close.png" className="h-6 w-6 cursor-pointer" onClick={() => setVisibleNotification(!visiblenotification)} /></div>
                 <div className=" justify-between grid grid-cols-2 gap-x-1 mt-1">
                 <div className=" bg-[#0A1016] py-1 border border-[#8E8E8E] rounded">
-                    <p className="text-[#C5C5C5] py-1 px-3 mb-0">Strategic Improvement Plan Highlights (YTD)</p>
+                    <p className="text-[#C5C5C5] text-center title_text py-1 px-3 mb-0">Strategic Improvement Plan Highlights (YTD)</p>
                     <hr className=" border-[#8E8E8E] w-full" />
                     <div className="flex px-4 mt-1 justify-between w-full" onClick={showModal}>
                       <div className="flex-1 flex items-center justify-center border-r border-[#8E8E8E]">
@@ -161,7 +161,7 @@ export default function Admin({ children }) {
                     </div>
                   </div>
                   <div className=" bg-[#0A1016] py-1 border border-[#8E8E8E] rounded">
-                    <p className="text-[#C5C5C5] py-1 px-3 mb-0">Environmental Sustainability Highlights (YTD)</p>
+                    <p className="text-[#C5C5C5] text-center title_text py-1 px-3 mb-0">Environmental Sustainability Highlights (YTD)</p>
 
                     <hr className=" border-[#8E8E8E] w-full" />
                     <div className="flex px-4 mt-1 justify-between w-full">
@@ -209,7 +209,7 @@ export default function Admin({ children }) {
               
               <div className="mt-1 grid grid-cols-2 gap-x-1 ">
                 <div className="border border-[#8E8E8E] rounded bg-[#0A1016]">
-                  <p className="text-[#C5C5C5] py-1 px-3 mb-0">Data Performance Summary (YTD)</p>
+                  <p className="text-[#C5C5C5] text-center title_text py-1 px-3 mb-0">Data Performance Summary (YTD)</p>
                   <hr className=" border-[#8E8E8E] w-full" />
 
                   <div className="flex justify-between w-full">
@@ -251,7 +251,7 @@ export default function Admin({ children }) {
                   </div>
                 </div>
                 <div className="border border-[#8E8E8E] rounded bg-[#0A1016] ">
-                  <p className="text-[#C5C5C5] py-1 px-3 mb-0"> Building Mainteance Summary (YTD)</p>
+                  <p className="text-[#C5C5C5] text-center title_text py-1 px-3 mb-0"> Building Mainteance Summary (YTD)</p>
                   <hr className=" border-[#8E8E8E] w-full" />
 
                   <div className="flex justify-between w-full">

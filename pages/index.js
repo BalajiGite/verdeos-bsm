@@ -22,7 +22,7 @@ export default function Login() {
 
   
   const authenticateUser = (username, password) => {
-    if (username === "demo" && password === "demo") {
+    if (username === "demo" && password === "Password.123#") {
       const userData = {
         username,
         password,

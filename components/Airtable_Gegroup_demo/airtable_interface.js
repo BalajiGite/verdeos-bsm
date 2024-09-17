@@ -10,7 +10,7 @@ const data = [
     name: 'Vertical Transport Life cycle upgrade',
     age: "$5,345,000",
     address: '$4,970',
-    totalCost:"$4,970",
+    totalCost:"1,075.5",
     payBack:"Under Investigation"
   
   },
@@ -19,7 +19,7 @@ const data = [
     name: 'Mechanical life cycle and SIPs upgrade',
     age: "$4,077,275",
     address: '$13,745',
-    totalCost:"$4,970",
+    totalCost:"296",
     payBack:"To Be Implemented"
   },
   {
@@ -27,7 +27,7 @@ const data = [
     name: 'Electrical and SIPS Upgrade FY19-FY',
     age: "$2,904,648",
     address: '$5,265',
-    totalCost:"$4,650",
+    totalCost:"551",
     payBack:"To Be Implemented"
   },
   {
@@ -35,22 +35,23 @@ const data = [
     name: 'Chiller upgrade and Maintenance works',
     age: "$1,170,547",
     address: '$33,446',
-    totalCost:"$970",
+    totalCost:"35",
     payBack:"Implemented"
   },
   {
     key: '5',
-    name: 'OP – 13470-01 - Heating and Boiler Upgrade Project',
+    name: 'OP - 13470-01 - Heating and Boiler Upgrade Project',
     age: "$1,055,247",
-    address: '--',
-    totalCost:"$4,94",
+    address: '$44,443',
+    totalCost:"10",
     payBack:"Implemented"
   },
   {
     key: '6',
     name: 'Upgrade EOT Facility',
     age: "$819,440",
-    address: '--',totalCost:"$33,446",
+    address: '--',
+    totalCost:"--",
     payBack:"Not To Be Implemented"
   },
   {
@@ -66,7 +67,7 @@ const data = [
     name: 'Chiller 2 replacement',
     age: "$284,156",
     address: '$1,234',
-    totalCost:"14,000",
+    totalCost:"140",
     payBack:"Implemented"
   },
   
@@ -258,6 +259,7 @@ export default function Airtable() {
       sorter: (a, b) => a.name.length - b.name.length,
       sortOrder: sortedInfo.columnKey === 'name' ? sortedInfo.order : null,
       ellipsis: true,
+      width: 300, // Add width
     },
     {
       title: 'Total Implementation Cost ($)',
@@ -288,7 +290,7 @@ export default function Airtable() {
       ellipsis: true,
     },
     {
-      title: 'Payback Period (years)',
+      title: 'Payback Period (months)',
       dataIndex: 'totalCost',
       key: 'totalCost',
       sorter: (a, b) => a.totalCost - b.totalCost,
