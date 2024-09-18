@@ -155,7 +155,7 @@ const PortfolioCertification = (props) => {
                               className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-1 text-center"
                               style={{width:"20%" }}
                             >
-                              {item.building}
+                              <p><a style={{color:"#c5c5c5"}} href={"https://sbm.verdeos.com"}>{item.building}</a></p>
                             </td>
                             <td
                               className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap py-1 text-center"
